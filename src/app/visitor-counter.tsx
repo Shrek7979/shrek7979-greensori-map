@@ -32,9 +32,22 @@ export default function VisitorCounter() {
   if (!stats || !stats.configured) return null;
 
   return (
-    <p className="mt-0.5 text-xs text-[#a5906f] dark:text-[#8a7458]">
-      오늘 방문 {stats.today?.toLocaleString() ?? "-"} · 전체 방문{" "}
-      {stats.total?.toLocaleString() ?? "-"}
+    <p className="mt-1.5 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wider text-[#a5906f] dark:text-[#8a7458]">
+      <span>
+        Today{" "}
+        <span className="text-[#6f4e37] dark:text-[#d3bd9c]">
+          {stats.today?.toLocaleString() ?? "–"}
+        </span>
+      </span>
+      <span className="text-[#d8c8b0] dark:text-[#3a2e23]" aria-hidden="true">
+        &bull;
+      </span>
+      <span>
+        Total{" "}
+        <span className="text-[#6f4e37] dark:text-[#d3bd9c]">
+          {stats.total?.toLocaleString() ?? "–"}
+        </span>
+      </span>
     </p>
   );
 }
