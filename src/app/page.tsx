@@ -1,6 +1,7 @@
 import KakaoMap from "@/components/KakaoMap";
 import { cafes } from "@/data/cafes";
 import InstallButton from "./install-button";
+import VisitorCounter from "./visitor-counter";
 
 export default function Home() {
   return (
@@ -74,6 +75,7 @@ export default function Home() {
           <p className="text-xs text-[#a5906f] dark:text-[#8a7458]">
             사진과 장소 정보의 출처는 @green_sori 인스타그램입니다.
           </p>
+          <VisitorCounter />
         </div>
       </footer>
     </div>
