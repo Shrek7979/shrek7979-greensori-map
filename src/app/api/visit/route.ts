@@ -4,10 +4,15 @@ import { Redis } from "@upstash/redis";
 export const dynamic = "force-dynamic";
 
 function getRedis() {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return null;
-  }
-  return Redis.fromEnv();
+  // Vercel Marketplace의 Upstash Redis 통합은 (구)Vercel KV 호환 이름으로
+  // 환경변수를 주입한다 (KV_REST_API_URL / KV_REST_API_TOKEN).
+  // 통합 방식에 따라 UPSTASH_REDIS_REST_* 이름이 쓰이는 경우도 있어 둘 다 지원.
+  const url =
+    process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
+  const token =
+    process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) return null;
+  return new Redis({ url, token });
 }
 
 // KST(UTC+9) 기준 오늘 날짜 키
