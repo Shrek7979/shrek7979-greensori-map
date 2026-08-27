@@ -33,6 +33,7 @@ export default function Home() {
             <p className="mt-0.5 text-sm text-[#8a7458] dark:text-[#b09b7e]">
               그린소리가 담은 카페 · 공간 · 여행의 기록
             </p>
+            <VisitorCounter />
           </div>
           <div className="ml-auto shrink-0">
             <InstallButton />
@@ -75,7 +76,6 @@ export default function Home() {
           <p className="text-xs text-[#a5906f] dark:text-[#8a7458]">
             사진과 장소 정보의 출처는 @green_sori 인스타그램입니다.
           </p>
-          <VisitorCounter />
         </div>
       </footer>
     </div>

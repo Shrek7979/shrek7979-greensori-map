@@ -32,7 +32,7 @@ export default function VisitorCounter() {
   if (!stats || !stats.configured) return null;
 
   return (
-    <p className="text-xs text-[#a5906f] dark:text-[#8a7458]">
+    <p className="mt-0.5 text-xs text-[#a5906f] dark:text-[#8a7458]">
       오늘 방문 {stats.today?.toLocaleString() ?? "-"} · 전체 방문{" "}
       {stats.total?.toLocaleString() ?? "-"}
     </p>
