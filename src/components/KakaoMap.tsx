@@ -8,12 +8,23 @@ const ALL_REGION = "전체";
 const OVERSEAS_REGION = "해외";
 // 앱 초기 상태는 지역 필터 없이 전국(전체)
 const DEFAULT_REGION = ALL_REGION;
+// "NEW" 뱃지/필터 노출 기간 (일)
+const NEW_WINDOW_DAYS = 7;
 
 // 지역 필터 판정: '전체'는 해외를 제외한 국내만, 그 외엔 해당 지역만
 function regionMatch(cafeRegion: string, selected: string) {
   return selected === ALL_REGION
     ? cafeRegion !== OVERSEAS_REGION
     : cafeRegion === selected;
+}
+
+// addedAt(YYYY-MM-DD) 기준으로 NEW_WINDOW_DAYS 이내인지 판정
+function isNewCafe(addedAt: string | undefined, now: number) {
+  if (!addedAt) return false;
+  const added = new Date(`${addedAt}T00:00:00`).getTime();
+  if (Number.isNaN(added)) return false;
+  const diffDays = (now - added) / (1000 * 60 * 60 * 24);
+  return diffDays >= 0 && diffDays < NEW_WINDOW_DAYS;
 }
 
 const FAV_KEY = "greensori-fav-v1";
@@ -124,6 +135,13 @@ function haversineKm(aLat: number, aLng: number, bLat: number, bLng: number) {
   return 2 * R * Math.asin(Math.sqrt(s));
 }
 
+// 중심 좌표에서 반경(km)만큼 떨어진 위경도 오프셋 — 지도 bounds 계산용
+function offsetLatLngByKm(lat: number, lng: number, km: number) {
+  const dLat = km / 111; // 위도 1도 ≈ 111km
+  const dLng = km / (111 * Math.cos((lat * Math.PI) / 180) || 1);
+  return { dLat, dLng };
+}
+
 function formatDist(km: number) {
   return km < 1 ? `${Math.round(km * 1000)}m` : `${km.toFixed(1)}km`;
 }
@@ -146,6 +164,8 @@ export default function KakaoMap({ cafes }: Props) {
   const [tag, setTag] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [favoriteOnly, setFavoriteOnly] = useState(false);
+  const [newOnly, setNewOnly] = useState(false);
+  const [cafeOfTheDayOpen, setCafeOfTheDayOpen] = useState(false);
   const [view, setView] = useState<"map" | "list">("map");
 
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -160,6 +180,7 @@ export default function KakaoMap({ cafes }: Props) {
   const [userLoc, setUserLoc] = useState<{ lat: number; lng: number } | null>(null);
   const [locating, setLocating] = useState(false);
   const [geoError, setGeoError] = useState<string | null>(null);
+  const [geoAccuracyWarning, setGeoAccuracyWarning] = useState(false);
   const userOverlayRef = useRef<any>(null);
   const [showTop, setShowTop] = useState(false);
 
@@ -169,6 +190,8 @@ export default function KakaoMap({ cafes }: Props) {
   favoritesRef.current = favorites;
   const toggleFavoriteRef = useRef<(id: string) => void>(() => {});
   const hydrateFavRef = useRef<(id: string) => void>(() => {});
+  // 지도 이벤트 리스너(마운트 시 1회 등록)에서 최신 "오늘의 카페" id를 읽기 위한 ref
+  const cafeOfTheDayIdRef = useRef<string | null>(null);
 
   // 모바일에선 필터를 기본 접힘으로 (지도/목록이 첫 화면에 바로 보이도록)
   useEffect(() => {
@@ -178,7 +201,7 @@ export default function KakaoMap({ cafes }: Props) {
   // 필터·정렬이 바뀌면 목록 표시 개수 초기화
   useEffect(() => {
     setListLimit(24);
-  }, [region, tag, search, favoriteOnly, sortBy, view]);
+  }, [region, tag, search, favoriteOnly, newOnly, sortBy, view]);
 
   // '맨 위로' 버튼: 목록에서 어느 정도 스크롤하면 표시
   useEffect(() => {
@@ -230,6 +253,7 @@ export default function KakaoMap({ cafes }: Props) {
     if (!regionMatch(cafe.region, region)) return false;
     if (tag && !(cafe.tags ?? []).includes(tag)) return false;
     if (favoriteOnly && !favorites.has(cafe.id)) return false;
+    if (newOnly && !isNewCafe(cafe.addedAt, Date.now())) return false;
     if (!searchMatches(cafe, search.trim())) return false;
     return true;
   };
@@ -299,9 +323,16 @@ export default function KakaoMap({ cafes }: Props) {
       if (!regionMatch(cafe.region, region)) return false;
       if (tag && !(cafe.tags ?? []).includes(tag)) return false;
       if (favoriteOnly && !favorites.has(cafe.id)) return false;
+      if (newOnly && !isNewCafe(cafe.addedAt, Date.now())) return false;
       return searchMatches(cafe, q);
     });
-    if (sortBy === "default") return filtered;
+    if (sortBy === "default") {
+      // 기본 순서를 유지하되 NEW 카페만 맨 앞으로 (stable sort)
+      const now = Date.now();
+      return [...filtered].sort(
+        (a, b) => Number(isNewCafe(b.addedAt, now)) - Number(isNewCafe(a.addedAt, now))
+      );
+    }
     const arr = [...filtered];
     if (sortBy === "name") {
       arr.sort((a, b) => a.name.localeCompare(b.name, "ko"));
@@ -332,6 +363,7 @@ export default function KakaoMap({ cafes }: Props) {
     tag,
     search,
     favoriteOnly,
+    newOnly,
     favorites,
     visited,
     sortBy,
@@ -423,7 +455,10 @@ export default function KakaoMap({ cafes }: Props) {
         cancelClose();
         closeTimer = setTimeout(() => {
           iw.close();
-          if (openIWRef.current === iw) openIWRef.current = null;
+          if (openIWRef.current === iw) {
+            openIWRef.current = null;
+            setCafeOfTheDayOpen(false);
+          }
         }, 260);
       };
       // 카드가 열릴 때마다 즐겨찾기 하트 상태 반영 + 클릭 핸들러 부착
@@ -456,6 +491,7 @@ export default function KakaoMap({ cafes }: Props) {
         if (openIWRef.current && openIWRef.current !== iw) openIWRef.current.close();
         iw.open(map, marker);
         openIWRef.current = iw;
+        setCafeOfTheDayOpen(cafeId === cafeOfTheDayIdRef.current);
         hydrateFavButton(cafeId);
         // 렌더 직후 카드 DOM에 마우스 진입/이탈 리스너를 부착해, 카드 위에서는 열린 채 유지
         setTimeout(() => {
@@ -477,6 +513,7 @@ export default function KakaoMap({ cafes }: Props) {
           if (openIWRef.current) {
             openIWRef.current.close();
             openIWRef.current = null;
+            setCafeOfTheDayOpen(false);
           }
         });
       }
@@ -550,11 +587,15 @@ export default function KakaoMap({ cafes }: Props) {
         )}" aria-label="즐겨찾기" style="position:absolute;top:8px;right:8px;z-index:3;width:28px;height:28px;padding:0;border:none;border-radius:9999px;background:rgba(0,0,0,0.38);display:flex;align-items:center;justify-content:center;cursor:pointer;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
           </button>`;
+        const newBadge = isNewCafe(cafe.addedAt, Date.now())
+          ? `<span style="position:absolute;top:8px;left:8px;z-index:3;padding:2px 8px;border-radius:9999px;background:rgba(47,158,99,0.92);color:#fff;font-size:10px;font-weight:700;">NEW</span>`
+          : "";
         const cardContent = `
           <div class="gs-info-card" data-cafe="${escapeHtml(
             cafe.id
           )}" style="position:relative;width:220px;font-size:13px;line-height:1.5;overflow:hidden;border-radius:6px;">
             ${favBtn}
+            ${newBadge}
             ${cardImage}
             <div style="padding:8px 12px;">
               <div style="font-weight:600;margin-bottom:2px;color:#2c2119;">${escapeHtml(
@@ -583,6 +624,7 @@ export default function KakaoMap({ cafes }: Props) {
               openIWRef.current.close();
             infoWindow.open(map, marker);
             openIWRef.current = infoWindow;
+            setCafeOfTheDayOpen(cafe.id === cafeOfTheDayIdRef.current);
             hydrateFavButton(cafe.id);
             map.panTo(position); // 카드가 화면에 잘 보이도록 마커를 중앙으로
           });
@@ -690,7 +732,7 @@ export default function KakaoMap({ cafes }: Props) {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region, tag, search, favoriteOnly, favorites, markersReady]);
+  }, [region, tag, search, favoriteOnly, newOnly, favorites, markersReady]);
 
   // 필터/뷰 변화 → 지도 범위 맞추기 (즐겨찾기 토글에는 반응하지 않음)
   useEffect(() => {
@@ -714,7 +756,7 @@ export default function KakaoMap({ cafes }: Props) {
     visibleEntries.forEach((e) => bounds.extend(e.position));
     map.setBounds(bounds);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region, tag, search, favoriteOnly, markersReady, view]);
+  }, [region, tag, search, favoriteOnly, newOnly, markersReady, view]);
 
   // 특정 카페로 지도 이동 + 정보창 열기 (목록/랜덤에서 호출)
   const focusCafe = useCallback((cafe: Cafe) => {
@@ -747,38 +789,60 @@ export default function KakaoMap({ cafes }: Props) {
     );
     return pool[dayNum % pool.length];
   }, [locatedCafes]);
+  cafeOfTheDayIdRef.current = cafeOfTheDay?.id ?? null;
+
+  // 내 위치로 지도 이동(반경 1km, 확대) — 정확도가 나쁘면(오차 2km 초과) 경고 표시
+  const NEAR_RADIUS_KM = 1;
+  const ACCURACY_WARNING_M = 2000;
+  const goToLocation = useCallback(
+    (loc: { lat: number; lng: number }, accuracy?: number) => {
+      setUserLoc(loc);
+      setSortBy("distance");
+      setGeoAccuracyWarning(typeof accuracy === "number" && accuracy > ACCURACY_WARNING_M);
+      // 지도 뷰일 때만 내 위치 중심 반경 5km로 이동 (필터 변경 시엔 지도가 필터를 따르도록 유지)
+      const map = mapInstanceRef.current;
+      if (map && window.kakao?.maps && view === "map") {
+        const { dLat, dLng } = offsetLatLngByKm(loc.lat, loc.lng, NEAR_RADIUS_KM);
+        const bounds = new window.kakao.maps.LatLngBounds(
+          new window.kakao.maps.LatLng(loc.lat - dLat, loc.lng - dLng),
+          new window.kakao.maps.LatLng(loc.lat + dLat, loc.lng + dLng)
+        );
+        map.setBounds(bounds);
+      }
+    },
+    [view]
+  );
 
   // '내 주변' 토글: 한 번 누르면 거리순 활성화, 다시 누르면 해제
+  // (즐겨찾기·NEW·오늘의 카페와는 배타적으로 동작 — 하나만 활성화)
   const toggleNear = useCallback(() => {
     // 이미 거리순(내 주변)이면 해제
     if (sortBy === "distance") {
       setSortBy("default");
+      setGeoAccuracyWarning(false);
       return;
     }
-    const activate = (loc: { lat: number; lng: number }) => {
-      setUserLoc(loc);
-      setSortBy("distance");
-      // 지도 뷰일 때만 내 위치로 이동 (필터 변경 시엔 지도가 필터를 따르도록 유지)
-      const map = mapInstanceRef.current;
-      if (map && view === "map") {
-        map.setLevel(6);
-        map.setCenter(new window.kakao.maps.LatLng(loc.lat, loc.lng));
-      }
-    };
-    if (userLoc) {
-      activate(userLoc);
-      return;
+    setFavoriteOnly(false);
+    setNewOnly(false);
+    if (openIWRef.current) {
+      openIWRef.current.close();
+      openIWRef.current = null;
     }
+    setCafeOfTheDayOpen(false);
     if (!navigator.geolocation) {
       setGeoError("이 브라우저는 위치 기능을 지원하지 않아요.");
       return;
     }
+    // 재클릭 시에도 항상 최신 위치를 새로 요청 (캐시된 위치가 부정확할 수 있음)
     setLocating(true);
     setGeoError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setLocating(false);
-        activate({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        goToLocation(
+          { lat: pos.coords.latitude, lng: pos.coords.longitude },
+          pos.coords.accuracy
+        );
       },
       (err) => {
         setLocating(false);
@@ -788,9 +852,9 @@ export default function KakaoMap({ cafes }: Props) {
             : "위치를 가져오지 못했어요. 잠시 후 다시 시도해 주세요."
         );
       },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
-  }, [sortBy, userLoc, view]);
+  }, [sortBy, goToLocation]);
 
   // 내 위치 마커 — 거리순(내 주변)일 때만 표시, 지도는 자동 이동하지 않음
   useEffect(() => {
@@ -821,32 +885,52 @@ export default function KakaoMap({ cafes }: Props) {
     setTag(null);
     setSearch("");
     setFavoriteOnly(false);
+    setNewOnly(false);
   }, []);
 
-  // 오늘의 카페 보기 — 필터에 가려져 있으면 전체로 풀어 확실히 표시
+  // 오늘의 카페 보기 — 다시 누르면 닫힘(토글), 필터에 가려져 있으면 전체로 풀어 확실히 표시
   const showCafeOfTheDay = useCallback(() => {
     if (!cafeOfTheDay) return;
+    const entry = markerByIdRef.current.get(cafeOfTheDay.id);
+    // 이미 오늘의 카페 카드가 열려 있으면 닫기만 하고 종료
+    if (entry && openIWRef.current === entry.infoWindow) {
+      openIWRef.current.close();
+      openIWRef.current = null;
+      setCafeOfTheDayOpen(false);
+      return;
+    }
     const visible = visibleCafes.some((c) => c.id === cafeOfTheDay.id);
     if (!visible) resetFilters(ALL_REGION);
+    setFavoriteOnly(false);
+    setNewOnly(false);
+    if (sortBy === "distance") setSortBy("default");
     focusCafe(cafeOfTheDay);
-  }, [cafeOfTheDay, visibleCafes, resetFilters, focusCafe]);
+    setCafeOfTheDayOpen(true);
+  }, [cafeOfTheDay, visibleCafes, resetFilters, focusCafe, sortBy]);
 
-  // 기본 거리순: 로드 시 위치를 시도해 권한이 있으면 거리순으로 정렬
+  // 첫 로드 시 자동으로 '내 주변' 활성화 — 위치 권한이 있으면 거리순 + 반경 1km로 확대해서 시작
   useEffect(() => {
-    if (!navigator.geolocation) return;
+    if (!navigator.geolocation || !markersReady) return;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setUserLoc({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        setSortBy("distance");
+        goToLocation(
+          { lat: pos.coords.latitude, lng: pos.coords.longitude },
+          pos.coords.accuracy
+        );
       },
       () => {
         /* 자동 시도는 실패해도 조용히 무시 (수동 '내 주변' 버튼은 안내 표시) */
       },
-      { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 }
     );
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [markersReady]);
 
   const favCount = favorites.size;
+  const newCount = useMemo(
+    () => cafes.filter((c) => isNewCafe(c.addedAt, Date.now())).length,
+    [cafes]
+  );
 
   if (error) {
     return (
@@ -857,8 +941,9 @@ export default function KakaoMap({ cafes }: Props) {
   }
 
   const summaryLabel =
-    `${region}${tag ? ` · ${tag}` : ""}${favoriteOnly ? " · 즐겨찾기" : ""}` +
-    ` · ${visibleCafes.length}곳`;
+    `${region}${tag ? ` · ${tag}` : ""}${favoriteOnly ? " · 즐겨찾기" : ""}${
+      newOnly ? " · NEW" : ""
+    }` + ` · ${visibleCafes.length}곳`;
 
   // 활성(좁히는) 필터 목록 — 요약 칩·개수용
   const activeChips: { key: string; label: string; clear: () => void }[] = [];
@@ -867,6 +952,8 @@ export default function KakaoMap({ cafes }: Props) {
   if (tag) activeChips.push({ key: "tag", label: tag, clear: () => setTag(null) });
   if (favoriteOnly)
     activeChips.push({ key: "fav", label: "즐겨찾기", clear: () => setFavoriteOnly(false) });
+  if (newOnly)
+    activeChips.push({ key: "new", label: "NEW", clear: () => setNewOnly(false) });
   if (search.trim())
     activeChips.push({ key: "search", label: `"${search.trim()}"`, clear: () => setSearch("") });
 
@@ -1050,30 +1137,7 @@ export default function KakaoMap({ cafes }: Props) {
         )}
       </div>
 
-      {/* 활성 필터 요약 칩 (접힌 상태에서도 무엇이 걸렸는지 보이고 바로 해제) */}
-      {activeChips.length > 0 && (
-        <div className="mb-3 flex flex-wrap items-center gap-1.5">
-          {activeChips.map((chip) => (
-            <button
-              key={chip.key}
-              onClick={chip.clear}
-              className="inline-flex items-center gap-1 rounded-full border border-[#dcc9ad] bg-[#f2e9d8] px-2.5 py-1 text-xs font-medium text-[#6f4e37] transition hover:bg-[#eaddc8] dark:border-[#3a2e23] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
-            >
-              {chip.label}
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          ))}
-          <button
-            onClick={() => resetFilters(ALL_REGION)}
-            className="ml-0.5 text-xs font-semibold text-[#a5906f] underline underline-offset-2 transition hover:text-[#6f4e37] dark:text-[#8a7458]"
-          >
-            초기화
-          </button>
-        </div>
-      )}
+      {/* 활성 필터 요약 칩은 컨트롤 바 버튼 자체의 활성 스타일로 충분히 드러나므로 숨김 처리 */}
 
       {/* 컨트롤 바: 뷰 전환 · 즐겨찾기 · 랜덤 · 결과 개수 */}
       <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -1094,7 +1158,19 @@ export default function KakaoMap({ cafes }: Props) {
         </div>
 
         <button
-          onClick={() => setFavoriteOnly((v) => !v)}
+          onClick={() => {
+            const next = !favoriteOnly;
+            setFavoriteOnly(next);
+            if (next) {
+              setNewOnly(false);
+              if (sortBy === "distance") setSortBy("default");
+              if (openIWRef.current) {
+                openIWRef.current.close();
+                openIWRef.current = null;
+              }
+              setCafeOfTheDayOpen(false);
+            }
+          }}
           className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
             favoriteOnly
               ? "border-[#c9455f] bg-[#c9455f] text-white shadow-sm"
@@ -1112,10 +1188,47 @@ export default function KakaoMap({ cafes }: Props) {
           )}
         </button>
 
+        {newCount > 0 && (
+          <button
+            onClick={() => {
+              const next = !newOnly;
+              setNewOnly(next);
+              if (next) {
+                setFavoriteOnly(false);
+                if (sortBy === "distance") setSortBy("default");
+                if (openIWRef.current) {
+                  openIWRef.current.close();
+                  openIWRef.current = null;
+                }
+                setCafeOfTheDayOpen(false);
+              }
+            }}
+            aria-pressed={newOnly}
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
+              newOnly
+                ? "border-[#2f9e63] bg-[#2f9e63] text-white shadow-sm"
+                : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+            }`}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
+            </svg>
+            NEW
+            <span className={`text-[11px] tabular-nums ${newOnly ? "text-white/70" : "text-[#b3a084]"}`}>
+              {newCount}
+            </span>
+          </button>
+        )}
+
         <button
           onClick={showCafeOfTheDay}
           disabled={!cafeOfTheDay}
-          className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-white/70 px-3 py-1.5 text-xs font-semibold text-[#6b5842] transition-all hover:bg-white disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+          aria-pressed={cafeOfTheDayOpen}
+          className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-40 ${
+            cafeOfTheDayOpen
+              ? "border-[#c98a2f] bg-[#c98a2f] text-white shadow-sm"
+              : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+          }`}
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <rect x="3" y="3" width="18" height="18" rx="4" />
@@ -1169,6 +1282,12 @@ export default function KakaoMap({ cafes }: Props) {
       {geoError && (
         <div className="mb-3 rounded-lg border border-[#e7c9c0] bg-[#fbeee9] px-3 py-2 text-xs text-[#a4553f] dark:border-[#4a2f28] dark:bg-[#2a1a15] dark:text-[#d8a08d]">
           {geoError}
+        </div>
+      )}
+
+      {!geoError && geoAccuracyWarning && sortBy === "distance" && (
+        <div className="mb-3 rounded-lg border border-[#e9dcb8] bg-[#fdf6e3] px-3 py-2 text-xs text-[#8a6d1f] dark:border-[#4a3f28] dark:bg-[#2a2415] dark:text-[#d8c08d]">
+          위치 오차가 커서 실제 위치와 다르게 표시될 수 있어요. 브라우저의 위치 권한(정확한 위치)을 허용했는지 확인해 주세요.
         </div>
       )}
 
@@ -1258,14 +1377,21 @@ export default function KakaoMap({ cafes }: Props) {
                           <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
                         </svg>
                       </button>
-                      {isVisited && (
-                        <span className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-full bg-[#6f4e37]/90 px-2 py-0.5 text-[10px] font-semibold text-white">
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          가봤어요
-                        </span>
-                      )}
+                      <div className="absolute left-2 top-2 flex flex-col items-start gap-1">
+                        {isNewCafe(cafe.addedAt, Date.now()) && (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-[#2f9e63]/90 px-2 py-0.5 text-[10px] font-semibold text-white">
+                            NEW
+                          </span>
+                        )}
+                        {isVisited && (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-[#6f4e37]/90 px-2 py-0.5 text-[10px] font-semibold text-white">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            가봤어요
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <div className="flex flex-1 flex-col p-3">

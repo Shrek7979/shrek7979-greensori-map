@@ -7,13 +7,21 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-[#f7f2ea] font-sans dark:bg-[#17130f]">
       <header className="border-b border-[#e3d8c6] bg-[#f2e9d8] px-6 py-7 dark:border-[#2e251c] dark:bg-[#1d1712]">
         <div className="mx-auto flex max-w-6xl items-center gap-4">
-          <img
-            src="/green-sori-profile.jpg"
-            alt="green_sori 프로필"
-            width={48}
-            height={48}
-            className="h-12 w-12 shrink-0 rounded-full border border-[#d8c8b0] object-cover dark:border-[#3a2e23]"
-          />
+          <a
+            href="https://www.instagram.com/green_sori/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="green_sori 인스타그램 열기"
+            className="shrink-0"
+          >
+            <img
+              src="/green-sori-profile.jpg"
+              alt="green_sori 프로필"
+              width={48}
+              height={48}
+              className="h-12 w-12 rounded-full border border-[#d8c8b0] object-cover transition-opacity hover:opacity-80 dark:border-[#3a2e23]"
+            />
+          </a>
           <div className="min-w-0">
             <h1
               className="text-2xl font-medium tracking-tight text-[#3d2c1e] dark:text-[#f0e6d5]"
