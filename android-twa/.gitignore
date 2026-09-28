@@ -1,0 +1,18 @@
+# Gradle and Android Studio outputs
+.gradle/
+.idea/
+build/
+app/build/
+local.properties
+*.iml
+
+# Signing material must never be committed
+*.jks
+*.keystore
+keystore.properties
+
+
+# Build outputs
+*.aab
+*.apk
+*.idsig

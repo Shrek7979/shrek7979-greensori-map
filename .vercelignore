@@ -1,0 +1,3 @@
+# Android TWA project (Bubblewrap) — not part of the Next.js web deployment.
+# Excluding this avoids scanning/uploading large Gradle build caches during `vercel` deploys.
+android-twa/

@@ -1,7 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import type { Cafe } from "@/types/cafe";
+import { isOpenNow, hasSchedule } from "@/lib/hours";
 
 const SEOUL_CENTER = { lat: 37.5665, lng: 126.978 };
 const ALL_REGION = "전체";
@@ -25,6 +28,27 @@ function isNewCafe(addedAt: string | undefined, now: number) {
   if (Number.isNaN(added)) return false;
   const diffDays = (now - added) / (1000 * 60 * 60 * 24);
   return diffDays >= 0 && diffDays < NEW_WINDOW_DAYS;
+}
+
+// 인스타 쇼트코드는 시간순으로 증가하는 미디어 ID를 base64로 인코딩한 값이라
+// 게시 순서 비교에 쓸 수 있다 (같은 길이면 알파벳 인덱스 사전순, 길면 더 최신).
+const IG_ALPHABET =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+function igShortcode(sourceUrl: string | undefined): string {
+  const m = sourceUrl?.match(/\/(?:p|reel|reels)\/([A-Za-z0-9_-]+)/);
+  return m ? m[1] : "";
+}
+// 최신 게시물이 앞에 오도록 하는 비교 함수 (내림차순). 쇼트코드가 없으면 0
+function comparePostRecency(a: Cafe, b: Cafe): number {
+  const sa = igShortcode(a.sourceUrl);
+  const sb = igShortcode(b.sourceUrl);
+  if (!sa || !sb) return 0;
+  if (sa.length !== sb.length) return sb.length - sa.length;
+  for (let i = 0; i < sa.length; i++) {
+    const d = IG_ALPHABET.indexOf(sb[i]) - IG_ALPHABET.indexOf(sa[i]);
+    if (d !== 0) return d;
+  }
+  return 0;
 }
 
 const FAV_KEY = "greensori-fav-v1";
@@ -146,6 +170,14 @@ function formatDist(km: number) {
   return km < 1 ? `${Math.round(km * 1000)}m` : `${km.toFixed(1)}km`;
 }
 
+// 정보창(raw HTML)용 이미지 최적화 URL — 같은 출처 이미지는 Next 이미지 옵티마이저를 거쳐
+// WebP·적정 크기로 내려받게 함 (목록 카드는 <Image>가 자동 처리)
+function optImg(url: string, w = 640) {
+  if (!url.startsWith("/")) return url;
+  // q는 Next 16 기본 허용값(75)만 사용, w는 기본 deviceSizes 목록의 값이어야 함
+  return `/_next/image?url=${encodeURIComponent(url)}&w=${w}&q=75`;
+}
+
 export default function KakaoMap({ cafes }: Props) {
   const mapRef = useRef<HTMLDivElement>(null);
   const initializedRef = useRef(false);
@@ -165,6 +197,9 @@ export default function KakaoMap({ cafes }: Props) {
   const [search, setSearch] = useState("");
   const [favoriteOnly, setFavoriteOnly] = useState(false);
   const [newOnly, setNewOnly] = useState(false);
+  const [openNowOnly, setOpenNowOnly] = useState(false);
+  // "지금 영업중" 판정을 1분마다 갱신 (자정·마감 시각을 넘길 때 자동 반영)
+  const [nowTick, setNowTick] = useState(() => Date.now());
   const [cafeOfTheDayOpen, setCafeOfTheDayOpen] = useState(false);
   const [view, setView] = useState<"map" | "list">("map");
 
@@ -185,6 +220,61 @@ export default function KakaoMap({ cafes }: Props) {
   const [showTop, setShowTop] = useState(false);
 
   const matchesRef = useRef<(cafe: Cafe) => boolean>(() => true);
+
+  // 인스타 등 외부 링크를 같은 탭에서 열고 뒤로가기로 돌아왔을 때 화면을 그대로 복원하기 위해
+  // 보기 모드·필터·정렬·스크롤 위치를 sessionStorage에 저장한다 (탭 단위, 브라우저 종료 시 삭제).
+  const UI_STATE_KEY = "greensori-ui-v1";
+  const [uiRestored, setUiRestored] = useState(false);
+  const restoreScrollRef = useRef<number | null>(null);
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(UI_STATE_KEY);
+      if (raw) {
+        const st = JSON.parse(raw);
+        if (st.view === "map" || st.view === "list") setView(st.view);
+        if (typeof st.region === "string") setRegion(st.region);
+        if (typeof st.tag === "string" || st.tag === null) setTag(st.tag);
+        if (typeof st.search === "string") setSearch(st.search);
+        if (typeof st.favoriteOnly === "boolean") setFavoriteOnly(st.favoriteOnly);
+        if (typeof st.newOnly === "boolean") setNewOnly(st.newOnly);
+        if (typeof st.openNowOnly === "boolean") setOpenNowOnly(st.openNowOnly);
+        if (typeof st.sortBy === "string") setSortBy(st.sortBy);
+        if (typeof st.filtersOpen === "boolean") setFiltersOpen(st.filtersOpen);
+        if (typeof st.listLimit === "number") setListLimit(st.listLimit);
+        if (typeof st.scrollY === "number") restoreScrollRef.current = st.scrollY;
+      }
+    } catch {
+      /* 저장소 사용 불가 시 무시 */
+    }
+    setUiRestored(true);
+  }, []);
+  useEffect(() => {
+    if (!uiRestored) return;
+    const save = () => {
+      try {
+        sessionStorage.setItem(
+          UI_STATE_KEY,
+          JSON.stringify({
+            view, region, tag, search, favoriteOnly, newOnly, openNowOnly,
+            sortBy, filtersOpen, listLimit, scrollY: window.scrollY,
+          })
+        );
+      } catch {
+        /* ignore */
+      }
+    };
+    save();
+    // 스크롤 위치는 페이지를 떠나기 직전 값이 필요하므로 pagehide에서 한 번 더 저장
+    window.addEventListener("pagehide", save);
+    return () => window.removeEventListener("pagehide", save);
+  }, [uiRestored, view, region, tag, search, favoriteOnly, newOnly, openNowOnly, sortBy, filtersOpen, listLimit]);
+  // 카페 목록이 준비된 뒤 저장해 둔 스크롤 위치로 이동 (한 번만)
+  useEffect(() => {
+    if (!markersReady || restoreScrollRef.current === null) return;
+    const y = restoreScrollRef.current;
+    restoreScrollRef.current = null;
+    requestAnimationFrame(() => window.scrollTo({ top: y }));
+  }, [markersReady, view]);
   // 정보창(HTML)에서 최신 즐겨찾기 상태를 읽기 위한 ref
   const favoritesRef = useRef<Set<string>>(favorites);
   favoritesRef.current = favorites;
@@ -201,7 +291,14 @@ export default function KakaoMap({ cafes }: Props) {
   // 필터·정렬이 바뀌면 목록 표시 개수 초기화
   useEffect(() => {
     setListLimit(24);
-  }, [region, tag, search, favoriteOnly, newOnly, sortBy, view]);
+  }, [region, tag, search, favoriteOnly, newOnly, openNowOnly, sortBy, view]);
+
+  // "지금 영업중" 필터가 켜져 있는 동안 1분마다 재판정
+  useEffect(() => {
+    if (!openNowOnly) return;
+    const t = setInterval(() => setNowTick(Date.now()), 60_000);
+    return () => clearInterval(t);
+  }, [openNowOnly]);
 
   // '맨 위로' 버튼: 목록에서 어느 정도 스크롤하면 표시
   useEffect(() => {
@@ -237,6 +334,77 @@ export default function KakaoMap({ cafes }: Props) {
     });
   }, []);
 
+  // 즐겨찾기·방문 기록 백업/복원 — 기록이 브라우저에만 저장되므로
+  // 기기 변경·앱 재설치 대비용 JSON 내보내기/불러오기
+  const [importMsg, setImportMsg] = useState<string | null>(null);
+  const importInputRef = useRef<HTMLInputElement>(null);
+
+  const exportRecords = useCallback(() => {
+    const payload = {
+      app: "greensori-map",
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      favorites: [...favorites],
+      visited: [...visited],
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `greensori-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }, [favorites, visited]);
+
+  const importRecords = useCallback(
+    async (file: File) => {
+      try {
+        const data = JSON.parse(await file.text());
+        const validIds = new Set(cafes.map((c) => c.id));
+        const clean = (arr: unknown) =>
+          Array.isArray(arr)
+            ? arr.filter(
+                (x): x is string => typeof x === "string" && validIds.has(x)
+              )
+            : [];
+        const favIn = clean(data?.favorites);
+        const visIn = clean(data?.visited);
+        if (favIn.length === 0 && visIn.length === 0) {
+          setImportMsg("가져올 기록이 없어요. 백업 파일이 맞는지 확인해 주세요.");
+          return;
+        }
+        // 기존 기록과 합집합으로 병합 — 불러오기가 기존 기록을 지우지 않음
+        const nextFav = new Set([...favorites, ...favIn]);
+        const nextVis = new Set([...visited, ...visIn]);
+        const added =
+          nextFav.size - favorites.size + (nextVis.size - visited.size);
+        setFavorites(nextFav);
+        saveSet(FAV_KEY, nextFav);
+        setVisited(nextVis);
+        saveSet(VISITED_KEY, nextVis);
+        setImportMsg(
+          added > 0
+            ? `기록 ${added}개를 불러왔어요.`
+            : "모두 이미 있는 기록이에요."
+        );
+      } catch {
+        setImportMsg("파일을 읽지 못했어요. 백업 JSON 파일인지 확인해 주세요.");
+      }
+    },
+    [cafes, favorites, visited]
+  );
+
+  // 복원 결과 안내는 5초 뒤 자동으로 지움
+  useEffect(() => {
+    if (!importMsg) return;
+    const t = setTimeout(() => setImportMsg(null), 5000);
+    return () => clearTimeout(t);
+  }, [importMsg]);
+
   // 검색어 매칭: 이름·동네·설명 + 지역명 + 테마 태그까지 포함
   const searchMatches = (cafe: Cafe, q: string) => {
     if (!q) return true;
@@ -254,6 +422,7 @@ export default function KakaoMap({ cafes }: Props) {
     if (tag && !(cafe.tags ?? []).includes(tag)) return false;
     if (favoriteOnly && !favorites.has(cafe.id)) return false;
     if (newOnly && !isNewCafe(cafe.addedAt, Date.now())) return false;
+    if (openNowOnly && isOpenNow(cafe) !== true) return false;
     if (!searchMatches(cafe, search.trim())) return false;
     return true;
   };
@@ -316,6 +485,12 @@ export default function KakaoMap({ cafes }: Props) {
     return m;
   }, [userLoc, locatedCafes]);
 
+  // 데이터 파일(cafes.ts) 상의 순서 — 지오코딩 완료 순서에 좌우되지 않는 기본 정렬용
+  const indexById = useMemo(
+    () => new Map(cafes.map((c, i) => [c.id, i] as const)),
+    [cafes]
+  );
+
   // 현재 필터에 맞는, 좌표를 찾은 카페 목록 (목록 뷰 + 개수 표시용)
   const visibleCafes = useMemo(() => {
     const q = search.trim();
@@ -324,14 +499,26 @@ export default function KakaoMap({ cafes }: Props) {
       if (tag && !(cafe.tags ?? []).includes(tag)) return false;
       if (favoriteOnly && !favorites.has(cafe.id)) return false;
       if (newOnly && !isNewCafe(cafe.addedAt, Date.now())) return false;
+      if (openNowOnly && isOpenNow(cafe, new Date(nowTick)) !== true) return false;
       return searchMatches(cafe, q);
     });
     if (sortBy === "default") {
-      // 기본 순서를 유지하되 NEW 카페만 맨 앞으로 (stable sort)
+      // NEW 카페를 맨 앞으로. NEW끼리는 인스타 최신 게시물 순
+      // (쇼트코드 → addedAt 최신순 → 데이터 뒤쪽 우선), 나머지는 데이터 파일 순서 유지
       const now = Date.now();
-      return [...filtered].sort(
-        (a, b) => Number(isNewCafe(b.addedAt, now)) - Number(isNewCafe(a.addedAt, now))
-      );
+      return [...filtered].sort((a, b) => {
+        const an = isNewCafe(a.addedAt, now);
+        const bn = isNewCafe(b.addedAt, now);
+        if (an !== bn) return Number(bn) - Number(an);
+        if (an) {
+          return (
+            comparePostRecency(a, b) ||
+            (b.addedAt ?? "").localeCompare(a.addedAt ?? "") ||
+            (indexById.get(b.id) ?? 0) - (indexById.get(a.id) ?? 0)
+          );
+        }
+        return (indexById.get(a.id) ?? 0) - (indexById.get(b.id) ?? 0);
+      });
     }
     const arr = [...filtered];
     if (sortBy === "name") {
@@ -364,10 +551,13 @@ export default function KakaoMap({ cafes }: Props) {
     search,
     favoriteOnly,
     newOnly,
+    openNowOnly,
+    nowTick,
     favorites,
     visited,
     sortBy,
     distanceById,
+    indexById,
   ]);
 
   useEffect(() => {
@@ -556,7 +746,7 @@ export default function KakaoMap({ cafes }: Props) {
         });
 
         const imgTag = cafe.imageUrl
-          ? `<img src="${escapeHtml(cafe.imageUrl)}" alt="${escapeHtml(cafe.name)}"
+          ? `<img src="${escapeHtml(optImg(cafe.imageUrl, 640))}" alt="${escapeHtml(cafe.name)}"
                style="display:block;width:100%;height:120px;object-fit:cover;" />`
           : "";
         // 카드 이미지 클릭/터치 → 인스타그램으로 이동
@@ -564,7 +754,7 @@ export default function KakaoMap({ cafes }: Props) {
           imgTag && cafe.sourceUrl
             ? `<a href="${escapeHtml(
                 cafe.sourceUrl
-              )}" target="_blank" rel="noopener noreferrer" style="display:block;cursor:pointer;">${imgTag}</a>`
+              )}" rel="noopener" style="display:block;cursor:pointer;">${imgTag}</a>`
             : imgTag;
         const dirUrl = `https://map.kakao.com/link/to/${encodeURIComponent(
           cafe.name
@@ -574,7 +764,7 @@ export default function KakaoMap({ cafes }: Props) {
           links.push(
             `<a href="${escapeHtml(
               cafe.sourceUrl
-            )}" target="_blank" rel="noopener noreferrer" style="color:#8b5e3c;text-decoration:none;font-weight:600;">인스타 ↗</a>`
+            )}" rel="noopener" style="color:#8b5e3c;text-decoration:none;font-weight:600;">인스타 ↗</a>`
           );
         }
         links.push(
@@ -582,6 +772,16 @@ export default function KakaoMap({ cafes }: Props) {
             dirUrl
           )}" target="_blank" rel="noopener noreferrer" style="color:#8b5e3c;text-decoration:none;font-weight:600;">길찾기 →</a>`
         );
+        links.push(
+          `<a href="/cafe/${escapeHtml(
+            cafe.id
+          )}" style="color:#8b5e3c;text-decoration:none;font-weight:600;">상세 →</a>`
+        );
+        const hoursLine = cafe.hours
+          ? `<div style="color:#8a7458;font-size:11px;margin-top:3px;">🕐 ${escapeHtml(
+              cafe.hours.text
+            )}</div>`
+          : "";
         const favBtn = `<button class="gs-fav-btn" data-cafe="${escapeHtml(
           cafe.id
         )}" aria-label="즐겨찾기" style="position:absolute;top:8px;right:8px;z-index:3;width:28px;height:28px;padding:0;border:none;border-radius:9999px;background:rgba(0,0,0,0.38);display:flex;align-items:center;justify-content:center;cursor:pointer;">
@@ -605,6 +805,7 @@ export default function KakaoMap({ cafes }: Props) {
                 cafe.area
               )} · ${escapeHtml(cafe.region)}</div>
               <div style="color:#666;">${escapeHtml(cafe.description)}</div>
+              ${hoursLine}
               <div style="margin-top:8px;display:flex;gap:12px;">${links.join("")}</div>
             </div>
           </div>
@@ -639,7 +840,7 @@ export default function KakaoMap({ cafes }: Props) {
           if (cafe.sourceUrl) {
             const sourceUrl = cafe.sourceUrl;
             window.kakao.maps.event.addListener(marker, "click", () => {
-              window.open(sourceUrl, "_blank", "noopener,noreferrer");
+              window.location.assign(sourceUrl);
             });
           } else {
             window.kakao.maps.event.addListener(marker, "click", () => {
@@ -732,7 +933,7 @@ export default function KakaoMap({ cafes }: Props) {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region, tag, search, favoriteOnly, newOnly, favorites, markersReady]);
+  }, [region, tag, search, favoriteOnly, newOnly, openNowOnly, nowTick, favorites, markersReady]);
 
   // 필터/뷰 변화 → 지도 범위 맞추기 (즐겨찾기 토글에는 반응하지 않음)
   useEffect(() => {
@@ -756,7 +957,7 @@ export default function KakaoMap({ cafes }: Props) {
     visibleEntries.forEach((e) => bounds.extend(e.position));
     map.setBounds(bounds);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region, tag, search, favoriteOnly, newOnly, markersReady, view]);
+  }, [region, tag, search, favoriteOnly, newOnly, openNowOnly, markersReady, view]);
 
   // 특정 카페로 지도 이동 + 정보창 열기 (목록/랜덤에서 호출)
   const focusCafe = useCallback((cafe: Cafe) => {
@@ -777,6 +978,18 @@ export default function KakaoMap({ cafes }: Props) {
       hydrateFavRef.current(cafe.id);
     }, 80);
   }, []);
+
+  // 딥링크: /?cafe=<id> 로 진입하면 해당 카페로 이동 + 카드 열기
+  // (/cafe/[id] 상세 페이지의 "지도에서 보기", 외부 공유 링크에서 사용)
+  useEffect(() => {
+    if (!markersReady) return;
+    const id = new URLSearchParams(window.location.search).get("cafe");
+    if (!id) return;
+    const entry = markerByIdRef.current.get(id);
+    if (entry) focusCafe(entry.cafe);
+    // 한 번 처리한 뒤 주소를 정리해 새로고침 시 재실행 방지
+    window.history.replaceState(null, "", window.location.pathname);
+  }, [markersReady, focusCafe]);
 
   // 오늘의 카페 — 날짜(로컬 자정 기준 일수)로 정해지는 고정 추천, 24시간마다 변경
   const cafeOfTheDay = useMemo(() => {
@@ -927,9 +1140,26 @@ export default function KakaoMap({ cafes }: Props) {
   }, [markersReady]);
 
   const favCount = favorites.size;
+  // NEW·지금영업중·영업시간보유 카운트도 태그 카운트와 동일하게 "현재 선택된 지역" 기준으로 집계
+  // (전체 지역은 해외를 제외하므로, 지역 필터 없이 전체 카페 기준으로 세면 실제 목록에 뜨는 개수와 어긋난다)
   const newCount = useMemo(
-    () => cafes.filter((c) => isNewCafe(c.addedAt, Date.now())).length,
-    [cafes]
+    () =>
+      cafes.filter(
+        (c) => regionMatch(c.region, region) && isNewCafe(c.addedAt, Date.now())
+      ).length,
+    [cafes, region]
+  );
+  // 영업시간 정보가 입력된 카페가 하나라도 있어야 "지금 영업중" 버튼 노출
+  const schedulableCount = useMemo(
+    () => cafes.filter((c) => regionMatch(c.region, region) && hasSchedule(c)).length,
+    [cafes, region]
+  );
+  const openNowCount = useMemo(
+    () =>
+      cafes.filter(
+        (c) => regionMatch(c.region, region) && isOpenNow(c, new Date(nowTick)) === true
+      ).length,
+    [cafes, region, nowTick]
   );
 
   if (error) {
@@ -954,6 +1184,8 @@ export default function KakaoMap({ cafes }: Props) {
     activeChips.push({ key: "fav", label: "즐겨찾기", clear: () => setFavoriteOnly(false) });
   if (newOnly)
     activeChips.push({ key: "new", label: "NEW", clear: () => setNewOnly(false) });
+  if (openNowOnly)
+    activeChips.push({ key: "open", label: "지금 영업중", clear: () => setOpenNowOnly(false) });
   if (search.trim())
     activeChips.push({ key: "search", label: `"${search.trim()}"`, clear: () => setSearch("") });
 
@@ -1133,6 +1365,58 @@ export default function KakaoMap({ cafes }: Props) {
             })}
           </div>
             </div>
+
+            {/* 내 기록 백업/복원 — 즐겨찾기·가봤어요는 이 브라우저에만 저장됨 */}
+            <div>
+              <div className="mb-2.5 flex items-center gap-2.5">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a5906f] dark:text-[#8a7458]">
+                  내 기록
+                </span>
+                <span className="h-px flex-1 bg-gradient-to-r from-[#e3d8c6] to-transparent dark:from-[#332a20]" />
+              </div>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <button
+                  onClick={exportRecords}
+                  disabled={favorites.size === 0 && visited.size === 0}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-white/70 px-3 py-1 text-xs font-medium text-[#6b5842] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  백업 파일 저장
+                </button>
+                <button
+                  onClick={() => importInputRef.current?.click()}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-white/70 px-3 py-1 text-xs font-medium text-[#6b5842] transition hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                  백업 불러오기
+                </button>
+                <input
+                  ref={importInputRef}
+                  type="file"
+                  accept="application/json,.json"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) void importRecords(file);
+                    e.target.value = ""; // 같은 파일 재선택도 동작하도록 초기화
+                  }}
+                />
+                <span className="text-[11px] text-[#b3a084] dark:text-[#7c6a52]">
+                  즐겨찾기 {favorites.size} · 가봤어요 {visited.size} — 이 기기에만 저장돼요
+                </span>
+              </div>
+              {importMsg && (
+                <p className="mt-2 text-xs font-medium text-[#3c8e5c]">{importMsg}</p>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -1216,6 +1500,31 @@ export default function KakaoMap({ cafes }: Props) {
             NEW
             <span className={`text-[11px] tabular-nums ${newOnly ? "text-white/70" : "text-[#b3a084]"}`}>
               {newCount}
+            </span>
+          </button>
+        )}
+
+        {schedulableCount > 0 && (
+          <button
+            onClick={() => {
+              setNowTick(Date.now());
+              setOpenNowOnly((v) => !v);
+            }}
+            aria-pressed={openNowOnly}
+            title="영업시간 정보가 등록된 카페 중 지금(한국 시간) 영업중인 곳만 표시"
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
+              openNowOnly
+                ? "border-[#3c8e5c] bg-[#3c8e5c] text-white shadow-sm"
+                : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+            }`}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <polyline points="12 7 12 12 15.5 14" />
+            </svg>
+            지금 영업중
+            <span className={`text-[11px] tabular-nums ${openNowOnly ? "text-white/70" : "text-[#b3a084]"}`}>
+              {openNowCount}
             </span>
           </button>
         )}
@@ -1338,28 +1647,27 @@ export default function KakaoMap({ cafes }: Props) {
                         (cafe.sourceUrl ? (
                           <a
                             href={cafe.sourceUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            rel="noopener"
                             aria-label={`${cafe.name} 인스타그램 열기`}
                             className="block h-full w-full"
                           >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            <Image
                               src={cafe.imageUrl}
                               alt={cafe.name}
-                              loading="lazy"
-                              className={`h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 ${
+                              fill
+                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                              className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
                                 isVisited ? "opacity-60" : ""
                               }`}
                             />
                           </a>
                         ) : (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
+                          <Image
                             src={cafe.imageUrl}
                             alt={cafe.name}
-                            loading="lazy"
-                            className={`h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 ${
+                            fill
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
                               isVisited ? "opacity-60" : ""
                             }`}
                           />
@@ -1419,6 +1727,16 @@ export default function KakaoMap({ cafes }: Props) {
                       <p className="line-clamp-2 text-xs leading-relaxed text-[#6b5842] dark:text-[#b09b7e]">
                         {cafe.description}
                       </p>
+                      {cafe.hours && (
+                        <p className="mt-1 text-[11px] text-[#a5906f] dark:text-[#8a7458]">
+                          🕐 {cafe.hours.text}
+                          {isOpenNow(cafe, new Date(nowTick)) === true && (
+                            <span className="ml-1 font-semibold text-[#3c8e5c]">
+                              영업중
+                            </span>
+                          )}
+                        </p>
+                      )}
 
                       <div className="mt-auto flex flex-wrap gap-1 pt-2.5">
                         {!isOverseas && (
@@ -1439,11 +1757,16 @@ export default function KakaoMap({ cafes }: Props) {
                         >
                           {isVisited ? "방문함" : "가봤어요"}
                         </button>
+                        <Link
+                          href={`/cafe/${cafe.id}`}
+                          className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
+                        >
+                          상세
+                        </Link>
                         {cafe.sourceUrl && (
                           <a
                             href={cafe.sourceUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            rel="noopener"
                             className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
                           >
                             인스타 ↗

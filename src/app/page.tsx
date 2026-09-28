@@ -1,5 +1,7 @@
 import KakaoMap from "@/components/KakaoMap";
 import { cafes } from "@/data/cafes";
+import Image from "next/image";
+import Link from "next/link";
 import InstallButton from "./install-button";
 import VisitorCounter from "./visitor-counter";
 
@@ -15,11 +17,12 @@ export default function Home() {
             aria-label="green_sori 인스타그램 열기"
             className="shrink-0"
           >
-            <img
+            <Image
               src="/green-sori-profile.jpg"
               alt="green_sori 프로필"
               width={48}
               height={48}
+              priority
               className="h-12 w-12 rounded-full border border-[#d8c8b0] object-cover transition-opacity hover:opacity-80 dark:border-[#3a2e23]"
             />
           </a>
@@ -76,6 +79,12 @@ export default function Home() {
           <p className="text-xs text-[#a5906f] dark:text-[#8a7458]">
             사진과 장소 정보의 출처는 @green_sori 인스타그램입니다.
           </p>
+          <Link
+            href="/privacy"
+            className="text-xs text-[#8a7458] underline underline-offset-4 transition-colors hover:text-[#6f4e37] dark:text-[#9a866a] dark:hover:text-[#d3bd9c]"
+          >
+            개인정보처리방침
+          </Link>
         </div>
       </footer>
     </div>

@@ -13,6 +13,7 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/reel/DbQV9qSzGY4/",
     coords: { lat: 33.595953, lng: 130.4098949 },
     imageUrl: "/cafes/county-coffee-fukuoka.jpg",
+    commentSummary: "후쿠오카 가서 제일 먼저 갔다는 반응, 초록 타일 외관이 화제예요",
   },
   {
     id: "little-stand-fukuoka",
@@ -25,6 +26,12 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/p/DbLIr__E8GP/",
     coords: { lat: 33.5868534, lng: 130.3943947 },
     imageUrl: "/cafes/little-stand-fukuoka.jpg",
+    hours: {
+      text: "09:00–18:00 (변동 가능)",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "18:00" }],
+    },
+    menu: "스페셜티 커피 · 바리 차이 · 호지차",
+    commentSummary: "골목 감성이 귀엽다는 반응, 오가며 포장하기 좋다는 댓글이 많아요",
   },
   {
     id: "coffee-hiiragi-fukuoka",
@@ -37,6 +44,8 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/reel/DbDdoJyzP-G/",
     coords: { lat: 33.5774505, lng: 130.3770852 },
     imageUrl: "/cafes/coffee-hiiragi-fukuoka.jpg",
+    menu: "직접 고른 빈티지 잔에 내리는 커피",
+    commentSummary: "해외 팬들까지 감탄한 클래식 킷사텐, 좋아요 1.1만의 인기 게시물이에요",
   },
   {
     id: "bluebottle-hakata-fukuoka",
@@ -49,6 +58,11 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/p/Da-USI6E5jY/",
     coords: { lat: 33.5900413, lng: 130.4199026 },
     imageUrl: "/cafes/bluebottle-hakata-fukuoka.jpg",
+    hours: {
+      text: "08:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" }],
+    },
+    commentSummary: "하카타역 직결 새 매장 소식에 여행 1순위로 저장한다는 반응이 많아요",
   },
   {
     id: "kuromon-coffee-fukuoka",
@@ -61,6 +75,7 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/p/Db0XNeJk0n9/",
     coords: { lat: 33.5887616, lng: 130.3715201 },
     imageUrl: "/cafes/kuromon-coffee-fukuoka.jpg",
+    commentSummary: "커피에 진심인 곳이라는 반응, 후쿠오카 여행 메모 필수라는 댓글이 많아요",
   },
   {
     id: "eltren-coffee-fukuoka",
@@ -73,6 +88,11 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/reel/DbdLv0HTeFe/",
     coords: { lat: 33.5746954, lng: 130.4027108 },
     imageUrl: "/cafes/eltren-coffee-fukuoka.jpg",
+    hours: {
+      text: "화·수·금 07:00–16:00 · 목 08:00–16:00 · 토·일 09:00–18:00 · 월 휴무",
+      schedule: [{ days: [2, 3, 5], open: "07:00", close: "16:00" }, { days: [4], open: "08:00", close: "16:00" }, { days: [0, 6], open: "09:00", close: "18:00" }],
+    },
+    commentSummary: "숲속 오두막 같다는 반응, 후쿠오카 가면 꼭 들르겠다는 댓글이 많아요",
   },
   {
     id: "coffee-hanyakbang-cheongnyangni",
@@ -84,6 +104,13 @@ export const cafes: Cafe[] = [
     searchQuery: "커피한약방 청량리점 왕산로35길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DbvNbokzJ7J/",
     imageUrl: "/cafes/coffee-hanyakbang-cheongnyangni.jpg",
+    hours: {
+      text: "매일 10:30–20:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:30", close: "20:00" },
+      ],
+    },
+    commentSummary: "타임머신을 탄 듯한 빈티지 분위기라는 반응, 통복숭아 디저트도 화제예요",
   },
   {
     id: "frenco-coffee-samseong",
@@ -95,6 +122,12 @@ export const cafes: Cafe[] = [
     searchQuery: "프렌코커피 삼성로95길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/Dbne7gQTF5C/",
     imageUrl: "/cafes/frenco-coffee-samseong.jpg",
+    hours: {
+      text: "평일 07:00–22:00 · 주말 09:00–22:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "07:00", close: "22:00" }, { days: [0, 6], open: "09:00", close: "22:00" }],
+    },
+    menu: "프렌치토스트 (바나나 브륄레)",
+    commentSummary: "'프토 맛집'이라며 군침 돈다는 반응, 저장 댓글이 줄을 이어요",
   },
   {
     id: "oshaberi-mapo",
@@ -106,6 +139,12 @@ export const cafes: Cafe[] = [
     searchQuery: "오샤베리 성산동 성미산로5길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DbVdWNnzfY0/",
     imageUrl: "/cafes/oshaberi-mapo.jpg",
+    hours: {
+      text: "08:00–18:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "18:00" }],
+    },
+    menu: "브루잉 스페셜티 커피",
+    commentSummary: "일본 작은 카페 같은 아지트라는 반응, 수다 떨러 가고 싶다는 댓글이 많아요",
   },
   {
     id: "passed-mullae",
@@ -117,6 +156,12 @@ export const cafes: Cafe[] = [
     searchQuery: "Passed 문래동",
     sourceUrl: "https://www.instagram.com/green_sori/p/Daxbg3_kxGW/",
     imageUrl: "/cafes/passed.jpg",
+    hours: {
+      text: "평일 08:30–20:00 · 토 12:00–20:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:30", close: "20:00" }, { days: [6], open: "12:00", close: "20:00" }],
+    },
+    menu: "오픈 샌드위치 (잠봉 · 브리치즈)",
+    commentSummary: "문래동 감성과 잘 어울린다는 반응, 원두는 이미 유명하다는 댓글이 많아요",
   },
   {
     id: "bohumil-hyochang",
@@ -128,6 +173,11 @@ export const cafes: Cafe[] = [
     searchQuery: "보후밀",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DasSEH_T-vM/",
     imageUrl: "/cafes/bohumil.jpg",
+    hours: {
+      text: "09:00–17:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "17:00" }],
+    },
+    commentSummary: "비 오는 날 초록 감성이 좋다는 반응, 공간의 식물을 구입할 수 있어 화제예요",
   },
   {
     id: "eutteum-brewers-gwangju",
@@ -139,6 +189,11 @@ export const cafes: Cafe[] = [
     searchQuery: "으뜸브루어스",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DafZmKzzhco/",
     imageUrl: "/cafes/eutteum-brewers.jpg",
+    hours: {
+      text: "화–금 11:00–20:00 · 토·일 12:00–21:00 · 월 휴무",
+      schedule: [{ days: [2, 3, 4, 5], open: "11:00", close: "20:00" }, { days: [0, 6], open: "12:00", close: "21:00" }],
+    },
+    commentSummary: "광주 가면 가장 가고 싶은 곳이라는 반응, 레트로 감성이 힙하다는 댓글이 많아요",
   },
   {
     id: "sijeol-mapo",
@@ -150,6 +205,12 @@ export const cafes: Cafe[] = [
     searchQuery: "시절 마포점",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DanIdUDzPmN/",
     imageUrl: "/cafes/sijeol-mapo.jpg",
+    hours: {
+      text: "16:00–23:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "16:00", close: "23:00" }],
+    },
+    menu: "소곱창 · 차돌박이 · 우설",
+    commentSummary: "영화 세트장 같은 7080 감성이라는 반응, 음악이 압권이라는 댓글이 많아요",
   },
   {
     id: "3go-mangwon",
@@ -161,6 +222,12 @@ export const cafes: Cafe[] = [
     searchQuery: "쓰리고카페 망원동",
     sourceUrl: "https://www.instagram.com/green_sori/p/DaaPW2Zk0rk/",
     imageUrl: "/cafes/3go.jpg",
+    hours: {
+      text: "평일 07:00–21:00 · 주말 09:00–21:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "07:00", close: "21:00" }, { days: [0, 6], open: "09:00", close: "21:00" }],
+    },
+    menu: "커피 · 생과일주스 · 밀크쉐이크",
+    commentSummary: "카센터를 개조한 빈티지 감성이 멋지다는 반응, 아지트 같다는 댓글이 많아요",
   },
   {
     id: "groovy-suwon",
@@ -172,6 +239,11 @@ export const cafes: Cafe[] = [
     searchQuery: "카페그루비 수원",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DaVHqavzF0r/",
     imageUrl: "/cafes/groovy.jpg",
+    hours: {
+      text: "12:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" }],
+    },
+    commentSummary: "여름이면 생각나는 숲속 오두막 북카페라는 반응, 좋아요 1.2만의 인기 게시물",
   },
   {
     id: "heavy-rotate-sindorim",
@@ -183,6 +255,11 @@ export const cafes: Cafe[] = [
     searchQuery: "헤비로테이트 신도림",
     sourceUrl: "https://www.instagram.com/green_sori/p/DaNY1Z4E0jf/",
     imageUrl: "/cafes/heavy-rotate.jpg",
+    hours: {
+      text: "12:30–21:00 · 화 ~19:00 · 월 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "12:30", close: "21:00" }, { days: [2], open: "12:30", close: "19:00" }],
+    },
+    commentSummary: "9년 사랑받은 곳의 새 공간, 정감 있고 안정적인 분위기라는 반응이 많아요",
   },
   {
     id: "abc-sauce-and-deli-ihwa",
@@ -194,6 +271,12 @@ export const cafes: Cafe[] = [
     searchQuery: "abc sauce and deli 이화동",
     sourceUrl: "https://www.instagram.com/green_sori/p/DaIOv6vEykx/",
     imageUrl: "/cafes/abc-sauce-deli.jpg",
+    hours: {
+      text: "11:00–18:00 · 월·화 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "11:00", close: "18:00" }],
+    },
+    menu: "바질 브라타 · 파스타 · 프렌치토스트",
+    commentSummary: "작은 유럽 같다는 반응, 브런치 먹으러 가겠다는 댓글이 많아요",
   },
   {
     id: "cassette-seochon",
@@ -205,6 +288,12 @@ export const cafes: Cafe[] = [
     searchQuery: "카세트 서촌",
     sourceUrl: "https://www.instagram.com/green_sori/p/DZ7VpDMEwgy/",
     imageUrl: "/cafes/cassette-seochon.jpg",
+    hours: {
+      text: "월–금 11:00–21:00 · 토·일 12:00–21:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "11:00", close: "21:00" }, { days: [0, 6], open: "12:00", close: "21:00" }],
+    },
+    menu: "바브카 · 바나나 브레드 · 하이볼",
+    commentSummary: "선곡이 좋다는 반응, 레트로와 현대의 조합이 멋지다는 댓글이 많아요",
   },
   {
     id: "sunnydry-mapo",
@@ -216,6 +305,11 @@ export const cafes: Cafe[] = [
     searchQuery: "써니드라이 대흥로",
     sourceUrl: "https://www.instagram.com/green_sori/p/DZxCZgLk65L/",
     imageUrl: "/cafes/sunnydry.jpg",
+    hours: {
+      text: "매일 09:00–18:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "18:00" }],
+    },
+    commentSummary: "필름 감성이 좋다는 반응, '대흥 알짜배기 카페 모음'이라는 댓글이 많아요",
   },
   {
     id: "giweok-sindang",
@@ -227,6 +321,12 @@ export const cafes: Cafe[] = [
     searchQuery: "기웇 청구로",
     sourceUrl: "https://www.instagram.com/green_sori/p/DZXRL-OCvcX/",
     imageUrl: "/cafes/giweok.jpg",
+    hours: {
+      text: "월–금 08:00–18:00 · 토·일 12:00–18:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" }, { days: [0, 6], open: "12:00", close: "18:00" }],
+    },
+    menu: "바나나 머핀",
+    commentSummary: "동네 사랑방처럼 편안하다는 반응, 바나나 머핀이 맛있다는 댓글도 있어요",
   },
   {
     id: "iwhae-wolbaek-pyeongchang",
@@ -238,6 +338,12 @@ export const cafes: Cafe[] = [
     searchQuery: "이화에 월백하고 평창",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DYuGjzgTjXX/",
     imageUrl: "/cafes/iwhae-wolbaek.jpg",
+    hours: {
+      text: "금·토·일 13:00–19:00",
+      schedule: [{ days: [0, 5, 6], open: "13:00", close: "19:00" }],
+    },
+    menu: "납작꿀빵",
+    commentSummary: "해외 팬들까지 감탄한 공간, 좋아요 2.2만의 인기 게시물이에요",
   },
   {
     id: "thomas-bakery-seongsu",
@@ -249,6 +355,12 @@ export const cafes: Cafe[] = [
     searchQuery: "토마스베이커리 성덕정15길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DYPNx-Rzf38/",
     imageUrl: "/cafes/thomas-bakery.jpg",
+    hours: {
+      text: "11:00–20:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    menu: "올리브오일 케이크 · 얼그레이 케이크",
+    commentSummary: "유럽 외곽의 빵집 같다는 반응, 영상 보고 바로 저장했다는 댓글이 많아요",
   },
   {
     id: "silly-aperitivo-seongsu",
@@ -260,6 +372,12 @@ export const cafes: Cafe[] = [
     searchQuery: "씰리아페리티보 성수",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DYKE6DYTWZX/",
     imageUrl: "/cafes/silly-aperitivo.jpg",
+    hours: {
+      text: "평일 19:00–23:00 · 주말 12:00–23:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "19:00", close: "23:00" }, { days: [0, 6], open: "12:00", close: "23:00" }],
+    },
+    menu: "스프리츠 · 와인",
+    commentSummary: "성수에서 제일 궁금한 곳이라는 반응, 좋아요 5.8천의 인기 게시물이에요",
   },
   {
     id: "oldsse-seochon",
@@ -271,6 +389,12 @@ export const cafes: Cafe[] = [
     searchQuery: "올딧세 서촌",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DYmYKXKTFb7/",
     imageUrl: "/cafes/oldsse-seochon.jpg",
+    hours: {
+      text: "11:30–19:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:30", close: "19:00" }],
+    },
+    menu: "드립커피",
+    commentSummary: "한옥 공간이 예쁘다는 반응, 비 오는 날 운치 있다는 댓글이 많아요",
   },
   {
     id: "pause-seochon",
@@ -282,6 +406,12 @@ export const cafes: Cafe[] = [
     searchQuery: "파우세 필운대로9가길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DYcGWOME0fp/",
     imageUrl: "/cafes/pause.jpg",
+    hours: {
+      text: "11:00–20:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    menu: "파리브레스트 · 시나몬번",
+    commentSummary: "그릇까지 감각적이라는 반응, 시나몬번이 맛있다는 방문 후기 댓글도 있어요",
   },
   {
     id: "joseph-coffee-tree-seongbuk",
@@ -293,6 +423,12 @@ export const cafes: Cafe[] = [
     searchQuery: "조셉의커피나무 성북동",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DYE5XQdz2Cu/",
     imageUrl: "/cafes/joseph-coffee-tree.jpg",
+    hours: {
+      text: "매일 11:30–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:30", close: "22:00" }],
+    },
+    menu: "드립커피",
+    commentSummary: "성북동 내려다보는 뷰가 진짜 좋다는 반응, '애정 카페 원탑'이라는 단골 댓글도",
   },
   {
     id: "cob-seoul-yeonnam",
@@ -304,6 +440,12 @@ export const cafes: Cafe[] = [
     searchQuery: "콥서울 연남로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DX9KP9uT9EG/",
     imageUrl: "/cafes/cob-seoul.jpg",
+    hours: {
+      text: "10:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "22:00" }],
+    },
+    menu: "브런치 · 샌드위치 · 시나몬롤",
+    commentSummary: "초록 창뷰가 좋다는 반응, 오픈런 하겠다는 댓글까지 있어요",
   },
   {
     id: "biscuit-floor-gongneung",
@@ -315,6 +457,12 @@ export const cafes: Cafe[] = [
     searchQuery: "비스킷플로어 공릉",
     sourceUrl: "https://www.instagram.com/green_sori/p/DXy4-5Gk_9t/",
     imageUrl: "/cafes/biscuit-floor.jpg",
+    hours: {
+      text: "08:00–19:00 · 주말·공휴일 10:00–19:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "19:00" }, { days: [0, 6], open: "10:00", close: "19:00" }],
+    },
+    menu: "바나나브레드",
+    commentSummary: "9주년 동네 터줏대감이라는 반응, 항상 사람이 많다는 댓글이 많아요",
   },
   {
     id: "ssangri-daejeon",
@@ -326,6 +474,11 @@ export const cafes: Cafe[] = [
     searchQuery: "쌍리 대전 중앙로130번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXrJpJ3E0tc/",
     imageUrl: "/cafes/ssangri-daejeon.jpg",
+    hours: {
+      text: "11:00–23:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "23:00" }],
+    },
+    commentSummary: "아날로그 감성이 세련됐다는 반응, 대전 가면 꼭 들르겠다는 댓글이 많아요",
   },
   {
     id: "barboo-itaewon",
@@ -337,6 +490,8 @@ export const cafes: Cafe[] = [
     searchQuery: "바부 이태원",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXmAbySE64g/",
     imageUrl: "/cafes/barboo-itaewon.jpg",
+    hours: { text: "루프탑 금·토·일 오픈 · 운영시간 인스타 참조" },
+    commentSummary: "이국적인 루프탑 분위기라는 반응, 여름마다 대박이라는 댓글이 많아요",
   },
   {
     id: "freiheit-hoehyeon",
@@ -348,6 +503,12 @@ export const cafes: Cafe[] = [
     searchQuery: "프라이하이트 회현 퇴계로8길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXO0iE-Ew1B/",
     imageUrl: "/cafes/freiheit-hoehyeon.jpg",
+    hours: {
+      text: "월–토 08:00–20:00 · 일 08:00–18:00",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" }, { days: [0], open: "08:00", close: "18:00" }],
+    },
+    menu: "데일리 커피 · 쿠키",
+    commentSummary: "꽃과 화병이 인상적이라는 반응, 친절한 곳이 오래가길 바란다는 댓글이 많아요",
   },
   {
     id: "soseol-sokcho",
@@ -359,6 +520,12 @@ export const cafes: Cafe[] = [
     searchQuery: "소설 속초 먹거리길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DX4CmtXTIDj/",
     imageUrl: "/cafes/soseol-sokcho.jpg",
+    hours: {
+      text: "월–토 13:00–21:30 · 일 13:00–19:00",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "13:00", close: "21:30" }, { days: [0], open: "13:00", close: "19:00" }],
+    },
+    menu: "필터커피",
+    commentSummary: "속초 가면 저장해서 다 들르겠다는 반응, 코에오·리토가 특히 인기예요",
   },
   {
     id: "coeo-sokcho",
@@ -370,6 +537,12 @@ export const cafes: Cafe[] = [
     searchQuery: "코에오 속초 교동로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DX4CmtXTIDj/",
     imageUrl: "/cafes/coeo-sokcho.jpg",
+    hours: {
+      text: "목–월 08:00–16:00 · 화·수 휴무",
+      schedule: [{ days: [0, 1, 4, 5, 6], open: "08:00", close: "16:00" }],
+    },
+    menu: "푸딩",
+    commentSummary: "속초 가면 저장해서 다 들르겠다는 반응, 코에오·리토가 특히 인기예요",
   },
   {
     id: "rito-sokcho",
@@ -381,6 +554,12 @@ export const cafes: Cafe[] = [
     searchQuery: "리토 속초 새마을9길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DX4CmtXTIDj/",
     imageUrl: "/cafes/rito-sokcho.jpg",
+    hours: {
+      text: "10:00–19:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "10:00", close: "19:00" }],
+    },
+    menu: "바나나브레드",
+    commentSummary: "속초 가면 저장해서 다 들르겠다는 반응, 코에오·리토가 특히 인기예요",
   },
   {
     id: "croft-sokcho",
@@ -392,6 +571,12 @@ export const cafes: Cafe[] = [
     searchQuery: "크로프트 속초 영랑해안5길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DX4CmtXTIDj/",
     imageUrl: "/cafes/croft-sokcho.jpg",
+    hours: {
+      text: "11:00–18:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 5, 6], open: "11:00", close: "18:00" }],
+    },
+    menu: "크림커피",
+    commentSummary: "속초 가면 저장해서 다 들르겠다는 반응, 코에오·리토가 특히 인기예요",
   },
   {
     id: "git-sokcho",
@@ -403,6 +588,12 @@ export const cafes: Cafe[] = [
     searchQuery: "긷 속초 원암학사평길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DX4CmtXTIDj/",
     imageUrl: "/cafes/git-sokcho.jpg",
+    hours: {
+      text: "10:30–18:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:30", close: "18:00" }],
+    },
+    menu: "옥수수커피 아이스크림",
+    commentSummary: "속초 가면 저장해서 다 들르겠다는 반응, 코에오·리토가 특히 인기예요",
   },
   {
     id: "sigantaja-gwangju",
@@ -414,6 +605,11 @@ export const cafes: Cafe[] = [
     searchQuery: "시간과 타자 광주 동명로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXHGx21E0ER/",
     imageUrl: "/cafes/sigantaja-gwangju.jpg",
+    hours: {
+      text: "월–금 08:00–17:00 · 토 10:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "17:00" }, { days: [6], open: "10:00", close: "18:00" }],
+    },
+    commentSummary: "여섯 곳 모두 저장해 가보겠다는 반응, 감성적인 영상이라는 댓글이 많아요",
   },
   {
     id: "yose-gwangju",
@@ -425,6 +621,11 @@ export const cafes: Cafe[] = [
     searchQuery: "요새 광주 상무평화로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXHGx21E0ER/",
     imageUrl: "/cafes/yose-gwangju.jpg",
+    hours: {
+      text: "월–금 19:00–24:00 · 토 11:00–24:00 · 일 11:00–21:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "19:00", close: "24:00" }, { days: [6], open: "11:00", close: "24:00" }, { days: [0], open: "11:00", close: "21:00" }],
+    },
+    commentSummary: "여섯 곳 모두 저장해 가보겠다는 반응, 감성적인 영상이라는 댓글이 많아요",
   },
   {
     id: "moves-gwangju",
@@ -436,6 +637,11 @@ export const cafes: Cafe[] = [
     searchQuery: "무브스 광주 봉선1로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXHGx21E0ER/",
     imageUrl: "/cafes/moves-gwangju.jpg",
+    hours: {
+      text: "12:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" }],
+    },
+    commentSummary: "여섯 곳 모두 저장해 가보겠다는 반응, 감성적인 영상이라는 댓글이 많아요",
   },
   {
     id: "chieut-jari-gwangju",
@@ -447,6 +653,11 @@ export const cafes: Cafe[] = [
     searchQuery: "치읓의 자리 광주 서방로159번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXHGx21E0ER/",
     imageUrl: "/cafes/chieut-jari-gwangju.jpg",
+    hours: {
+      text: "월–금 11:00–20:00 · 토·일 07:00–19:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "11:00", close: "20:00" }, { days: [0, 6], open: "07:00", close: "19:00" }],
+    },
+    commentSummary: "여섯 곳 모두 저장해 가보겠다는 반응, 감성적인 영상이라는 댓글이 많아요",
   },
   {
     id: "sidewinder-gwangju",
@@ -458,6 +669,11 @@ export const cafes: Cafe[] = [
     searchQuery: "사이드와인다 광주 금호운천길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXHGx21E0ER/",
     imageUrl: "/cafes/sidewinder-gwangju.jpg",
+    hours: {
+      text: "화–목 19:30–01:30 · 금·토 19:00–02:30",
+      schedule: [{ days: [2, 3, 4], open: "19:30", close: "01:30" }, { days: [5, 6], open: "19:00", close: "02:30" }],
+    },
+    commentSummary: "여섯 곳 모두 저장해 가보겠다는 반응, 감성적인 영상이라는 댓글이 많아요",
   },
   {
     id: "jeonghwa-jangan",
@@ -469,6 +685,12 @@ export const cafes: Cafe[] = [
     searchQuery: "정화 장안동 장한로17길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DXB8H8akw3d/",
     imageUrl: "/cafes/jeonghwa.jpg",
+    hours: {
+      text: "08:00–18:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "08:00", close: "18:00" }],
+    },
+    menu: "베이커리 · 커피",
+    commentSummary: "분위기가 좋다는 반응, 꼭 가보고 싶다는 저장 댓글이 많아요",
   },
   {
     id: "foori-seongsan",
@@ -480,6 +702,11 @@ export const cafes: Cafe[] = [
     searchQuery: "푸리 성산동 모래내로3길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DW8znguk3jz/",
     imageUrl: "/cafes/foori.jpg",
+    hours: {
+      text: "매일 08:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" }],
+    },
+    commentSummary: "벚꽃비 내리는 영상이 예쁘다는 반응, 벌써 핫하다는 댓글이 많아요",
   },
   {
     id: "autograph-suwon",
@@ -491,6 +718,11 @@ export const cafes: Cafe[] = [
     searchQuery: "아우토그라프 수원 화서문로31번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DWjDrB8k76m/",
     imageUrl: "/cafes/autograph-suwon.jpg",
+    hours: {
+      text: "11:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "22:00" }],
+    },
+    commentSummary: "행궁동 커피 맛집이라는 추천 댓글, 캠핑 무드 테라스가 화제예요",
   },
   {
     id: "toutyest-seochon",
@@ -502,6 +734,11 @@ export const cafes: Cafe[] = [
     searchQuery: "캐비넷앤코 바이 투티에 자하문로12길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DWd5_BSE43U/",
     imageUrl: "/cafes/toutyest.jpg",
+    hours: {
+      text: "12:00–20:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "12:00", close: "20:00" }],
+    },
+    commentSummary: "서촌 골목의 보물 같은 소품샵이라는 반응, 반려동물 동반도 가능해요",
   },
   {
     id: "standing-millefeuille-yongsan",
@@ -513,6 +750,12 @@ export const cafes: Cafe[] = [
     searchQuery: "스탠딩밀푀유 용산 한강대로38길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DWYwmb7klVw/",
     imageUrl: "/cafes/standing-millefeuille.jpg",
+    hours: {
+      text: "매일 11:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    menu: "밀푀유 (커스터드 크림)",
+    commentSummary: "외국 카페 같은 이국적 감성이라는 반응, 요즘 핫하다는 댓글이 많아요",
   },
   {
     id: "pama-jung",
@@ -524,6 +767,12 @@ export const cafes: Cafe[] = [
     searchQuery: "빠마 퇴계로36가길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DWL4WCvEzq3/",
     imageUrl: "/cafes/pama.jpg",
+    hours: {
+      text: "월·화·목·금 08:00–18:00 · 토 10:00–18:00 · 일 13:00–18:00 · 수 휴무",
+      schedule: [{ days: [1, 2, 4, 5], open: "08:00", close: "18:00" }, { days: [6], open: "10:00", close: "18:00" }, { days: [0], open: "13:00", close: "18:00" }],
+    },
+    menu: "제철 김밥 · 커피",
+    commentSummary: "'엄마 김밥과 커피' 컨셉에 반했다는 댓글, 좋아요 5.7천의 인기 게시물",
   },
   {
     id: "bluebottle-samcheong",
@@ -535,6 +784,11 @@ export const cafes: Cafe[] = [
     searchQuery: "블루보틀 삼청 한옥",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DWGk2gCE9oK/",
     imageUrl: "/cafes/bluebottle-samcheong.jpg",
+    hours: {
+      text: "목–월 11:00–18:30 · 화·수 휴무",
+      schedule: [{ days: [0, 1, 4, 5, 6], open: "11:00", close: "18:30" }],
+    },
+    commentSummary: "한옥과 어우러진 공간이 영화 같다는 반응, 예약 없이 워크인도 가능해요",
   },
   {
     id: "yn-cherryblossom-yeonnam",
@@ -546,6 +800,14 @@ export const cafes: Cafe[] = [
     searchQuery: "연남동 벚꽃집 동교로29길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DWqxj0SkkeM/",
     imageUrl: "/cafes/yn-cherryblossom.jpg",
+    hours: {
+      text: "월–목 11:00–22:00 · 금–일 11:00–23:00",
+      schedule: [
+        { days: [1, 2, 3, 4], open: "11:00", close: "22:00" },
+        { days: [0, 5, 6], open: "11:00", close: "23:00" },
+      ],
+    },
+    commentSummary: "봄 벚꽃 영상이 아름답다는 반응이 가득한 촬영 스팟이에요",
   },
   {
     id: "postnobills-mangwon",
@@ -557,6 +819,7 @@ export const cafes: Cafe[] = [
     searchQuery: "포스트노빌즈 망원로2길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DWqxj0SkkeM/",
     imageUrl: "/cafes/postnobills-mangwon.jpg",
+    commentSummary: "봄 벚꽃 영상이 아름답다는 반응이 가득한 촬영 스팟이에요",
   },
   {
     id: "deepslow-busan",
@@ -568,6 +831,12 @@ export const cafes: Cafe[] = [
     searchQuery: "딥슬로우커피바 부산 구락로25번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DV_AXG_kjPS/",
     imageUrl: "/cafes/deepslow.jpg",
+    hours: {
+      text: "11:00–20:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    menu: "계절 파르페",
+    commentSummary: "일본 애니 속 공간 같다는 반응, 파르페가 궁금하다는 댓글이 많아요",
   },
   {
     id: "pivo-busan",
@@ -579,6 +848,12 @@ export const cafes: Cafe[] = [
     searchQuery: "피보 부산 동성로",
     sourceUrl: "https://www.instagram.com/green_sori/p/DV0toFbkpcM/",
     imageUrl: "/cafes/pivo.jpg",
+    hours: {
+      text: "11:00–19:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "11:00", close: "19:00" }],
+    },
+    menu: "호지차 치즈케이크",
+    commentSummary: "계단 위 커피바가 무대 같다는 반응, 호지차 치즈케이크가 화제예요",
   },
   {
     id: "cafe-seba-hapjeong",
@@ -590,6 +865,12 @@ export const cafes: Cafe[] = [
     searchQuery: "카페세바 월드컵로5길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVvkpVXkhxf/",
     imageUrl: "/cafes/cafe-seba.jpg",
+    hours: {
+      text: "10:00–20:00 · 수·일 휴무",
+      schedule: [{ days: [1, 2, 4, 5, 6], open: "10:00", close: "20:00" }],
+    },
+    menu: "드립커피",
+    commentSummary: "영화 세트장 같다는 반응, 멋쟁이 사장님과 강아지 장군이가 인기예요",
   },
   {
     id: "baby-pumpkin-yongsan",
@@ -601,6 +882,12 @@ export const cafes: Cafe[] = [
     searchQuery: "베이비펌킨 용산 한강대로10길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVVz4FGElXF/",
     imageUrl: "/cafes/baby-pumpkin.jpg",
+    hours: {
+      text: "매일 11:30–19:30 (브레이크타임 없음)",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:30", close: "19:30" }],
+    },
+    menu: "냉이 크림 파스타 · 펌킨 샐러드",
+    commentSummary: "플랜테리어가 멋지다는 반응, 데이트 코스로 좋다는 댓글이 많아요",
   },
   {
     id: "tamseok-sarang-hoegi",
@@ -612,6 +899,12 @@ export const cafes: Cafe[] = [
     searchQuery: "탐석과 사랑",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVDyDOBksXk/",
     imageUrl: "/cafes/tamseok-sarang.jpg",
+    hours: {
+      text: "매일 12:00–24:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "24:00" }],
+    },
+    menu: "필터커피",
+    commentSummary: "해외 팬들까지 반한 햇살 아지트, 좋아요 8.9천의 인기 게시물이에요",
   },
   {
     id: "kiekee-jeju",
@@ -623,6 +916,12 @@ export const cafes: Cafe[] = [
     searchQuery: "키에키 로스팅 룸 제주 중앙로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVlQycsklMK/",
     imageUrl: "/cafes/kiekee-jeju.jpg",
+    hours: {
+      text: "매일 09:00–18:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "18:00" }],
+    },
+    menu: "키에키 샌드",
+    commentSummary: "'제주 갈 때 필수 저장 리스트'라는 반응, 전부 따라가고 싶다는 댓글이 많아요",
   },
   {
     id: "lfpr-jeju",
@@ -634,6 +933,12 @@ export const cafes: Cafe[] = [
     searchQuery: "사랑자유평화낭만 제주 광양9길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVlQycsklMK/",
     imageUrl: "/cafes/lfpr-jeju.jpg",
+    hours: {
+      text: "월–금 08:00–18:00 · 토 10:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" }, { days: [6], open: "10:00", close: "18:00" }],
+    },
+    menu: "에스프레소 기반 커피",
+    commentSummary: "'제주 갈 때 필수 저장 리스트'라는 반응, 전부 따라가고 싶다는 댓글이 많아요",
   },
   {
     id: "pals-jeju",
@@ -645,6 +950,12 @@ export const cafes: Cafe[] = [
     searchQuery: "팔즈 제주 중앙로8길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVlQycsklMK/",
     imageUrl: "/cafes/pals-jeju.jpg",
+    hours: {
+      text: "09:00–17:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "09:00", close: "17:00" }],
+    },
+    menu: "바나나 브레드",
+    commentSummary: "'제주 갈 때 필수 저장 리스트'라는 반응, 전부 따라가고 싶다는 댓글이 많아요",
   },
   {
     id: "naedo-jeju",
@@ -656,6 +967,11 @@ export const cafes: Cafe[] = [
     searchQuery: "내도음악상가 제주 테우해안로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVlQycsklMK/",
     imageUrl: "/cafes/naedo-jeju.jpg",
+    hours: {
+      text: "매일 17:00–24:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "17:00", close: "24:00" }],
+    },
+    commentSummary: "'제주 갈 때 필수 저장 리스트'라는 반응, 전부 따라가고 싶다는 댓글이 많아요",
   },
   {
     id: "dimano-jeju",
@@ -667,6 +983,11 @@ export const cafes: Cafe[] = [
     searchQuery: "디마노 엔마노 제주 중앙로8길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVlQycsklMK/",
     imageUrl: "/cafes/dimano-jeju.jpg",
+    hours: {
+      text: "수–일 10:00–18:00 · 월·화 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "10:00", close: "18:00" }],
+    },
+    commentSummary: "'제주 갈 때 필수 저장 리스트'라는 반응, 전부 따라가고 싶다는 댓글이 많아요",
   },
   {
     id: "imyeon-jeju",
@@ -678,6 +999,11 @@ export const cafes: Cafe[] = [
     searchQuery: "카페 이면 제주 한림읍 금능5길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVlQycsklMK/",
     imageUrl: "/cafes/imyeon-jeju.jpg",
+    hours: {
+      text: "월–금 10:00–17:00 · 토 11:00–17:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "10:00", close: "17:00" }, { days: [6], open: "11:00", close: "17:00" }],
+    },
+    commentSummary: "'제주 갈 때 필수 저장 리스트'라는 반응, 전부 따라가고 싶다는 댓글이 많아요",
   },
   {
     id: "sorisomoon-jeju",
@@ -689,6 +1015,8 @@ export const cafes: Cafe[] = [
     searchQuery: "책방 소리소문 제주 저지동길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DVlQycsklMK/",
     imageUrl: "/cafes/sorisomoon-jeju.jpg",
+    hours: { text: "영업시간은 인스타 참조" },
+    commentSummary: "'제주 갈 때 필수 저장 리스트'라는 반응, 전부 따라가고 싶다는 댓글이 많아요",
   },
   {
     id: "scentology-bukchon",
@@ -700,6 +1028,11 @@ export const cafes: Cafe[] = [
     searchQuery: "시스올로지 북촌 율곡로3길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DUqCyenkhEP/",
     imageUrl: "/cafes/scentology.jpg",
+    hours: {
+      text: "11:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    commentSummary: "공간 분위기가 멋지다는 반응, 취향 저격이라는 댓글이 많은 향 플래그십",
   },
   {
     id: "sansaecoe-apgujeong",
@@ -711,6 +1044,14 @@ export const cafes: Cafe[] = [
     searchQuery: "산새코에 압구정로30길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DUAy2W3EtG9/",
     imageUrl: "/cafes/sansaecoe.jpg",
+    hours: {
+      text: "월·화·일 14:00–18:00 · 목–토 15:00–22:00 · 수 휴무",
+      schedule: [
+        { days: [0, 1, 2], open: "14:00", close: "18:00" },
+        { days: [4, 5, 6], open: "15:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "집들이 초대받은 것 같다는 반응, 다락방 감성이 아늑하다는 댓글이 많아요",
   },
   {
     id: "coffee-happy-bundang",
@@ -722,6 +1063,12 @@ export const cafes: Cafe[] = [
     searchQuery: "커피해피 분당 서현로494번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DT7q2F9kvlb/",
     imageUrl: "/cafes/coffee-happy.jpg",
+    hours: {
+      text: "월–토 10:00–19:00 · 일 11:00–19:00",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "10:00", close: "19:00" }, { days: [0], open: "11:00", close: "19:00" }],
+    },
+    menu: "취향 맞춤 원두 커피 · 토스트",
+    commentSummary: "20년 경력 장인의 커피, 해외 팬들까지 반한 좋아요 1.5만 게시물이에요",
   },
   {
     id: "chai-zip-incheon",
@@ -733,6 +1080,12 @@ export const cafes: Cafe[] = [
     searchQuery: "짜이집 인천 길주로595번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DT2jF6LEuWD/",
     imageUrl: "/cafes/chai-zip.jpg",
+    hours: {
+      text: "목–일 13:00–20:00 · 월–수 휴무",
+      schedule: [{ days: [0, 4, 5, 6], open: "13:00", close: "20:00" }],
+    },
+    menu: "짜이",
+    commentSummary: "따뜻한 짜이와 책이 있는 공간, 혼자 조용히 가고 싶다는 댓글이 많아요",
   },
   {
     id: "tony-coffee-incheon",
@@ -744,6 +1097,11 @@ export const cafes: Cafe[] = [
     searchQuery: "토니커피하우스 인천 우현로90번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DTuzGBVEnOo/",
     imageUrl: "/cafes/tony-coffee.jpg",
+    hours: {
+      text: "화–토 12:00–20:30 · 일·월 휴무",
+      schedule: [{ days: [2, 3, 4, 5, 6], open: "12:00", close: "20:30" }],
+    },
+    commentSummary: "인천 가면 꼭 들른다는 단골 댓글, 커피가 정말 맛있다는 곳이에요",
   },
   {
     id: "grans-dasan-namyangju",
@@ -755,6 +1113,12 @@ export const cafes: Cafe[] = [
     searchQuery: "그란스 다산",
     sourceUrl: "https://www.instagram.com/green_sori/p/DTpqBt5Enjc/",
     imageUrl: "/cafes/grans-dasan.jpg",
+    hours: {
+      text: "월–금 11:00–18:30 · 토·일 12:00–19:30 · 매달 1일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "11:00", close: "18:30" }, { days: [0, 6], open: "12:00", close: "19:30" }],
+    },
+    menu: "노마드커피 원두 커피",
+    commentSummary: "높은 층고와 통창 햇살이 근사하다는 반응, 햇살 맛집이라는 댓글이 많아요",
   },
   {
     id: "loft-house-mullae",
@@ -766,6 +1130,11 @@ export const cafes: Cafe[] = [
     searchQuery: "로프트하우스 문래 도림로139길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DTcxmSREgE1/",
     imageUrl: "/cafes/loft-house.jpg",
+    hours: {
+      text: "12:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" }],
+    },
+    commentSummary: "1층 확장 소식이 반갑다는 반응, 영화 찍어도 되겠다는 댓글이 많아요",
   },
   {
     id: "obikohi-cheonan",
@@ -777,6 +1146,8 @@ export const cafes: Cafe[] = [
     searchQuery: "오비코히 천안 성환",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DTXn-FVkpKe/",
     imageUrl: "/cafes/obikohi.jpg",
+    hours: { text: "영업시간은 인스타 참조" },
+    commentSummary: "외국 같은 이국적 풍경이라는 반응, 눈 오는 날의 감성 영상이 화제였어요",
   },
   {
     id: "cafe-hieut-yongin",
@@ -788,6 +1159,12 @@ export const cafes: Cafe[] = [
     searchQuery: "카페히읗 용인 흥덕2로65번길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DTSey9HknE1/",
     imageUrl: "/cafes/cafe-hieut.jpg",
+    hours: {
+      text: "11:00–23:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "23:00" }],
+    },
+    menu: "라자냐 · 레몬 파운드 · 와인",
+    commentSummary: "강아지 모네가 반겨주는 오두막이라는 반응, 라자냐가 맛있다는 후기도 있어요",
   },
   {
     id: "1ll-geumjeong-gunpo",
@@ -799,6 +1176,12 @@ export const cafes: Cafe[] = [
     searchQuery: "1LL AC호텔 금정",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DTKwqhBkqmZ/",
     imageUrl: "/cafes/1ll-geumjeong.jpg",
+    hours: {
+      text: "매일 09:00–19:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "19:00" }],
+    },
+    menu: "스페셜티 커피 · 말차 · 베이커리",
+    commentSummary: "채광과 기차뷰가 미쳤다는 반응, 좋아요 3천의 인기 게시물이에요",
   },
   {
     id: "gin-seoul-yongsan",
@@ -810,6 +1193,12 @@ export const cafes: Cafe[] = [
     searchQuery: "긴서울 원효로52길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DTFm59tElpt/",
     imageUrl: "/cafes/gin-seoul.jpg",
+    hours: {
+      text: "13:00–22:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "13:00", close: "22:00" }],
+    },
+    menu: "필터 커피 · 주류",
+    commentSummary: "음악이 좋다는 방문 후기, 해외 팬 댓글까지 좋아요 5.8천의 인기 게시물",
   },
   {
     id: "seeum-incheon",
@@ -821,6 +1210,8 @@ export const cafes: Cafe[] = [
     searchQuery: "세음 부평",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DTAdp4Uknqs/",
     imageUrl: "/cafes/seeum-incheon.jpg",
+    hours: { text: "영업시간은 인스타 참조" },
+    commentSummary: "삼각지·연신내 시절부터의 팬들이 반가워하는 아지트 같은 공간이에요",
   },
   {
     id: "limon-seongbuk",
@@ -832,6 +1223,12 @@ export const cafes: Cafe[] = [
     searchQuery: "리몬 성북 동소문로6길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DSzkujlkh2c/",
     imageUrl: "/cafes/limon-seongbuk.jpg",
+    hours: {
+      text: "월·수·목 10:00–23:00 · 금·토 10:00–24:00 · 일 10:00–22:00 · 화 휴무",
+      schedule: [{ days: [1, 3, 4], open: "10:00", close: "23:00" }, { days: [5, 6], open: "10:00", close: "24:00" }, { days: [0], open: "10:00", close: "22:00" }],
+    },
+    menu: "코르타도 · 페이스트리",
+    commentSummary: "채광 맛집이라는 반응, 갤러리 같은 커피바가 예쁘다는 댓글이 많아요",
   },
   {
     id: "sasohan-daejeon",
@@ -843,6 +1240,14 @@ export const cafes: Cafe[] = [
     searchQuery: "사소한 대전 백룡로38번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DS7UfjWkjc4/",
     imageUrl: "/cafes/sasohan-daejeon.jpg",
+    hours: {
+      text: "월–금 11:30–21:00 · 토·일 12:30–18:30",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "11:30", close: "21:00" },
+        { days: [0, 6], open: "12:30", close: "18:30" },
+      ],
+    },
+    commentSummary: "2025년 결산 모음 게시물 — 색감이 예쁘다는 반응, 좋아요 2.6만",
   },
   {
     id: "smiths-athome-busan",
@@ -854,6 +1259,7 @@ export const cafes: Cafe[] = [
     searchQuery: "스미스앳홈 부산 구락로43번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DS7UfjWkjc4/",
     imageUrl: "/cafes/smiths-athome-busan.jpg",
+    commentSummary: "2025년 결산 모음 게시물 — 색감이 예쁘다는 반응, 좋아요 2.6만",
   },
   {
     id: "hommer-sejong",
@@ -865,6 +1271,12 @@ export const cafes: Cafe[] = [
     searchQuery: "호머 조치원 충현로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DK64Je8J_ob/",
     imageUrl: "/cafes/hommer.jpg",
+    hours: {
+      text: "12:00–23:00 · 월·화 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "12:00", close: "23:00" }],
+    },
+    menu: "필터커피 · 샤인머스캣 치즈 곶감말이",
+    commentSummary: "곶감말이가 맛있어 보인다는 반응이 많은, 좋아요 5.3천의 인기 게시물이에요",
   },
   {
     id: "6ongone-busan",
@@ -876,6 +1288,13 @@ export const cafes: Cafe[] = [
     searchQuery: "공원 부산 광안로21번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DS7UfjWkjc4/",
     imageUrl: "/cafes/6ongone-busan.jpg",
+    hours: {
+      text: "매일 10:00–18:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "2025년 결산 모음 게시물 — 색감이 예쁘다는 반응, 좋아요 2.6만",
   },
   {
     id: "eecoffee-daegu",
@@ -887,6 +1306,11 @@ export const cafes: Cafe[] = [
     searchQuery: "이에커피 대구 달구벌대로446길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DGp70NdJtqE/",
     imageUrl: "/cafes/eecoffee.jpg",
+    hours: {
+      text: "11:00–19:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 5, 6], open: "11:00", close: "19:00" }],
+    },
+    commentSummary: "강아지 보리와 감성 영상에 감탄하는 반응, 좋아요 4.2천의 인기 게시물이에요",
   },
   {
     id: "coffee-publisher-seoul",
@@ -898,6 +1322,14 @@ export const cafes: Cafe[] = [
     searchQuery: "커피출판사 중림로7길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DS7UfjWkjc4/",
     imageUrl: "/cafes/coffee-publisher.jpg",
+    hours: {
+      text: "월–금 11:00–21:00 · 토 11:00–18:00 · 일 휴무",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "11:00", close: "21:00" },
+        { days: [6], open: "11:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "2025년 결산 모음 게시물 — 색감이 예쁘다는 반응, 좋아요 2.6만",
   },
   {
     id: "0100coffee-seoul",
@@ -909,6 +1341,9 @@ export const cafes: Cafe[] = [
     searchQuery: "공백 자양번영로3길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DFpimZFptP8/",
     imageUrl: "/cafes/gongbaek.jpg",
+    hours: { text: "영업시간은 인스타 참조" },
+    menu: "보늬밤 · 미숫가루",
+    commentSummary: "보늬밤·미숫가루 메모한다는 댓글과 아늑한 분위기에 힐링된다는 반응이 많아요",
   },
   {
     id: "pouringout-seoul",
@@ -920,6 +1355,13 @@ export const cafes: Cafe[] = [
     searchQuery: "푸어링아웃 연희로11나길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DS7UfjWkjc4/",
     imageUrl: "/cafes/pouringout-seoul.jpg",
+    hours: {
+      text: "월·화·목–일 11:00–22:00 · 수 휴무",
+      schedule: [
+        { days: [0, 1, 2, 4, 5, 6], open: "11:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "2025년 결산 모음 게시물 — 색감이 예쁘다는 반응, 좋아요 2.6만",
   },
   {
     id: "keems-room-yeonhui",
@@ -931,6 +1373,11 @@ export const cafes: Cafe[] = [
     searchQuery: "킴스룸 연희로11가길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DSPiX13EtxU/",
     imageUrl: "/cafes/keems-room.jpg",
+    hours: {
+      text: "화–금 09:00–18:00 · 토·일 10:00–19:00 · 월 휴무",
+      schedule: [{ days: [2, 3, 4, 5], open: "09:00", close: "18:00" }, { days: [0, 6], open: "10:00", close: "19:00" }],
+    },
+    commentSummary: "아늑한 방에 초대받은 듯한 플라워 카페라는 반응, 선곡 칭찬 댓글도 있어요",
   },
   {
     id: "muke-gangseo",
@@ -942,6 +1389,12 @@ export const cafes: Cafe[] = [
     searchQuery: "묵해 강서 등촌로35길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DSHywXEkhCv/",
     imageUrl: "/cafes/muke.jpg",
+    hours: {
+      text: "화–일 11:00–19:30 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "19:30" }],
+    },
+    menu: "핸드드립 (2층) · 유기농 디저트",
+    commentSummary: "모던함과 동양미가 공존한다는 반응, 혼자 가고 싶다는 댓글이 많아요",
   },
   {
     id: "joanddawson-gwanghwamun",
@@ -953,6 +1406,12 @@ export const cafes: Cafe[] = [
     searchQuery: "조앤도슨 광화문",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DR4YHBJEhpB/",
     imageUrl: "/cafes/joanddawson.jpg",
+    hours: {
+      text: "월–금 07:30–20:00 · 토·일 10:00–20:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "07:30", close: "20:00" }, { days: [0, 6], open: "10:00", close: "20:00" }],
+    },
+    menu: "프렌치토스트",
+    commentSummary: "'프토 맛은 역시 최고'라는 반응, 넓어진 새 매장이 반갑다는 댓글이 많아요",
   },
   {
     id: "cafe-gost-garosugil",
@@ -964,6 +1423,11 @@ export const cafes: Cafe[] = [
     searchQuery: "카페고스트 강남",
     sourceUrl: "https://www.instagram.com/green_sori/p/DRrfIw1ks3r/",
     imageUrl: "/cafes/cafe-gost.jpg",
+    hours: {
+      text: "매일 08:00–24:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "24:00" }],
+    },
+    commentSummary: "카페가 아니라 예술 공간 같다는 반응, 하이엔드 청음룸이 화제예요",
   },
   {
     id: "cafe-rosso-samcheong",
@@ -975,6 +1439,12 @@ export const cafes: Cafe[] = [
     searchQuery: "카페로쏘 삼청",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DRmUrhWEsdx/",
     imageUrl: "/cafes/cafe-rosso.jpg",
+    hours: {
+      text: "월·화 11:00–19:00 · 수–일 11:00–21:00",
+      schedule: [{ days: [1, 2], open: "11:00", close: "19:00" }, { days: [0, 3, 4, 5, 6], open: "11:00", close: "21:00" }],
+    },
+    menu: "핸드드립 · 샌드위치",
+    commentSummary: "영국 감성이 물씬 난다는 반응, 하루 종일 있고 싶다는 댓글이 많아요",
   },
   {
     id: "unok-yongsan",
@@ -986,6 +1456,12 @@ export const cafes: Cafe[] = [
     searchQuery: "우녹 후암동 두텁바위로1길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DSUsELdEjcR/",
     imageUrl: "/cafes/unok-yongsan.jpg",
+    hours: {
+      text: "11:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "22:00" }],
+    },
+    menu: "대파베이컨 미니도넛",
+    commentSummary: "'주옥같은 곳만 골랐다'는 반응, 디저트가 궁금하다는 댓글이 많아요",
   },
   {
     id: "hob-mapo",
@@ -997,6 +1473,12 @@ export const cafes: Cafe[] = [
     searchQuery: "홉 마포 와우산로37길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DSUsELdEjcR/",
     imageUrl: "/cafes/hob-mapo.jpg",
+    hours: {
+      text: "10:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "20:00" }],
+    },
+    menu: "라임파이 · 초코타르트",
+    commentSummary: "'주옥같은 곳만 골랐다'는 반응, 디저트가 궁금하다는 댓글이 많아요",
   },
   {
     id: "nanghancho-seodaemun",
@@ -1008,6 +1490,12 @@ export const cafes: Cafe[] = [
     searchQuery: "낭만한도초과 연희로11다길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DSUsELdEjcR/",
     imageUrl: "/cafes/nanghancho.jpg",
+    hours: {
+      text: "10:00–19:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "10:00", close: "19:00" }],
+    },
+    menu: "샤인도쿄롤",
+    commentSummary: "'주옥같은 곳만 골랐다'는 반응, 디저트가 궁금하다는 댓글이 많아요",
   },
   {
     id: "iner-coffee-yeonhui",
@@ -1019,6 +1507,11 @@ export const cafes: Cafe[] = [
     searchQuery: "이너커피 연희동",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DR9hinGEs8E/",
     imageUrl: "/cafes/iner-coffee-yeonhui.jpg",
+    hours: {
+      text: "09:00–21:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "09:00", close: "21:00" }],
+    },
+    menu: "카푸치노",
   },
   {
     id: "ikou-mapo",
@@ -1030,6 +1523,12 @@ export const cafes: Cafe[] = [
     searchQuery: "이코우 마포 백범로15길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DRUUF0zkhS_/",
     imageUrl: "/cafes/ikou.jpg",
+    hours: {
+      text: "월–금 08:00–19:00 · 토·일 08:00–20:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "19:00" }, { days: [0, 6], open: "08:00", close: "20:00" }],
+    },
+    menu: "푸딩 · 토스트 · 드립커피",
+    commentSummary: "멋쟁이 사장님과 소품이 감각적이라는 반응, 친구네 거실 같다는 댓글도",
   },
   {
     id: "mieum-records-yeonnam",
@@ -1041,6 +1540,12 @@ export const cafes: Cafe[] = [
     searchQuery: "미음레코드 동교로27길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DRMlQj0EuH9/",
     imageUrl: "/cafes/mieum-records.jpg",
+    hours: {
+      text: "매일 13:00–23:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "13:00", close: "23:00" }],
+    },
+    menu: "드립커피 · 하이볼 · 위스키",
+    commentSummary: "뮤지션이 만든 LP 바라는 반응, 선곡이 기대된다는 댓글이 많아요",
   },
   {
     id: "wood-cottage-yeonhui",
@@ -1052,6 +1557,12 @@ export const cafes: Cafe[] = [
     searchQuery: "우드코티지 서대문",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DRHbv4gkkLU/",
     imageUrl: "/cafes/wood-cottage.jpg",
+    hours: {
+      text: "월–금 11:00–20:00 (수 휴무) · 토·일 11:00–21:00",
+      schedule: [{ days: [1, 2, 4, 5], open: "11:00", close: "20:00" }, { days: [0, 6], open: "11:00", close: "21:00" }],
+    },
+    menu: "핫도그 · 토스트",
+    commentSummary: "'우드코티지는 사랑'이라는 단골 반응, 창밖 계절 풍경이 화제예요",
   },
   {
     id: "golden-ikseon",
@@ -1063,6 +1574,12 @@ export const cafes: Cafe[] = [
     searchQuery: "골덴 익선동 삼일대로30길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DRCRufYkkCj/",
     imageUrl: "/cafes/golden.jpg",
+    hours: {
+      text: "월–금 08:00–18:00 · 토·일 08:00–20:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" }, { days: [0, 6], open: "08:00", close: "20:00" }],
+    },
+    menu: "불고기롤 · 버터갈릭 새우볼 · 샌드위치",
+    commentSummary: "시골 할머니집 같은 90년대 한옥 감성이라는 반응이 많아요",
   },
   {
     id: "camel-seochon",
@@ -1074,6 +1591,11 @@ export const cafes: Cafe[] = [
     searchQuery: "카멜커피 서촌",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DQ1ZpeBki-Z/",
     imageUrl: "/cafes/camel-seochon.jpg",
+    hours: {
+      text: "08:00–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "21:00" }],
+    },
+    commentSummary: "영상미와 서촌의 가을 풍경에 감탄하는 댓글이 많아요, 좋아요 3.5천",
   },
   {
     id: "haus-kiru-yeonnam",
@@ -1085,6 +1607,12 @@ export const cafes: Cafe[] = [
     searchQuery: "하우스키루 연남 성미산로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DQoiLgZEn3U/",
     imageUrl: "/cafes/haus-kiru.jpg",
+    hours: {
+      text: "매일 10:00–23:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "23:00" }],
+    },
+    menu: "드립커피 · 프렌치토스트 · 마들렌",
+    commentSummary: "강아지 키루가 사랑스럽다며 보러 가겠다는 댓글이 많아요, 좋아요 2.5천",
   },
   {
     id: "unlign-seongsu",
@@ -1096,6 +1624,12 @@ export const cafes: Cafe[] = [
     searchQuery: "언라인 성수이로16길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DQjYqblEvVV/",
     imageUrl: "/cafes/unlign.jpg",
+    hours: {
+      text: "08:00–20:00 · 모닝플레터는 11시까지",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" }],
+    },
+    menu: "샌드위치 · 모닝플레터",
+    commentSummary: "샌드위치가 궁금해 가보고 싶다는 댓글과 성수동 감성 호평, 좋아요 4.7천",
   },
   {
     id: "always-august-samgakji",
@@ -1107,6 +1641,12 @@ export const cafes: Cafe[] = [
     searchQuery: "올웨이즈어거스트 삼각지",
     sourceUrl: "https://www.instagram.com/green_sori/p/DQWg1gvkgVG/",
     imageUrl: "/cafes/always-august.jpg",
+    hours: {
+      text: "08:00–18:00 · 월·화 휴무 (인스타 참고)",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "08:00", close: "18:00" }],
+    },
+    menu: "라이트 로스팅 핸드드립 · 디저트",
+    commentSummary: "채광과 분위기가 예쁘다는 반응, 커피 맛이 기대된다는 댓글이 많아요",
   },
   {
     id: "goat-place-gwangjin",
@@ -1118,6 +1658,11 @@ export const cafes: Cafe[] = [
     searchQuery: "곷 광진 광장로5길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DQMNXg0EkYv/",
     imageUrl: "/cafes/goat-place.jpg",
+    hours: {
+      text: "평일 10:00–19:00 (화 휴무) · 주말 12:00–19:00",
+      schedule: [{ days: [1, 3, 4, 5], open: "10:00", close: "19:00" }, { days: [0, 6], open: "12:00", close: "19:00" }],
+    },
+    commentSummary: "고즈넉하고 힐링되는 분위기라는 반응, 꽃집 겸 카페 컨셉 호평이 많아요",
   },
   {
     id: "kapi-seoul-mapo",
@@ -1129,6 +1674,11 @@ export const cafes: Cafe[] = [
     searchQuery: "캐피 마포 백범로16안길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DQEePLhErKw/",
     imageUrl: "/cafes/kapi-seoul.jpg",
+    hours: {
+      text: "09:00–18:00 · 매월 첫째 월 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "18:00" }],
+    },
+    commentSummary: "필름 감성이 좋다는 반응, '대흥 알짜배기 카페 모음'이라는 댓글이 많아요",
   },
   {
     id: "tymm-haebangchon",
@@ -1140,6 +1690,12 @@ export const cafes: Cafe[] = [
     searchQuery: "tymm 용산",
     sourceUrl: "https://www.instagram.com/green_sori/p/DPtUD4uEsBS/",
     imageUrl: "/cafes/tymm.jpg",
+    hours: {
+      text: "평일 14:00–01:00 (화 휴무) · 주말 13:00–01:00",
+      schedule: [{ days: [1, 3, 4, 5], open: "14:00", close: "01:00" }, { days: [0, 6], open: "13:00", close: "01:00" }],
+    },
+    menu: "핸드드립 · 말차치즈케이크(추천) · 내추럴 와인",
+    commentSummary: "카세트 음악 컨셉이 궁금해 가보고 싶다는 반응, 좋아요 7.4천의 인기 게시물",
   },
   {
     id: "sogyeonggye-paju",
@@ -1151,6 +1707,12 @@ export const cafes: Cafe[] = [
     searchQuery: "소경계",
     sourceUrl: "https://www.instagram.com/green_sori/p/DPJQaLTkmZi/",
     imageUrl: "/cafes/sogyeonggye.jpg",
+    hours: {
+      text: "화–일 12:00–18:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "12:00", close: "18:00" }],
+    },
+    menu: "커피 · 차 · 허브 음료 · 계절 디저트",
+    commentSummary: "큰 창 너머 초록 풍경이 힐링이라는 반응, 화보 같다는 댓글이 많아요",
   },
   {
     id: "month-sculpture-mapo",
@@ -1162,6 +1724,12 @@ export const cafes: Cafe[] = [
     searchQuery: "먼스스컬프쳐 성산로2길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DPEGwAXEoS7/",
     imageUrl: "/cafes/month-sculpture.jpg",
+    hours: {
+      text: "11:30–19:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:30", close: "19:00" }],
+    },
+    menu: "커피 · 샌드위치 · 디저트",
+    commentSummary: "단골이라는 커피·샌드위치 호평과 아늑한 분위기 좋다는 댓글이 많아요",
   },
   {
     id: "bangasayu-gwangju",
@@ -1173,6 +1741,11 @@ export const cafes: Cafe[] = [
     searchQuery: "반가사유 광주 백서로153번길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DO8YSKlEilM/",
     imageUrl: "/cafes/bangasayu-gwangju.jpg",
+    hours: {
+      text: "월–금 10:00–18:00 · 토 13:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "10:00", close: "18:00" }, { days: [6], open: "13:00", close: "18:00" }],
+    },
+    commentSummary: "광주 카페 4곳 소개에 저장하고 가보겠다는 댓글이 많아요, 좋아요 3.6천",
   },
   {
     id: "sobb-hannam",
@@ -1184,6 +1757,12 @@ export const cafes: Cafe[] = [
     searchQuery: "소브 이태원",
     sourceUrl: "https://www.instagram.com/green_sori/p/DOqWwX-Ep-z/",
     imageUrl: "/cafes/sobb.jpg",
+    hours: {
+      text: "07:30–23:00 · 화·수 휴무 (가오픈, 변동 가능)",
+      schedule: [{ days: [0, 1, 4, 5, 6], open: "07:30", close: "23:00" }],
+    },
+    menu: "브런치 · 커피 · 베이커리",
+    commentSummary: "공간이 예쁘다며 저장했다는 댓글이 많고, 인테리어 감각 호평이에요",
   },
   {
     id: "ocha-coffee-gurye",
@@ -1195,6 +1774,12 @@ export const cafes: Cafe[] = [
     searchQuery: "오차커피공방",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DOgDlxnEk7R/",
     imageUrl: "/cafes/ocha-coffee.jpg",
+    hours: {
+      text: "매일 10:30–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:30", close: "21:00" }],
+    },
+    menu: "핸드드립 · 비엔나커피 · 모로코 커피 · 지리산 야생 녹차 · 오미자차",
+    commentSummary: "평화롭고 힐링된다는 반응, 구례까지 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "18maystreet-eunpyeong",
@@ -1206,6 +1791,12 @@ export const cafes: Cafe[] = [
     searchQuery: "18메이스트릿 은평 증산로15길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DOTLRipEqyR/",
     imageUrl: "/cafes/18maystreet.jpg",
+    hours: {
+      text: "월–토 08:00–17:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "08:00", close: "17:00" }],
+    },
+    menu: "호주식 브런치 · 직접 로스팅한 커피 · 샌드위치",
+    commentSummary: "사장님이 친절하다는 후기와 호주식 브런치가 궁금하다는 댓글이 많아요",
   },
   {
     id: "soundary-dongjak",
@@ -1217,6 +1808,12 @@ export const cafes: Cafe[] = [
     searchQuery: "사운더리 상도동",
     sourceUrl: "https://www.instagram.com/green_sori/p/DOOBFcdEhoB/",
     imageUrl: "/cafes/soundary.jpg",
+    hours: {
+      text: "매일 11:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "22:00" }],
+    },
+    menu: "에스프레소 메뉴 · 드립 커피 · 케이크",
+    commentSummary: "인테리어가 멋지다는 감탄과 꼭 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "bowhasa-gyeongju",
@@ -1228,6 +1825,11 @@ export const cafes: Cafe[] = [
     searchQuery: "보우하사 경주 원효로169번길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DOGTP7XEtvr/",
     imageUrl: "/cafes/bowhasa.jpg",
+    hours: {
+      text: "매일 10:00–19:00 (휴무 시 인스타 사전공지)",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "19:00" }],
+    },
+    commentSummary: "경주 가면 꼭 가겠다는 댓글이 많고, 디저트도 맛있다는 후기가 있어요",
   },
   {
     id: "cassette-chungmuro",
@@ -1239,6 +1841,12 @@ export const cafes: Cafe[] = [
     searchQuery: "카세트 충무로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DN0SbH6ZIE6/",
     imageUrl: "/cafes/cassette-chungmuro.jpg",
+    hours: {
+      text: "12:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "12:00", close: "18:00" }],
+    },
+    menu: "바브카 · 커피",
+    commentSummary: "빈티지 커피바와 영상 분위기 호평, 바브카를 먹어볼걸 그랬다는 댓글도 있어요",
   },
   {
     id: "coffeeplace-gyeongju",
@@ -1250,6 +1858,12 @@ export const cafes: Cafe[] = [
     searchQuery: "커피플레이스 경주",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DNvHhX_ZFmp/",
     imageUrl: "/cafes/coffeeplace-gyeongju.jpg",
+    hours: {
+      text: "매일 08:00–18:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "18:00" }],
+    },
+    menu: "케냐 드립커피",
+    commentSummary: "커피가 맛있었다는 방문 후기와 비 오는 날 운치가 좋다는 반응이 많아요",
   },
   {
     id: "coffee-yangjang-mapo",
@@ -1261,6 +1875,12 @@ export const cafes: Cafe[] = [
     searchQuery: "커피양장 마포 독막로22길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DNp_0CSJ0dq/",
     imageUrl: "/cafes/coffee-yangjang.jpg",
+    hours: {
+      text: "월–토 08:00–22:00 · 일 11:00–20:00",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "08:00", close: "22:00" }, { days: [0], open: "11:00", close: "20:00" }],
+    },
+    menu: "드립커피",
+    commentSummary: "레트로 감성과 사장님 센스가 멋지다는 반응, 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "ehae-mapo",
@@ -1272,6 +1892,12 @@ export const cafes: Cafe[] = [
     searchQuery: "이해 성미산로",
     sourceUrl: "https://www.instagram.com/green_sori/p/DNiRmmHJIjY/",
     imageUrl: "/cafes/ehae.jpg",
+    hours: {
+      text: "매일 08:00–19:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "19:00" }],
+    },
+    menu: "에티오피아 스페셜티 커피 · 바나나 머핀",
+    commentSummary: "커피 맛집이라는 말에 가보고 싶다는 댓글과 실제 방문 호평이 있어요",
   },
   {
     id: "zakilove-yongsan",
@@ -1283,6 +1909,11 @@ export const cafes: Cafe[] = [
     searchQuery: "자키러브 후암로40길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DNdH6x5Jyfm/",
     imageUrl: "/cafes/zakilove.jpg",
+    hours: {
+      text: "월–금 08:00–20:00 · 토·일 11:00–20:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "20:00" }, { days: [0, 6], open: "11:00", close: "20:00" }],
+    },
+    commentSummary: "빈티지한 무드가 좋다는 반응, 웨이팅해서라도 가겠다는 댓글이 있어요",
   },
   {
     id: "fodi-seoul-yongsan",
@@ -1294,6 +1925,12 @@ export const cafes: Cafe[] = [
     searchQuery: "포디서울",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DNVZU2Wp0R1/",
     imageUrl: "/cafes/fodi-seoul.jpg",
+    hours: {
+      text: "10:00–20:00 · 화 10:00–16:00 · 토 10:00–23:00",
+      schedule: [{ days: [0, 1, 3, 4, 5], open: "10:00", close: "20:00" }, { days: [2], open: "10:00", close: "16:00" }, { days: [6], open: "10:00", close: "23:00" }],
+    },
+    menu: "고구마 크림브륄레",
+    commentSummary: "기차 지나는 뷰가 낭만적이라는 반응, 비 오는 날 감성 호평이 많아요",
   },
   {
     id: "vises-bakery-yongsan",
@@ -1305,6 +1942,12 @@ export const cafes: Cafe[] = [
     searchQuery: "븨세스바게리 두텁바위로1가길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DNNr7NLJdfS/",
     imageUrl: "/cafes/vises-bakery.jpg",
+    hours: {
+      text: "매일 08:00–15:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "15:00" }],
+    },
+    menu: "포카치아 · 사워도우 · 샌드위치 · 에이드 · 커피",
+    commentSummary: "빵이 맛있어 보인다는 반응과 저장해 두고 가보겠다는 댓글이 많아요",
   },
   {
     id: "naive-brewers-busan",
@@ -1316,6 +1959,12 @@ export const cafes: Cafe[] = [
     searchQuery: "나이브브류어스 전포대로186번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DNF_ESSJldw/",
     imageUrl: "/cafes/naive-brewers.jpg",
+    hours: {
+      text: "매일 11:30–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:30", close: "22:00" }],
+    },
+    menu: "크림라떼 · 필터커피 · 케냐 뚱구리 AA · 엑설런트 라떼",
+    commentSummary: "힙하고 빈티지한 공간이라는 감탄과 엑설런트 라떼 기대 댓글이 많아요",
   },
   {
     id: "withal-coffee-yongsan",
@@ -1327,6 +1976,12 @@ export const cafes: Cafe[] = [
     searchQuery: "윗올커피샵 효창원로62길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DM-NqfEp837/",
     imageUrl: "/cafes/withal-coffee.jpg",
+    hours: {
+      text: "08:00–18:00 · 금 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 4, 6], open: "08:00", close: "18:00" }],
+    },
+    menu: "토마토잼 잠봉 샌드위치",
+    commentSummary: "깔끔한 커피바와 잔잔한 분위기가 좋다는 반응, 시그니처 샌드위치가 궁금하다는 댓글이 많아요",
   },
   {
     id: "chance-someone-suwon",
@@ -1338,6 +1993,11 @@ export const cafes: Cafe[] = [
     searchQuery: "챈스온썸원 수원",
     sourceUrl: "https://www.instagram.com/green_sori/p/DMuxiq0J_7m/",
     imageUrl: "/cafes/chance-someone.jpg",
+    hours: {
+      text: "11:00–20:00 · 일·월 휴무",
+      schedule: [{ days: [2, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    commentSummary: "장안문 성곽 뷰가 멋지다는 반응, 수원 가보겠다는 댓글이 많은 좋아요 1천 게시물이에요",
   },
   {
     id: "beolsae-jung",
@@ -1349,6 +2009,11 @@ export const cafes: Cafe[] = [
     searchQuery: "벌새 을지로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DMcuH0kJV-V/",
     imageUrl: "/cafes/beolsae.jpg",
+    hours: {
+      text: "수–금 11:00–18:00 · 토·일 12:00–18:00 · 월·화 휴무",
+      schedule: [{ days: [3, 4, 5], open: "11:00", close: "18:00" }, { days: [0, 6], open: "12:00", close: "18:00" }],
+    },
+    commentSummary: "우드톤 인테리어와 클래식 분위기가 멋지다는 반응, 꼭 가보겠다는 댓글이 많아요",
   },
   {
     id: "stance-coffee-mapo",
@@ -1360,6 +2025,12 @@ export const cafes: Cafe[] = [
     searchQuery: "스탠스커피 와우산로11길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DL7UCdCJF9X/",
     imageUrl: "/cafes/stance-coffee.jpg",
+    hours: {
+      text: "평일 11:00–22:00 · 주말 12:00–22:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "11:00", close: "22:00" }, { days: [0, 6], open: "12:00", close: "22:00" }],
+    },
+    menu: "아인슈페너 · 브라운 치즈 크로플",
+    commentSummary: "아인슈페너 맛집이라 가보고 싶다는 반응과 영상미 감탄 댓글이 많은 게시물이에요",
   },
   {
     id: "formula-atelier-seochon",
@@ -1371,6 +2042,11 @@ export const cafes: Cafe[] = [
     searchQuery: "포뮬라 사직로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DLM5GgNpESI/",
     imageUrl: "/cafes/formula-atelier.jpg",
+    hours: {
+      text: "월–금 08:30–19:00 (화 휴무) · 토·일 10:00–19:00",
+      schedule: [{ days: [1, 3, 4, 5], open: "08:30", close: "19:00" }, { days: [0, 6], open: "10:00", close: "19:00" }],
+    },
+    commentSummary: "비 오는 날 운치 있다는 반응, 커피가 인상적이라 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "colony-cheongju",
@@ -1382,6 +2058,11 @@ export const cafes: Cafe[] = [
     searchQuery: "콜로니 청주 사뜸로36번길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DKzJJ6bpjTn/",
     imageUrl: "/cafes/colony.jpg",
+    hours: {
+      text: "08:30–21:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "08:30", close: "21:00" }],
+    },
+    commentSummary: "높은 천장과 감각적 인테리어가 예쁘다는 반응, 청주 가면 들르겠다는 댓글이 많아요",
   },
   {
     id: "riki-coffee-gangseo",
@@ -1393,6 +2074,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 강서구 공항대로8길 41",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DKo3D5wS0-F/",
     imageUrl: "/cafes/riki-coffee.jpg",
+    hours: {
+      text: "10:00–18:30 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "10:00", close: "18:30" }],
+    },
+    menu: "에티오피아 필터커피 · 샌드위치",
+    commentSummary: "영화 같은 분위기라는 반응이 많은, 좋아요 5.6천의 인기 게시물이에요",
   },
   {
     id: "visionstroll-seodaemun",
@@ -1404,6 +2091,12 @@ export const cafes: Cafe[] = [
     searchQuery: "비전스트롤 연희로11가길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DKhInyKJ3qT/",
     imageUrl: "/cafes/visionstroll.jpg",
+    hours: {
+      text: "08:00–20:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "08:00", close: "20:00" }],
+    },
+    menu: "휘낭시에",
+    commentSummary: "자유로운 분위기가 좋다는 반응, 휘낭시에가 쫀득하고 맛있다는 댓글이 많아요",
   },
   {
     id: "damdaehage-eunpyeong",
@@ -1415,6 +2108,12 @@ export const cafes: Cafe[] = [
     searchQuery: "담대하게커피워크 응암로21길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DKW1Brvp3yc/",
     imageUrl: "/cafes/damdaehage.jpg",
+    hours: {
+      text: "09:00–17:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "09:00", close: "17:00" }],
+    },
+    menu: "콜롬비아 커피",
+    commentSummary: "아늑하고 사장님 취향이 느껴진다는 반응, 혼자 가기 좋겠다는 댓글이 많아요",
   },
   {
     id: "wuri-coffee-jung",
@@ -1426,6 +2125,11 @@ export const cafes: Cafe[] = [
     searchQuery: "우리커피클럽 다산로33길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DKEzsS0p36q/",
     imageUrl: "/cafes/wuri-coffee.jpg",
+    hours: {
+      text: "매일 09:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "20:00" }],
+    },
+    commentSummary: "힙한 공간과 골목 풍경이 좋다는 반응, 계단 좌석이 인상적이라는 댓글이 많아요",
   },
   {
     id: "orube-seongdong",
@@ -1437,6 +2141,12 @@ export const cafes: Cafe[] = [
     searchQuery: "오루베 왕십리로31길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DJ9EgyPpw6H/",
     imageUrl: "/cafes/orube.jpg",
+    hours: {
+      text: "월–금 08:30–17:30 (목 휴무) · 토·일 09:00–18:00",
+      schedule: [{ days: [1, 2, 3, 5], open: "08:30", close: "17:30" }, { days: [0, 6], open: "09:00", close: "18:00" }],
+    },
+    menu: "필터커피 · 쿠키",
+    commentSummary: "아기자기한 공간이 매력적이라는 반응이 많은, 좋아요 5.1천의 인기 게시물이에요",
   },
   {
     id: "leesar-euljiro",
@@ -1448,6 +2158,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 중구 창경궁로 28-24",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DJwOFoIJ1he/",
     imageUrl: "/cafes/leesar-euljiro.jpg",
+    hours: {
+      text: "08:00–16:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "08:00", close: "16:00" }],
+    },
+    commentSummary: "비 오는 을지로 감성이 멋지다는 반응, 믿고 가보겠다는 댓글이 많아요",
   },
   {
     id: "teamlee-mapo",
@@ -1459,6 +2174,11 @@ export const cafes: Cafe[] = [
     searchQuery: "팀리커피로스터스 고산18길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DbS6r6Izgz8/",
     imageUrl: "/cafes/teamlee.jpg",
+    hours: {
+      text: "10:00–19:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "10:00", close: "19:00" }],
+    },
+    commentSummary: "필름 감성이 좋다는 반응, '대흥 알짜배기 카페 모음'이라는 댓글이 많아요",
   },
   {
     id: "raw-coffee-euljiro",
@@ -1470,6 +2190,11 @@ export const cafes: Cafe[] = [
     searchQuery: "로우커피스탠드 을지로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DJZCtmeJ9PG/",
     imageUrl: "/cafes/raw-coffee-euljiro.jpg",
+    hours: {
+      text: "월–금 07:00–16:00 · 토·일 09:00–16:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "07:00", close: "16:00" }, { days: [0, 6], open: "09:00", close: "16:00" }],
+    },
+    commentSummary: "빈티지한 외관과 영상미가 멋지다는 반응, 저장하고 가보겠다는 댓글이 많아요",
   },
   {
     id: "majui-songpa",
@@ -1481,6 +2206,12 @@ export const cafes: Cafe[] = [
     searchQuery: "마주이 삼전로9길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DJJlhTNpJ8h/",
     imageUrl: "/cafes/majui.jpg",
+    hours: {
+      text: "매일 11:00–23:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "23:00" }],
+    },
+    menu: "드립커피 · 디저트 · 간단한 주류",
+    commentSummary: "햇살 드는 공간과 커피잔이 예쁘다는 반응, 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "immute-gangnam",
@@ -1492,6 +2223,11 @@ export const cafes: Cafe[] = [
     searchQuery: "아임뮤트 도산대로8길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DI6K9M9pDoO/",
     imageUrl: "/cafes/immute.jpg",
+    hours: {
+      text: "월–금 10:00–22:00 · 주말 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "10:00", close: "22:00" }],
+    },
+    commentSummary: "멋진 사장님과 커피 찐맛집 같다는 반응, 로스팅 향이 느껴진다는 댓글이 많아요",
   },
   {
     id: "vimutti-mapo",
@@ -1503,6 +2239,12 @@ export const cafes: Cafe[] = [
     searchQuery: "비뮤티 연남로5길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DIya5uFpiqU/",
     imageUrl: "/cafes/vimutti.jpg",
+    hours: {
+      text: "10:00–21:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "10:00", close: "21:00" }],
+    },
+    menu: "토마토 스프 · 바질 토스트 · 유자컵케이크",
+    commentSummary: "커피와 디저트가 좋았다는 방문 후기와 저장하겠다는 댓글이 많아요",
   },
   {
     id: "lemme-coffee-seodaemun",
@@ -1514,6 +2256,11 @@ export const cafes: Cafe[] = [
     searchQuery: "램미커피 충정로4길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DIqrysApJXs/",
     imageUrl: "/cafes/lemme-coffee.jpg",
+    hours: {
+      text: "월–금 07:30–18:00 · 주말 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "07:30", close: "18:00" }],
+    },
+    commentSummary: "충정로 숨은 보석이라는 반응, 카푸치노 거품이 맛있어 보인다는 댓글이 많아요",
   },
   {
     id: "bnhr-jongno",
@@ -1525,6 +2272,11 @@ export const cafes: Cafe[] = [
     searchQuery: "벤허커피 필운대로2길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DIdzoNAJ2zO/",
     imageUrl: "/cafes/bnhr.jpg",
+    hours: {
+      text: "10:30–18:30 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "10:30", close: "18:30" }],
+    },
+    commentSummary: "벚꽃 핀 서촌 분위기가 좋다는 반응, 야외 자리에서 커피 마시고 싶다는 댓글이 많아요",
   },
   {
     id: "pasmal-jongno",
@@ -1536,6 +2288,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 창의문로 142-1",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DIQ7RNHplMO/",
     imageUrl: "/cafes/pasmal.jpg",
+    hours: {
+      text: "11:00–23:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "11:00", close: "23:00" }],
+    },
+    menu: "샌드위치 · 와인과 곁들이는 스몰디쉬",
+    commentSummary: "감각적인 공간과 부암동 감성이 좋다는 반응, 강아지가 귀엽다는 댓글도 있어요",
   },
   {
     id: "bookseller-daegu",
@@ -1547,6 +2305,14 @@ export const cafes: Cafe[] = [
     searchQuery: "북셀러 대구 달구벌대로446길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DH-667vJxmw/",
     imageUrl: "/cafes/bookseller-daegu.jpg",
+    hours: {
+      text: "화–금 13:00–18:00 · 토·일 12:00–18:00 · 월 휴무",
+      schedule: [
+        { days: [2, 3, 4, 5], open: "13:00", close: "18:00" },
+        { days: [0, 6], open: "12:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "중고서점 북카페 감성과 난로 분위기가 좋다는 반응, 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "biondn-jung",
@@ -1558,6 +2324,11 @@ export const cafes: Cafe[] = [
     searchQuery: "비온디앤 세종대로18길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DH5xx6aJU8M/",
     imageUrl: "/cafes/biondn.jpg",
+    hours: {
+      text: "매일 10:00–19:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "19:00" }],
+    },
+    commentSummary: "햇살 가득한 창가와 빈티지 감성이 예쁘다는 반응, 꼭 가보겠다는 댓글이 많아요",
   },
   {
     id: "langman-daegu",
@@ -1569,6 +2340,11 @@ export const cafes: Cafe[] = [
     searchQuery: "대구 중구 국채보상로102길 60",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DH0o21AJMU4/",
     imageUrl: "/cafes/langman.jpg",
+    hours: {
+      text: "11:00–19:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "11:00", close: "19:00" }],
+    },
+    commentSummary: "고양이 손님과 레트로 감성이 좋다는 반응, 대구 가면 꼭 들르겠다는 댓글이 많아요",
   },
   {
     id: "coffeesniffer-seongsu",
@@ -1580,6 +2356,12 @@ export const cafes: Cafe[] = [
     searchQuery: "커피스니퍼 서울숲",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DHii4YWpJG_/",
     imageUrl: "/cafes/coffeesniffer-seongsu.jpg",
+    hours: {
+      text: "매일 10:00–21:30",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "21:30" }],
+    },
+    menu: "클래식 도넛 · 클래식 카푸치노",
+    commentSummary: "영상 색감 감탄하는 반응과 커피가 정말 맛있다는 방문 후기 댓글이 많아요",
   },
   {
     id: "conte-seodaemun",
@@ -1591,6 +2373,11 @@ export const cafes: Cafe[] = [
     searchQuery: "콩트 연희동",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DHYTFHppBAC/",
     imageUrl: "/cafes/conte.jpg",
+    hours: {
+      text: "11:00–19:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 5, 6], open: "11:00", close: "19:00" }],
+    },
+    commentSummary: "예쁜 찻잔과 연희동 우드톤 감성이 좋다는 반응, 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "sita-coffee-mapo",
@@ -1602,6 +2389,11 @@ export const cafes: Cafe[] = [
     searchQuery: "시타커피로스터스 월드컵로8길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DHVuqBazQ-d/",
     imageUrl: "/cafes/sita-coffee.jpg",
+    hours: {
+      text: "월–금 08:00–18:00 · 토 11:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" }, { days: [6], open: "11:00", close: "18:00" }],
+    },
+    commentSummary: "우드 인테리어가 예쁘다는 반응, 저장하고 가보겠다는 댓글이 많아요",
   },
   {
     id: "patrick-coffee-daegu",
@@ -1613,6 +2405,12 @@ export const cafes: Cafe[] = [
     searchQuery: "패트릭커피하우스 대구",
     sourceUrl: "https://www.instagram.com/green_sori/p/DHQle4VJi4P/",
     imageUrl: "/cafes/patrick-coffee.jpg",
+    hours: {
+      text: "월–금 08:00–18:00 (화 휴무) · 토·일 11:00–19:00",
+      schedule: [{ days: [1, 3, 4, 5], open: "08:00", close: "18:00" }, { days: [0, 6], open: "11:00", close: "19:00" }],
+    },
+    menu: "디저트 · 브런치",
+    commentSummary: "가구 쇼룸 같은 인테리어와 색감이 예쁘다는 반응, 좋아요 2.9천의 인기 게시물이에요",
   },
   {
     id: "bluesboy-suwon",
@@ -1624,6 +2422,12 @@ export const cafes: Cafe[] = [
     searchQuery: "블루스보이커피 수원 신풍로23번길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DHI1l8KpkwQ/",
     imageUrl: "/cafes/bluesboy.jpg",
+    hours: {
+      text: "12:00–21:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "12:00", close: "21:00" }],
+    },
+    menu: "필터·에스프레소 커피 · 디저트 · 하이볼",
+    commentSummary: "따뜻한 색감과 분위기 칭찬, 라이브 공연 소식에 가보겠다는 댓글이 많아요",
   },
   {
     id: "haero-coffee-seongbuk",
@@ -1635,6 +2439,11 @@ export const cafes: Cafe[] = [
     searchQuery: "해로커피 성북",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DG20cs0T1S1/",
     imageUrl: "/cafes/haero-coffee.jpg",
+    hours: {
+      text: "매일 11:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "22:00" }],
+    },
+    commentSummary: "눈 오는 날 분위기와 영상미에 감탄하는 반응, 취향 저격이라는 댓글이 많아요",
   },
   {
     id: "human-around-daegu",
@@ -1646,6 +2455,11 @@ export const cafes: Cafe[] = [
     searchQuery: "대구 중구 동덕로14길 14",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DGF5N4SJiYB/",
     imageUrl: "/cafes/human-around.jpg",
+    hours: {
+      text: "12:00–22:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 5, 6], open: "12:00", close: "22:00" }],
+    },
+    commentSummary: "힙하고 감각적인 공간이라는 반응, 대구 가면 들르겠다는 댓글이 많아요",
   },
   {
     id: "dukuduku-yangcheon",
@@ -1657,6 +2471,11 @@ export const cafes: Cafe[] = [
     searchQuery: "두구두구 목동중앙북로14길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DF-KYC1ph0R/",
     imageUrl: "/cafes/dukuduku.jpg",
+    hours: {
+      text: "08:00–19:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 5, 6], open: "08:00", close: "19:00" }],
+    },
+    commentSummary: "외관과 커피잔이 예쁘다는 반응, 좋아요 4.7천의 인기 게시물이에요",
   },
   {
     id: "pooom-seodaemun",
@@ -1668,6 +2487,11 @@ export const cafes: Cafe[] = [
     searchQuery: "품 신촌",
     sourceUrl: "https://www.instagram.com/green_sori/p/DFfQcJsp4j-/",
     imageUrl: "/cafes/pooom.jpg",
+    hours: {
+      text: "11:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "11:00", close: "18:00" }],
+    },
+    commentSummary: "눈 오는 풍경과 사진이 예쁘다는 반응, 들러보고 싶다는 댓글이 많아요",
   },
   {
     id: "moeul-mapo",
@@ -1679,6 +2503,12 @@ export const cafes: Cafe[] = [
     searchQuery: "모을 망원",
     sourceUrl: "https://www.instagram.com/green_sori/p/DFXjGM4PoRb/",
     imageUrl: "/cafes/moeul.jpg",
+    hours: {
+      text: "12:00–22:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" }],
+    },
+    menu: "드립 커피 · 과일 한 접시",
+    commentSummary: "뮤직비디오·영화 같다는 감탄과 눈 오는 풍경 반응, 좋아요 3.3천이에요",
   },
   {
     id: "weekendfilm-seongbuk",
@@ -1690,6 +2520,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 창경궁로43길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DFFglpdy4KH/",
     imageUrl: "/cafes/weekendfilm.jpg",
+    hours: {
+      text: "화–일 11:00–19:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "19:00" }],
+    },
+    menu: "사만 원두로 내린 커피",
+    commentSummary: "필름 감성과 색감이 멋지다는 반응, 꼭 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "smallow-mapo",
@@ -1701,6 +2537,11 @@ export const cafes: Cafe[] = [
     searchQuery: "스몰로우 연남",
     sourceUrl: "https://www.instagram.com/green_sori/p/DE9ygFqp25B/",
     imageUrl: "/cafes/smallow.jpg",
+    hours: {
+      text: "화–일 08:00–17:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "08:00", close: "17:00" }],
+    },
+    commentSummary: "1주년 축하와 포근한 공간이라는 반응, 커피가 맛있었다는 댓글도 있어요",
   },
   {
     id: "dripsso-yongsan",
@@ -1712,6 +2553,12 @@ export const cafes: Cafe[] = [
     searchQuery: "드립쏘 용산",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DE4q3zWJcbY/",
     imageUrl: "/cafes/dripsso.jpg",
+    hours: {
+      text: "화–금 09:00–20:00 · 토·일 10:00–21:00",
+      schedule: [{ days: [2, 3, 4, 5], open: "09:00", close: "20:00" }, { days: [0, 6], open: "10:00", close: "21:00" }],
+    },
+    menu: "아인슈페너",
+    commentSummary: "동네 사랑방 같은 정겨운 분위기라는 반응, 다녀왔다는 댓글도 보여요",
   },
   {
     id: "formula-coffee-yongsan",
@@ -1723,6 +2570,12 @@ export const cafes: Cafe[] = [
     searchQuery: "포뮬라커피 해방촌",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DEpLyU_vkHv/",
     imageUrl: "/cafes/formula-coffee.jpg",
+    hours: {
+      text: "월–금 11:00–19:00 · 토·일 11:00–21:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "11:00", close: "19:00" }, { days: [0, 6], open: "11:00", close: "21:00" }],
+    },
+    menu: "티라미수 · 쿠키",
+    commentSummary: "해방촌 커피맛집으로 유명하다는 댓글, 좋아요 6.7천의 인기 게시물이에요",
   },
   {
     id: "gudenguden-jung",
@@ -1734,6 +2587,15 @@ export const cafes: Cafe[] = [
     searchQuery: "구덴구덴 퇴계로8길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DEZvqxnJlDQ/",
     imageUrl: "/cafes/gudenguden.jpg",
+    hours: {
+      text: "월–수·금 11:00–19:00 · 토·일 12:00–20:00 · 목 휴무",
+      schedule: [
+        { days: [1, 2, 3, 5], open: "11:00", close: "19:00" },
+        { days: [0, 6], open: "12:00", close: "20:00" },
+      ],
+    },
+    menu: "카푸치노 · 티라미수",
+    commentSummary: "카푸치노 거품 비주얼에 감탄하는 반응, 티라미수 먹으러 가겠다는 댓글이 많아요",
   },
   {
     id: "tensquare-jung",
@@ -1745,6 +2607,12 @@ export const cafes: Cafe[] = [
     searchQuery: "텐스퀘어남산",
     sourceUrl: "https://www.instagram.com/green_sori/p/DD4QjPzJn9f/",
     imageUrl: "/cafes/tensquare.jpg",
+    hours: {
+      text: "매일 08:30–18:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:30", close: "18:00" }],
+    },
+    menu: "시그니처 아이스 아메리카노 · 게이샤라떼",
+    commentSummary: "커피 찐맛집 같다며 저장하겠다는 반응, 좋아요 6.2천의 인기 게시물이에요",
   },
   {
     id: "kracker-house-mapo",
@@ -1756,6 +2624,7 @@ export const cafes: Cafe[] = [
     searchQuery: "크래커하우스 성미산로13길",
     sourceUrl: "https://www.instagram.com/green_sori/p/DDUOR85J9-W/",
     imageUrl: "/cafes/kracker-house.jpg",
+    commentSummary: "귀엽고 따뜻한 공간이라는 반응, 저장하고 꼭 가보겠다는 댓글이 많아요",
   },
   {
     id: "katze-seodaemun",
@@ -1767,6 +2636,12 @@ export const cafes: Cafe[] = [
     searchQuery: "카쩨",
     sourceUrl: "https://www.instagram.com/green_sori/p/DDHXdidPI3b/",
     imageUrl: "/cafes/katze.jpg",
+    hours: {
+      text: "매일 08:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" }],
+    },
+    menu: "삥블렌드 · 레몬파운드",
+    commentSummary: "눈 쌓인 창밖 풍경이 액자 같다는 반응, 레몬파운드 먹고 싶다는 댓글이 많아요",
   },
   {
     id: "cafe-lent-yeongdeungpo",
@@ -1778,6 +2653,14 @@ export const cafes: Cafe[] = [
     searchQuery: "카페렁",
     sourceUrl: "https://www.instagram.com/green_sori/p/DC6ejebPwCn/",
     imageUrl: "/cafes/cafe-lent.jpg",
+    hours: {
+      text: "매일 11:00–21:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" },
+      ],
+    },
+    menu: "DAK 커피 · 휘낭시에",
+    commentSummary: "눈 내리는 영상이 감성적이라는 반응이 많은, 좋아요 1.4만의 인기 게시물이에요",
   },
   {
     id: "pillow-coffee-yeongdeungpo",
@@ -1789,6 +2672,8 @@ export const cafes: Cafe[] = [
     searchQuery: "필로우커피 문래동",
     sourceUrl: "https://www.instagram.com/green_sori/p/DCywm4EPqrO/",
     imageUrl: "/cafes/pillow-coffee.jpg",
+    menu: "프렌치토스트",
+    commentSummary: "프렌치토스트가 맛있어 보인다는 반응, 좋아요 6.6천의 인기 게시물이에요",
   },
   {
     id: "sodosi-seodaemun",
@@ -1800,6 +2685,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 거북골로24길 37-8",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DCocxH2hgaZ/",
     imageUrl: "/cafes/sodosi.jpg",
+    commentSummary: "매개체 2호점 소식을 반기는 댓글과 차분한 분위기가 매력적이라는 반응이 많아요",
   },
   {
     id: "pirultz-yongsan",
@@ -1811,6 +2697,15 @@ export const cafes: Cafe[] = [
     searchQuery: "피롤츠커피하우스",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DCeJoXOBAFm/",
     imageUrl: "/cafes/pirultz.jpg",
+    hours: {
+      text: "월–목·일 11:30–22:00 · 금·토 11:30–23:30",
+      schedule: [
+        { days: [0, 1, 2, 3, 4], open: "11:30", close: "22:00" },
+        { days: [5, 6], open: "11:30", close: "23:30" },
+      ],
+    },
+    menu: "푸딩",
+    commentSummary: "가을 낭만 분위기가 좋다는 반응, 영상이 영화 같다는 감성 댓글이 많아요",
   },
   {
     id: "complete-coffee-jungnang",
@@ -1822,6 +2717,11 @@ export const cafes: Cafe[] = [
     searchQuery: "컴플리트커피 면목",
     sourceUrl: "https://www.instagram.com/green_sori/p/DCWaTC5zn7u/",
     imageUrl: "/cafes/complete-coffee.jpg",
+    hours: {
+      text: "월–금 08:00–16:30 · 토 11:00–19:30 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "16:30" }, { days: [6], open: "11:00", close: "19:30" }],
+    },
+    commentSummary: "우드 인테리어가 멋지다는 반응이 많은, 좋아요 5.2천의 인기 게시물이에요",
   },
   {
     id: "roi-coffee-seongbuk",
@@ -1833,6 +2733,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 보문로21길 14",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DCJivTOBNfQ/",
     imageUrl: "/cafes/roi-coffee.jpg",
+    hours: {
+      text: "매일 10:00–19:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "19:00" }],
+    },
+    commentSummary: "저장해뒀다, 꼭 가보겠다는 댓글이 많고 차분한 분위기가 좋다는 반응이에요",
   },
   {
     id: "haengun-dabang-mullae",
@@ -1844,6 +2749,11 @@ export const cafes: Cafe[] = [
     searchQuery: "행운다방 문래",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DB_PpB2Bn8B/",
     imageUrl: "/cafes/haengun-dabang.jpg",
+    hours: {
+      text: "수–토 11:30–22:00 · 일 11:30–20:00 · 월·화 휴무",
+      schedule: [{ days: [3, 4, 5, 6], open: "11:30", close: "22:00" }, { days: [0], open: "11:30", close: "20:00" }],
+    },
+    commentSummary: "레트로 감성이 좋다는 반응이 많고 행운모나카를 먹어보고 싶다는 댓글도 있어요",
   },
   {
     id: "il-secondo-eunpyeong",
@@ -1855,6 +2765,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 은평구 은평로 82",
     sourceUrl: "https://www.instagram.com/green_sori/p/DB3jb-0z27f/",
     imageUrl: "/cafes/il-secondo.jpg",
+    hours: {
+      text: "11:00–20:00 · 월·화 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    commentSummary: "융드립 커피가 진하다는 후기와 저장해두고 꼭 가보겠다는 댓글이 많아요",
   },
   {
     id: "maegaeche-eunpyeong",
@@ -1866,6 +2781,14 @@ export const cafes: Cafe[] = [
     searchQuery: "매개체커피 증산",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DBvy9QNBCmX/",
     imageUrl: "/cafes/maegaeche.jpg",
+    hours: {
+      text: "월·화·목–일 08:00–18:00 · 수 휴무",
+      schedule: [
+        { days: [0, 1, 2, 4, 5, 6], open: "08:00", close: "18:00" },
+      ],
+    },
+    menu: "밤크림티라미수",
+    commentSummary: "밤티라미수 비주얼과 착한 가격에 감탄하는 댓글, 잔이 예쁘다는 반응이 많아요",
   },
   {
     id: "comill-coffee-eunpyeong",
@@ -1877,6 +2800,12 @@ export const cafes: Cafe[] = [
     searchQuery: "코밀커피",
     sourceUrl: "https://www.instagram.com/green_sori/p/DBi8vj4z4NY/",
     imageUrl: "/cafes/comill-coffee.jpg",
+    hours: {
+      text: "09:00–19:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "09:00", close: "19:00" }],
+    },
+    menu: "카푸치노",
+    commentSummary: "카푸치노가 제대로라는 반응과 통창 우드톤 공간이 아늑하다는 댓글이 많아요",
   },
   {
     id: "liffee-junggu",
@@ -1888,6 +2817,11 @@ export const cafes: Cafe[] = [
     searchQuery: "라이피 서소문",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DBbMlgwBswt/",
     imageUrl: "/cafes/liffee.jpg",
+    hours: {
+      text: "월–금 07:00–19:00 · 토·일 12:00–21:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "07:00", close: "19:00" }, { days: [0, 6], open: "12:00", close: "21:00" }],
+    },
+    commentSummary: "커피에 진심인 곳이라는 반응과 잔잔한 분위기가 좋다는 댓글이 이어져요",
   },
   {
     id: "hills-of-books-mapo",
@@ -1899,6 +2833,12 @@ export const cafes: Cafe[] = [
     searchQuery: "힐스오브북스",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DBLvVaeh7E0/",
     imageUrl: "/cafes/hills-of-books.jpg",
+    hours: {
+      text: "수–일 11:00–20:00 · 월·화 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    menu: "토스트 · 스프 · 라면 · 콜드브루",
+    commentSummary: "책과 소품 가득한 공간이 아늑하다는 반응, 토스트와 라면에 관심 갖는 댓글도 있어요",
   },
   {
     id: "fizz-social-club-junggu",
@@ -1910,6 +2850,13 @@ export const cafes: Cafe[] = [
     searchQuery: "피즈소셜클럽",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DBEBNZDhFDq/",
     imageUrl: "/cafes/fizz-social-club.jpg",
+    hours: {
+      text: "화–일 12:00–20:00 · 월 휴무",
+      schedule: [
+        { days: [0, 2, 3, 4, 5, 6], open: "12:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "이모지 반응이 대부분으로, 을지로 낭만 무드에 좋아요 1.1만이 모인 게시물이에요",
   },
   {
     id: "piled-coffee-dongdaemun",
@@ -1921,6 +2868,11 @@ export const cafes: Cafe[] = [
     searchQuery: "파일드 동대문",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DA8Tkycy13l/",
     imageUrl: "/cafes/piled-coffee.jpg",
+    hours: {
+      text: "월–금 08:00–17:30 · 토 10:00–19:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "17:30" }, { days: [6], open: "10:00", close: "19:00" }],
+    },
+    commentSummary: "저장해두고 가보고 싶다는 댓글과 따뜻한 감성이 힐링된다는 반응이 많아요",
   },
   {
     id: "elak-coffee-junggu",
@@ -1932,6 +2884,13 @@ export const cafes: Cafe[] = [
     searchQuery: "애락 신당",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DAyAxPDBOZW/",
     imageUrl: "/cafes/elak-coffee.jpg",
+    hours: {
+      text: "매일 08:00–20:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "소아암 자선행사가 따뜻하다는 반응과 공간이 멋지다는 댓글이 많은 게시물이에요",
   },
   {
     id: "doduk-kyubum-mapo",
@@ -1943,6 +2902,13 @@ export const cafes: Cafe[] = [
     searchQuery: "도덕과규범",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DAlIZKFB23w/",
     imageUrl: "/cafes/doduk-kyubum.jpg",
+    hours: {
+      text: "매일 09:30–20:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "09:30", close: "20:00" },
+      ],
+    },
+    commentSummary: "해외 팬들의 분위기 칭찬 댓글이 이어지는, 좋아요 2.5만의 인기 게시물이에요",
   },
   {
     id: "coffeesniffer-cityhall",
@@ -1954,6 +2920,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 중구 세종대로16길 27",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DAda9-ABwoZ/",
     imageUrl: "/cafes/coffeesniffer-cityhall.jpg",
+    hours: {
+      text: "월–금 08:00–20:00 · 토·일 10:00–20:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "20:00" },
+        { days: [0, 6], open: "10:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "영화 같은 영상이라는 반응이 많고 커피가 정말 맛있다는 단골 후기도 보여요",
   },
   {
     id: "goodthing-coffee-gwangjin",
@@ -1965,6 +2939,8 @@ export const cafes: Cafe[] = [
     searchQuery: "굿띵커피 광진",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DATGAhnPbKc/",
     imageUrl: "/cafes/goodthing-coffee.jpg",
+    menu: "브런치 · 소르베",
+    commentSummary: "프렌치토스트와 커피가 맛있다는 방문 후기, 가을 감성 영상 칭찬 댓글이 많아요",
   },
   {
     id: "iroulli-coffee-yeongdeungpo",
@@ -1976,6 +2952,14 @@ export const cafes: Cafe[] = [
     searchQuery: "이로울리커피스탠드",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C_-fbOSvAFL/",
     imageUrl: "/cafes/iroulli-coffee.jpg",
+    hours: {
+      text: "월–금 08:00–16:00 · 토 10:30–17:00 · 일 휴무",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "16:00" },
+        { days: [6], open: "10:30", close: "17:00" },
+      ],
+    },
+    commentSummary: "영화 같다는 영상미 칭찬과 영등포에 이런 곳이 있었냐는 반응이 많아요, 좋아요 4.2천이에요",
   },
   {
     id: "oob-yongsan",
@@ -1987,6 +2971,7 @@ export const cafes: Cafe[] = [
     searchQuery: "오오비 삼각지",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C_xnqFGhz8v/",
     imageUrl: "/cafes/oob-yongsan.jpg",
+    commentSummary: "차분한 공간과 영상 분위기가 좋다는 반응, 보고 바로 왔다는 댓글도 있는 좋아요 6.8천 릴이에요",
   },
   {
     id: "coresore-house-mapo",
@@ -1998,6 +2983,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 희우정로10안길 7",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C_dBisgv0R8/",
     imageUrl: "/cafes/coresore-house.jpg",
+    commentSummary: "영상미가 좋아 저장하고 가보겠다는 댓글 등 따뜻한 감성 반응이 많아요, 좋아요 4천이에요",
   },
   {
     id: "belebt-gangseo",
@@ -2009,6 +2995,14 @@ export const cafes: Cafe[] = [
     searchQuery: "베레프트",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C_VTeiBPZj4/",
     imageUrl: "/cafes/belebt.jpg",
+    hours: {
+      text: "화·금–일 10:00–21:00 · 수·목 10:00–19:00 · 월 휴무",
+      schedule: [
+        { days: [0, 2, 5, 6], open: "10:00", close: "21:00" },
+        { days: [3, 4], open: "10:00", close: "19:00" },
+      ],
+    },
+    commentSummary: "빈티지한 분위기와 영상미를 칭찬하는 국내외 댓글이 많아요, 좋아요 4천의 릴이에요",
   },
   {
     id: "pfiff-espresso-junggu",
@@ -2020,6 +3014,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 중구 충무로4길 3",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C_NkqHaPsLx/",
     imageUrl: "/cafes/pfiff-espresso.jpg",
+    hours: {
+      text: "매일 11:00–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" }],
+    },
+    menu: "트리플 그라니따",
+    commentSummary: "그라니따를 먹어보고 싶다는 댓글과 영상 칭찬이 많아요, 좋아요 2.4천이에요",
   },
   {
     id: "unyoke-coffee-mapo",
@@ -2031,6 +3031,16 @@ export const cafes: Cafe[] = [
     searchQuery: "언요크커피",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C_F2-mvvi6v/",
     imageUrl: "/cafes/unyoke-coffee.jpg",
+    hours: {
+      text: "월–목 09:00–20:00 · 금·토 10:00–21:00 · 일 10:00–20:00",
+      schedule: [
+        { days: [1, 2, 3, 4], open: "09:00", close: "20:00" },
+        { days: [5, 6], open: "10:00", close: "21:00" },
+        { days: [0], open: "10:00", close: "20:00" },
+      ],
+    },
+    menu: "롤리 챔피언스 블렌드 (에티오피아 워시드 커피)",
+    commentSummary: "카페 고양이와 따뜻한 햇살 분위기에 반했다는 댓글이 많아요, 좋아요 2.2천이에요",
   },
   {
     id: "saman-coffee-seongbuk",
@@ -2042,6 +3052,15 @@ export const cafes: Cafe[] = [
     searchQuery: "사만커피로스터스",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C-7jXKKvAgT/",
     imageUrl: "/cafes/saman-coffee.jpg",
+    hours: {
+      text: "화–목 10:00–20:00 · 금·일 10:00–19:00 · 토 10:00–22:00 · 월 휴무",
+      schedule: [
+        { days: [2, 3, 4], open: "10:00", close: "20:00" },
+        { days: [0, 5], open: "10:00", close: "19:00" },
+        { days: [6], open: "10:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "아지트 같은 잔잔한 분위기라는 반응, 혼자 커피 마시러 가고 싶다는 댓글이 많아요",
   },
   {
     id: "mugeum-incheon",
@@ -2053,6 +3072,13 @@ export const cafes: Cafe[] = [
     searchQuery: "묵음 부평",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C-xP3MkPNmB/",
     imageUrl: "/cafes/mugeum.jpg",
+    hours: {
+      text: "매일 12:00–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "이모지 반응이 대부분인 힙한 공간, 좋아요 9.1만의 인기 게시물이에요",
   },
   {
     id: "silky-room-eunpyeong",
@@ -2064,6 +3090,14 @@ export const cafes: Cafe[] = [
     searchQuery: "실키룸",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C-pjiZTv_R4/",
     imageUrl: "/cafes/silky-room.jpg",
+    hours: {
+      text: "월–수·금·토 11:00–20:00 · 일 12:00–20:00 · 목 휴무",
+      schedule: [
+        { days: [1, 2, 3, 5, 6], open: "11:00", close: "20:00" },
+        { days: [0], open: "12:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "색감과 분위기가 매력적이라는 반응, 굿즈 구경이 재밌겠다는 댓글이 있어요",
   },
   {
     id: "utopos-seocho",
@@ -2075,6 +3109,15 @@ export const cafes: Cafe[] = [
     searchQuery: "우토포스 방배",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C-hzdrRPA1-/",
     imageUrl: "/cafes/utopos.jpg",
+    hours: {
+      text: "월–금 09:00–18:00 · 토·일 11:00–18:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "09:00", close: "18:00" },
+        { days: [0, 6], open: "11:00", close: "18:00" },
+      ],
+    },
+    menu: "직접 로스팅한 원두 커피",
+    commentSummary: "강아지 푸우가 귀엽다는 반응이 많은, 좋아요 6.1천의 인기 릴스예요",
   },
   {
     id: "pildam-mapo",
@@ -2086,6 +3129,8 @@ export const cafes: Cafe[] = [
     searchQuery: "필담 동교",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C-XgMlivi2G/",
     imageUrl: "/cafes/pildam.jpg",
+    menu: "필터커피 · 칵테일",
+    commentSummary: "레트로 분위기와 빛이 예쁘다는 반응, 칵테일도 있어 좋다는 댓글이 있어요",
   },
   {
     id: "cafe-laam-mapo",
@@ -2097,6 +3142,11 @@ export const cafes: Cafe[] = [
     searchQuery: "카페람 새터산길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C-Pzjf5prp9/",
     imageUrl: "/cafes/cafe-laam.jpg",
+    hours: {
+      text: "매일 12:00–17:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "17:00" }],
+    },
+    commentSummary: "블랙톤 공간이 시크하고 멋지다는 반응, 짧은 영화 같다는 댓글이 많아요",
   },
   {
     id: "conhas-hyochang",
@@ -2108,6 +3158,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 효창원로62길 7",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C-FfnS8PsDI/",
     imageUrl: "/cafes/conhas-hyochang.jpg",
+    hours: {
+      text: "매일 10:00–23:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "23:00" }],
+    },
+    menu: "케냐 커피 · 딸기 타르트",
+    commentSummary: "인테리어와 딸기 케이크를 칭찬하는 해외 댓글이 많은, 좋아요 2.8만의 릴스예요",
   },
   {
     id: "cafe-yeorm-seodaemun",
@@ -2119,6 +3175,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 가재울로6길 53-3",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C99tUPbJaUA/",
     imageUrl: "/cafes/cafe-yeorm.jpg",
+    hours: {
+      text: "월–목 12:00–19:00 · 토·일 12:00–18:00 · 금 휴무",
+      schedule: [
+        { days: [1, 2, 3, 4], open: "12:00", close: "19:00" },
+        { days: [0, 6], open: "12:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "비 오는 날 운치 있다는 반응이 많고, 저장해두고 가보겠다는 댓글도 있어요",
   },
   {
     id: "eu-meum-mapo",
@@ -2130,6 +3194,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 성미산로 29",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C9zdG0_PUN2/",
     imageUrl: "/cafes/eu-meum.jpg",
+    commentSummary: "낭만 넘친다는 반응과 영상 분위기가 예쁘다는 댓글이 많아요, 좋아요 3.1천이에요",
   },
   {
     id: "knulp-yongsan",
@@ -2141,6 +3206,14 @@ export const cafes: Cafe[] = [
     searchQuery: "크눌프 백범로77길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C9pH3LWJ_uj/",
     imageUrl: "/cafes/knulp.jpg",
+    hours: {
+      text: "화·일 12:00–19:00 · 수–토 12:00–24:00 · 월 휴무",
+      schedule: [
+        { days: [0, 2], open: "12:00", close: "19:00" },
+        { days: [3, 4, 5, 6], open: "12:00", close: "24:00" },
+      ],
+    },
+    commentSummary: "빗소리 감성이 힐링된다는 반응이 많아요. 좋아요 6.3천의 인기 게시물이에요",
   },
   {
     id: "imi-oldmansion-mapo",
@@ -2152,6 +3225,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 연남로 51-1",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C9e2MWzPqen/",
     imageUrl: "/cafes/imi-oldmansion.jpg",
+    commentSummary: "예쁜 가정집처럼 아늑하다는 반응이 많고, 이미커피 공식 계정도 감사 댓글을 남겼어요",
   },
   {
     id: "upstanding-coffee-yongsan",
@@ -2163,6 +3237,13 @@ export const cafes: Cafe[] = [
     searchQuery: "업스탠딩커피 신흥로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C9XL7lOveJ2/",
     imageUrl: "/cafes/upstanding-coffee.jpg",
+    hours: {
+      text: "매일 10:00–18:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "분위기 좋다는 댓글과 해외 팬들의 호응이 많아요. 좋아요 1.6만의 인기 게시물이에요",
   },
   {
     id: "coeo-seongsu",
@@ -2174,6 +3255,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성동구 성수이로16길 45",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C9PcDclvFDM/",
     imageUrl: "/cafes/coeo-seongsu.jpg",
+    menu: "푸딩 · 디저트",
+    commentSummary: "성수 최애라는 말에 저장하겠다는 댓글과 푸딩이 맛있어 보인다는 반응이 많아요",
   },
   {
     id: "yeonpil-gwangjin",
@@ -2185,6 +3268,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 광진구 면목로 12",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C8zEVaBJx_-/",
     imageUrl: "/cafes/yeonpil.jpg",
+    menu: "보늬밤 · 커피",
+    commentSummary: "보늬밤 먹으러 가고 싶다는 댓글과 고요한 분위기가 좋다는 반응이 많은 게시물이에요",
   },
   {
     id: "hatsu-kohi-mapo",
@@ -2196,6 +3281,12 @@ export const cafes: Cafe[] = [
     searchQuery: "하츠코히 성미산로1길",
     sourceUrl: "https://www.instagram.com/green_sori/p/Db5ge6lEwGG/",
     imageUrl: "/cafes/hatsu-kohi.jpg",
+    hours: {
+      text: "11:00–20:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    menu: "나폴리탄 · 메론소다 · 도넛",
+    commentSummary: "망원동 인기 넘버원이라는 반응, 넓어진 새 공간이 반갑다는 댓글이 많아요",
   },
   {
     id: "harviz-coffeeroom-mapo",
@@ -2207,6 +3298,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 독막로24길 11",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C8ef3rJJgCL/",
     imageUrl: "/cafes/harviz-coffeeroom.jpg",
+    menu: "망고산도 · 아이스 에티오피아 커피",
+    commentSummary: "여름엔 망고샌드라는 댓글과 공간이 좋다는 반응이 있어요. 좋아요 1.1만 게시물이에요",
   },
   {
     id: "cafe-gongyu-seongbuk",
@@ -2218,6 +3311,15 @@ export const cafes: Cafe[] = [
     searchQuery: "카페공유 보문로18길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C8Mc0m-pSUv/",
     imageUrl: "/cafes/cafe-gongyu.jpg",
+    hours: {
+      text: "월–금 09:00–18:00 · 토·일 10:00–19:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "09:00", close: "18:00" },
+        { days: [0, 6], open: "10:00", close: "19:00" },
+      ],
+    },
+    menu: "메론소다 · 아이스커피",
+    commentSummary: "일본 교토 분위기 같다는 반응과 메론소다를 마시고 싶다는 댓글이 많아요",
   },
   {
     id: "seesaw-seongbuk",
@@ -2229,6 +3331,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 고려대로10길 48",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C8EvGvWJs4T/",
     imageUrl: "/cafes/seesaw.jpg",
+    commentSummary: "공간이 따스하고 여유롭다는 반응, 테라스에 앉아보고 싶다는 댓글이 있어요",
   },
   {
     id: "ascending-coffeewave-dongdaemun",
@@ -2240,6 +3343,14 @@ export const cafes: Cafe[] = [
     searchQuery: "어센딩커피웨이브 제기로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C76dKLzJLiG/",
     imageUrl: "/cafes/ascending-coffeewave.jpg",
+    hours: {
+      text: "화–금 11:00–17:00 · 토·일 11:00–19:00 · 월 휴무",
+      schedule: [
+        { days: [2, 3, 4, 5], open: "11:00", close: "17:00" },
+        { days: [0, 6], open: "11:00", close: "19:00" },
+      ],
+    },
+    commentSummary: "강아지 알밤이가 귀엽다는 반응과 예쁘다는 댓글이 많아요. 좋아요 1.6만 게시물이에요",
   },
   {
     id: "and-coffeebar-seodaemun",
@@ -2251,6 +3362,15 @@ export const cafes: Cafe[] = [
     searchQuery: "앤드커피바 신촌로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C7yvF6-p5jp/",
     imageUrl: "/cafes/and-coffeebar.jpg",
+    hours: {
+      text: "월–금 11:00–19:00 · 토·일 11:00–20:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "11:00", close: "19:00" },
+        { days: [0, 6], open: "11:00", close: "20:00" },
+      ],
+    },
+    menu: "프렌치토스트 · 커피",
+    commentSummary: "로맨틱한 분위기가 좋다는 반응과 영화 속 한 장면 같다는 댓글이 많아요",
   },
   {
     id: "donghyang-yeongdeungpo",
@@ -2262,6 +3382,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 영등포구 양산로 152",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C7q_WSRpUr0/",
     imageUrl: "/cafes/donghyang.jpg",
+    hours: {
+      text: "10:00–20:00 · 일·월 휴무",
+      schedule: [{ days: [2, 3, 4, 5, 6], open: "10:00", close: "20:00" }],
+    },
+    commentSummary: "빵도 맛있다는 댓글과 마음이 편해진다는 반응이 있는 좋아요 4.1천 게시물이에요",
   },
   {
     id: "sinora-seochon",
@@ -2273,6 +3398,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 자하문로 116",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C7jRWXsppuA/",
     imageUrl: "/cafes/sinora-seochon.jpg",
+    menu: "브런치",
+    commentSummary: "해외 팬들의 감탄 이모지 댓글이 대부분이고, 좋아요 8.8만의 인기 게시물이에요",
   },
   {
     id: "lp-cafe-tone-yeongdeungpo",
@@ -2284,6 +3411,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 영등포구 신길로45길 6",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C7beROVu_ig/",
     imageUrl: "/cafes/lp-cafe-tone.jpg",
+    hours: {
+      text: "화–일 11:00–20:00 · 월 휴무",
+      schedule: [
+        { days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "'Love the vibes' 등 해외 반응이 많고, 좋아요 10.7만의 인기 게시물이에요",
   },
   {
     id: "piryo-room-junggu",
@@ -2295,6 +3429,13 @@ export const cafes: Cafe[] = [
     searchQuery: "필요의방 을지로",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C7T0ve0ptvg/",
     imageUrl: "/cafes/piryo-room.jpg",
+    hours: {
+      text: "매일 12:00–20:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "'저에게 정말 필요한 방'이라는 댓글과 색감을 칭찬하는 해외 반응이 많아요",
   },
   {
     id: "hhss-house-mapo",
@@ -2306,6 +3447,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 월드컵로 113",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C7MD_pap_xi/",
     imageUrl: "/cafes/hhss-house.jpg",
+    hours: {
+      text: "월–목 11:00–21:00 · 금–일 11:00–22:00",
+      schedule: [
+        { days: [1, 2, 3, 4], open: "11:00", close: "21:00" },
+        { days: [0, 5, 6], open: "11:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "초록 가득한 공간이 힐링된다는 반응과 여름 냄새가 느껴진다는 댓글이 많아요",
   },
   {
     id: "51hibi-seongbuk",
@@ -2317,6 +3466,7 @@ export const cafes: Cafe[] = [
     searchQuery: "51히비 안암로3길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C68pS-kpqbn/",
     imageUrl: "/cafes/51hibi.jpg",
+    commentSummary: "교토 같다는 반응과 영상미 칭찬 댓글이 많아요, 좋아요 6.7천의 인기 게시물",
   },
   {
     id: "seongwajeom-eunpyeong",
@@ -2328,6 +3478,7 @@ export const cafes: Cafe[] = [
     searchQuery: "선과점 갈현로7가길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C6lcu7dpawz/",
     imageUrl: "/cafes/seongwajeom.jpg",
+    commentSummary: "평화롭고 아늑하다는 해외 반응과 이모지 댓글이 많아요. 좋아요 4.3만 게시물이에요",
   },
   {
     id: "achim-provision-yongsan",
@@ -2339,6 +3490,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 두텁바위로 79-4",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C6gTPR3pnYU/",
     imageUrl: "/cafes/achim-provision.jpg",
+    hours: {
+      text: "1F 카페·소품샵 08:00–15:00 · 2F 브런치 09:00–15:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "15:00" }],
+    },
+    menu: "브런치",
+    commentSummary: "아침에 브런치 먹으러 가보고 싶다는 댓글과 깨끗한 분위기라는 반응이 있어요",
   },
   {
     id: "nachba-jongno",
@@ -2350,6 +3507,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 필운대로 42",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C6Yj4oQpyK8/",
     imageUrl: "/cafes/nachba.jpg",
+    menu: "시나몬롤",
+    commentSummary: "감성이 좋다는 반응과 꼭 가보겠다는 댓글이 많아요. 좋아요 2.3만의 인기 게시물이에요",
   },
   {
     id: "nat-seongbuk",
@@ -2361,6 +3520,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 성북로14길 8",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C6Q1-EzJEy3/",
     imageUrl: "/cafes/nat-seongbuk.jpg",
+    hours: {
+      text: "월–토 12:00–21:50 · 일 12:00–19:50",
+      schedule: [
+        { days: [1, 2, 3, 4, 5, 6], open: "12:00", close: "21:50" },
+        { days: [0], open: "12:00", close: "19:50" },
+      ],
+    },
+    commentSummary: "보물 같은 공간이라는 댓글과 아지트 느낌이라며 마음이 따뜻해진다는 반응이 많아요",
   },
   {
     id: "chacha-tea-club-bukchon",
@@ -2372,6 +3539,15 @@ export const cafes: Cafe[] = [
     searchQuery: "차차티클럽 계동길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C6LwQyspIyO/",
     imageUrl: "/cafes/chacha-tea-club.jpg",
+    hours: {
+      text: "월 12:00–21:00 · 화–일 10:00–21:00",
+      schedule: [
+        { days: [1], open: "12:00", close: "21:00" },
+        { days: [0, 2, 3, 4, 5, 6], open: "10:00", close: "21:00" },
+      ],
+    },
+    menu: "차 · 다식",
+    commentSummary: "바람과 햇살 감성이 힐링된다는 반응과 주말에 다녀오겠다는 댓글이 있어요",
   },
   {
     id: "akfeb-yongsan",
@@ -2383,6 +3559,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 신흥로 62",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C6D_XDnpzjZ/",
     imageUrl: "/cafes/akfeb.jpg",
+    menu: "프렌치토스트",
+    commentSummary: "해방촌 감성이 멋지다는 댓글과 해외 팬 반응이 많아요. 좋아요 3.7만 게시물이에요",
   },
   {
     id: "geocheo-jongno",
@@ -2394,6 +3572,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 율곡로8길 63",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C50e55JOsbQ/",
     imageUrl: "/cafes/geocheo.jpg",
+    hours: {
+      text: "월·화·목–일 12:00–20:00 · 수 휴무",
+      schedule: [
+        { days: [0, 1, 2, 4, 5, 6], open: "12:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "아늑하고 평화롭다는 반응, 지도에 저장했다는 댓글도 있는 좋아요 7천 게시물",
   },
   {
     id: "naeemsung-seongbuk",
@@ -2405,6 +3590,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 보문로25길 11",
     sourceUrl: "https://www.instagram.com/green_sori/p/C5vXVX5pva8/",
     imageUrl: "/cafes/naeemsung.jpg",
+    hours: {
+      text: "월·화·목·금 09:00–19:00 · 토·일 11:00–20:00 · 수 휴무",
+      schedule: [
+        { days: [1, 2, 4, 5], open: "09:00", close: "19:00" },
+        { days: [0, 6], open: "11:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "차분하고 따뜻한 분위기라는 반응, 피드 보고 다녀왔다는 댓글도 있어요",
   },
   {
     id: "path-roasters-yongsan",
@@ -2416,6 +3609,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 소월로2길 37",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C5ifhaEJPWP/",
     imageUrl: "/cafes/path-roasters.jpg",
+    hours: {
+      text: "월–금 08:00–18:00 · 토·일 11:00–18:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" },
+        { days: [0, 6], open: "11:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "영화 같은 분위기·영상미라는 댓글이 많아요, 좋아요 2.8천의 인기 게시물",
   },
   {
     id: "susu-coffee-jongno",
@@ -2427,6 +3628,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 서순라길 97",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C5auED7JM4G/",
     imageUrl: "/cafes/susu-coffee.jpg",
+    menu: "필터커피 · 디저트",
+    commentSummary: "평화롭고 힐링된다는 반응과 해외 팬 댓글이 많은 좋아요 3.4만 게시물이에요",
   },
   {
     id: "uig-mapo",
@@ -2438,6 +3641,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 망원로3길 7",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C5LS9MBJy7n/",
     imageUrl: "/cafes/uig.jpg",
+    hours: {
+      text: "매일 11:00–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "잔잔한 바이브가 좋다는 반응, 디저트가 맛있어 보인다는 댓글도 있어요",
   },
   {
     id: "nopeunsan-seongdong",
@@ -2449,6 +3659,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성동구 성수이로 18-1",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C5DkW4KpK8s/",
     imageUrl: "/cafes/nopeunsan.jpg",
+    hours: {
+      text: "월·화·목·토·일 10:00–18:00 · 금 10:00–22:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 6], open: "10:00", close: "18:00" }, { days: [5], open: "10:00", close: "22:00" }],
+    },
+    menu: "짜이",
+    commentSummary: "꼭 가보고 싶다·저장했다는 댓글이 많고 이국적 분위기 호평이에요",
   },
   {
     id: "ym-coffee-eunpyeong",
@@ -2460,6 +3676,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 은평구 연서로29길 21-8",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C40HpkFyRex/",
     imageUrl: "/cafes/ym-coffee.jpg",
+    hours: {
+      text: "매일 11:30–23:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "11:30", close: "23:00" }],
+    },
+    menu: "핸드드립 커피",
+    commentSummary: "커피 맛집으로 유명하다는 댓글과 커피에 진심이 느껴진다는 반응이에요",
   },
   {
     id: "nelueui-eunpyeong",
@@ -2471,6 +3693,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 은평구 진흥로 184-1",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C4kq0Wvywis/",
     imageUrl: "/cafes/nelueui.jpg",
+    hours: {
+      text: "매일 09:00–20:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 5, 6], open: "09:00", close: "20:00" }],
+    },
+    menu: "핸드드립 커피 · 프렌치토스트",
+    commentSummary: "정성이 느껴진다는 반응과 해외 댓글이 많아요, 좋아요 8.9천 인기 게시물",
   },
   {
     id: "cafe-son-yongsan",
@@ -2482,6 +3710,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 한강대로40길 33",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C4c7GzqyfQo/",
     imageUrl: "/cafes/cafe-son.jpg",
+    hours: {
+      text: "수–일 12:00–18:00 · 월·화 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "12:00", close: "18:00" }],
+    },
+    menu: "필터커피 · 밤호박푸딩",
+    commentSummary: "가정집처럼 따뜻하고 아늑하다는 반응, 저장하겠다는 댓글도 있어요",
   },
   {
     id: "hakrim-jongno",
@@ -2493,6 +3727,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 대학로 119",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C4VOIaeyHEd/",
     imageUrl: "/cafes/hakrim.jpg",
+    hours: {
+      text: "매일 10:00–22:50",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "22:50" },
+      ],
+    },
+    commentSummary: "분위기가 좋다는 반응과 꼭 한번 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "beolsae-jongno",
@@ -2504,6 +3745,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 새문안로3길 12",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C4QHcWfSWHt/",
     imageUrl: "/cafes/beolsae-jongno.jpg",
+    hours: {
+      text: "월–금 11:30–19:00 · 토·일 휴무",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "11:30", close: "19:00" },
+      ],
+    },
+    commentSummary: "영상에서 커피향이 나는 것 같다는 반응과 영상미 칭찬 댓글이 많아요",
   },
   {
     id: "komu-coffee-seongbuk",
@@ -2515,6 +3763,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 고려대로7가길 1",
     sourceUrl: "https://www.instagram.com/green_sori/p/C4IXS4My6AX/",
     imageUrl: "/cafes/komu-coffee.jpg",
+    hours: {
+      text: "매일 11:00–21:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" },
+      ],
+    },
+    commentSummary: "사장님 감각과 강아지가 귀엽다는 반응, 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "ojongjong-jongno",
@@ -2526,6 +3781,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 삼청로 86-4",
     sourceUrl: "https://www.instagram.com/green_sori/p/C37hJgcSn8Y/",
     imageUrl: "/cafes/ojongjong.jpg",
+    hours: {
+      text: "매일 11:00–20:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    menu: "필터커피 · 디저트",
+    commentSummary: "디저트가 예쁘다는 반응, 저장해뒀다 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "pyeonghwa-yeongdeungpo",
@@ -2537,6 +3798,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 영등포구 문래동2가 14-42",
     sourceUrl: "https://www.instagram.com/green_sori/p/C32VzuQyBcs/",
     imageUrl: "/cafes/pyeonghwa.jpg",
+    hours: {
+      text: "월–목 13:00–24:00 · 금 13:00–01:00 · 토 12:00–01:00 · 일 12:00–24:00",
+      schedule: [{ days: [1, 2, 3, 4], open: "13:00", close: "00:00" }, { days: [5], open: "13:00", close: "01:00" }, { days: [6], open: "12:00", close: "01:00" }, { days: [0], open: "12:00", close: "00:00" }],
+    },
+    menu: "커피 · 주류 · 디저트 · 안주류",
+    commentSummary: "감성 가득하다는 반응, 문래동 가면 들르겠다·저장했다는 댓글이 많아요",
   },
   {
     id: "amateur-jakupsil-jongno",
@@ -2548,6 +3815,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 대학로1길 31",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C3xPWaHyjEo/",
     imageUrl: "/cafes/amateur-jakupsil.jpg",
+    hours: {
+      text: "월–금 12:00–23:00 · 토·일(공휴일 포함) 13:00–23:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "12:00", close: "23:00" }, { days: [0, 6], open: "13:00", close: "23:00" }],
+    },
+    commentSummary: "옛날 감성이 따뜻하고 예쁘다는 반응, 추억이 떠오른다는 댓글도 있어요",
   },
   {
     id: "sajik-coffee-hanjan-jongno",
@@ -2559,6 +3831,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 사직로9길 16-1",
     sourceUrl: "https://www.instagram.com/green_sori/p/C3kUuP9hHyV/",
     imageUrl: "/cafes/sajik-coffee-hanjan.jpg",
+    hours: {
+      text: "월–토 12:00–21:00 · 일 12:00–18:00",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "12:00", close: "21:00" }, { days: [0], open: "12:00", close: "18:00" }],
+    },
+    commentSummary: "소박하고 빈티지한 분위기가 좋다는 반응, 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "goyo-sanjang-ansan",
@@ -2570,6 +3847,12 @@ export const cafes: Cafe[] = [
     searchQuery: "경기 안산시 상록구 양지편3길 11",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C3PtIuUh0_O/",
     imageUrl: "/cafes/goyo-sanjang.jpg",
+    hours: {
+      text: "매일 12:00–20:00 · 목 휴무",
+      schedule: [{ days: [0, 1, 2, 3, 5, 6], open: "12:00", close: "20:00" }],
+    },
+    menu: "딸기 프레지에 · 커피 · 디저트",
+    commentSummary: "딸기 케이크가 맛있어 보인다는 반응과 힐링된다는 댓글이 많아요",
   },
   {
     id: "horangi-coffee-jongno",
@@ -2581,6 +3864,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 자하문로1길 50",
     sourceUrl: "https://www.instagram.com/green_sori/p/C29qDJmyvqE/",
     imageUrl: "/cafes/horangi-coffee.jpg",
+    hours: {
+      text: "수–금 12:00–18:00 · 토·일 13:00–18:00 · 월·화 휴무",
+      schedule: [{ days: [3, 4, 5], open: "12:00", close: "18:00" }, { days: [0, 6], open: "13:00", close: "18:00" }],
+    },
+    menu: "라떼",
+    commentSummary: "라떼 맛집이라는 공감 댓글과 친환경 공간이 아늑하다는 반응이에요",
   },
   {
     id: "acacia-coffee-nowon",
@@ -2592,6 +3881,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 노원구 공릉로29길 21",
     sourceUrl: "https://www.instagram.com/green_sori/p/C2uJZ0ryWZK/",
     imageUrl: "/cafes/acacia-coffee.jpg",
+    hours: {
+      text: "12:00–21:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "12:00", close: "21:00" }],
+    },
+    menu: "핸드드립 커피",
+    commentSummary: "조명과 우드 인테리어가 아늑하다는 반응, 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "basum-yangcheon",
@@ -2603,6 +3898,15 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 양천구 목동동로12길 43",
     sourceUrl: "https://www.instagram.com/green_sori/reel/C2UoXYqS0zs/",
     imageUrl: "/cafes/basum.jpg",
+    hours: {
+      text: "월–목 17:00–23:00 · 금–일 14:00–23:00",
+      schedule: [
+        { days: [1, 2, 3, 4], open: "17:00", close: "23:00" },
+        { days: [0, 5, 6], open: "14:00", close: "23:00" },
+      ],
+    },
+    menu: "필터커피",
+    commentSummary: "영화 같다는 반응, 목동에 갈 이유가 생겼다는 댓글도 있는 LP 카페예요",
   },
   {
     id: "hangang-espresso-mapo",
@@ -2614,6 +3918,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 상수동 321-15",
     sourceUrl: "https://www.instagram.com/green_sori/p/C1t5dEByVY4/",
     imageUrl: "/cafes/hangang-espresso.jpg",
+    hours: {
+      text: "매일 09:00–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "21:00" }],
+    },
+    menu: "에스프레소 · 필터커피(케냐 뚱구리)",
+    commentSummary: "에스프레소 맛집이라는 반응과 지도에 저장했다는 댓글이 많아요",
   },
   {
     id: "shinbo-seoul-dongdaemun",
@@ -2625,6 +3935,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 동대문구 회기로25길 101-13",
     sourceUrl: "https://www.instagram.com/green_sori/p/C1J55n0yYoX/",
     imageUrl: "/cafes/shinbo-seoul.jpg",
+    commentSummary: "차분한 우드 공간이 좋다는 반응과 디저트가 신기해 보인다는 댓글이 많아요",
   },
   {
     id: "borisu-seongbuk",
@@ -2636,6 +3947,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 고려대로8길 25",
     sourceUrl: "https://www.instagram.com/green_sori/p/C0_Uoo_ycus/",
     imageUrl: "/cafes/borisu.jpg",
+    menu: "딸기 머핀",
+    commentSummary: "가정집처럼 따뜻한 분위기라는 반응, 스프와 머핀을 먹으러 가겠다는 댓글이 많아요",
   },
   {
     id: "cafe-passed-yeongdeungpo",
@@ -2647,6 +3960,15 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 영등포구 문래동1가 72-12",
     sourceUrl: "https://www.instagram.com/green_sori/p/C03xbFPyrSm/",
     imageUrl: "/cafes/cafe-passed.jpg",
+    hours: {
+      text: "월–금 08:30–20:00 · 토 12:00–20:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:30", close: "20:00" },
+        { days: [6], open: "12:00", close: "20:00" },
+      ],
+    },
+    menu: "바나나 푸딩",
+    commentSummary: "사장님이 친절하다는 후기 댓글이 눈에 띄는, 좋아요 1.4천의 인기 게시물이에요",
   },
   {
     id: "goro-coffee-gwanak",
@@ -2658,6 +3980,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 관악구 남부순환로231길 33",
     sourceUrl: "https://www.instagram.com/green_sori/p/C0odbzqyNPA/",
     imageUrl: "/cafes/goro-coffee.jpg",
+    commentSummary: "커피와 디저트가 훌륭하다는 칭찬 댓글, 좋아요 1.1천의 인기 게시물이에요",
   },
   {
     id: "beton-seongsu",
@@ -2669,6 +3992,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성동구 성수동2가 315-47",
     sourceUrl: "https://www.instagram.com/green_sori/p/C0bN9PKS86D/",
     imageUrl: "/cafes/beton.jpg",
+    hours: {
+      text: "매일 11:00–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" }],
+    },
+    menu: "토마토 스프 · 소금빵",
+    commentSummary: "소금빵이 맛있어 보인다는 반응과 입구 트리가 예쁘다는 댓글이 많아요",
   },
   {
     id: "iwlt-gwangjin",
@@ -2680,6 +4009,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 광진구 천호대로118길 39",
     sourceUrl: "https://www.instagram.com/green_sori/p/C0RH3RQSpeB/",
     imageUrl: "/cafes/iwlt.jpg",
+    hours: {
+      text: "화–일 11:00–21:00 · 월 휴무",
+      schedule: [
+        { days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" },
+      ],
+    },
+    menu: "스콘",
+    commentSummary: "단정하고 아늑한 공간이라는 반응, 스콘이 맛있어 보인다는 댓글이 많아요",
   },
   {
     id: "botong-park-mapo",
@@ -2691,6 +4028,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 망원로 79",
     sourceUrl: "https://www.instagram.com/green_sori/reel/Cz3S1JESI_4/",
     imageUrl: "/cafes/botong-park.jpg",
+    hours: {
+      text: "매일 12:30–19:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "12:30", close: "19:00" },
+      ],
+    },
+    commentSummary: "잔잔한 영상이 힐링된다는 반응과 반복해서 봤다는 댓글이 많은 게시물이에요",
   },
   {
     id: "pyeonghyeong-mapo",
@@ -2702,6 +4046,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 망원동 410-31",
     sourceUrl: "https://www.instagram.com/green_sori/p/Czi3bexy89a/",
     imageUrl: "/cafes/pyeonghyeong.jpg",
+    hours: {
+      text: "화–일 11:00–20:00 · 월 휴무",
+      schedule: [
+        { days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" },
+      ],
+    },
+    menu: "케냐 커피",
+    commentSummary: "아늑하고 따스한 공간이라는 반응과 메모해두고 가보겠다는 댓글이 많아요",
   },
   {
     id: "hetki-seodaemun",
@@ -2713,6 +4065,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 가재울로4길 62",
     sourceUrl: "https://www.instagram.com/green_sori/p/CzTYHk7yYFR/",
     imageUrl: "/cafes/hetki.jpg",
+    hours: {
+      text: "화–토 12:00–17:00 · 월·일 휴무",
+      schedule: [
+        { days: [2, 3, 4, 5, 6], open: "12:00", close: "17:00" },
+      ],
+    },
+    commentSummary: "가을 감성이 가득하다는 반응, 따뜻한 분위기에 와보고 싶다는 댓글이 많아요",
   },
   {
     id: "kissa-koi-mapo",
@@ -2724,6 +4083,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 대흥동 328-22",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cy3EQdAyNCH/",
     imageUrl: "/cafes/kissa-koi.jpg",
+    hours: {
+      text: "월–토 12:00–23:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "12:00", close: "23:00" }],
+    },
+    menu: "나폴리탄",
+    commentSummary: "진짜 일본에 온 것 같다는 반응이 압도적, 킷사 감성을 칭찬하는 댓글이 많아요",
   },
   {
     id: "coffee-house-mapo",
@@ -2735,6 +4100,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 월드컵북로 128",
     sourceUrl: "https://www.instagram.com/green_sori/p/CyvWpCmS-D8/",
     imageUrl: "/cafes/coffee-house-mapo.jpg",
+    commentSummary: "옛 친구집처럼 아늑하고 따뜻하다는 반응, 차분한 분위기 칭찬 댓글이 많아요",
   },
   {
     id: "mukmukhan-forest-incheon",
@@ -2746,6 +4112,11 @@ export const cafes: Cafe[] = [
     searchQuery: "인천 연수구 청명로31번길 13-6",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cyaxn2PyOlO/",
     imageUrl: "/cafes/mukmukhan-forest.jpg",
+    hours: {
+      text: "매일 11:00–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" }],
+    },
+    commentSummary: "감각적인 가구 배치와 따사로운 공간이라는 반응, 이름이 멋지다는 댓글이 많아요",
   },
   {
     id: "cafe-ma-seodaemun",
@@ -2757,6 +4128,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 연희로11가길 48-10",
     sourceUrl: "https://www.instagram.com/green_sori/p/CyLS9TKS8S_/",
     imageUrl: "/cafes/cafe-ma.jpg",
+    hours: {
+      text: "매일 09:00–18:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "09:00", close: "18:00" },
+      ],
+    },
+    menu: "무화과멜바",
+    commentSummary: "무화과멜바가 궁금하다는 반응이 많고, 사진 감성을 칭찬하는 댓글이 이어져요",
   },
   {
     id: "corzielmo-jongno",
@@ -2768,6 +4147,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 율곡로1길 50",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cx72UNByjji/",
     imageUrl: "/cafes/corzielmo.jpg",
+    hours: {
+      text: "매일 11:00–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" }],
+    },
+    commentSummary: "한옥과 가을 감성이 잘 어울린다는 반응, 사진 디테일을 칭찬하는 댓글이 많아요",
   },
   {
     id: "otz-coffee-yeonnam",
@@ -2779,6 +4163,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 연남동 245-83",
     sourceUrl: "https://www.instagram.com/green_sori/p/CxaTtIQrYjM/",
     imageUrl: "/cafes/otz-coffee.jpg",
+    hours: {
+      text: "매일 10:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "22:00" }],
+    },
+    menu: "크림커피",
+    commentSummary: "크림커피가 맛있어 보인다는 반응과 공간이 넓어 좋다는 공감 댓글이 많아요",
   },
   {
     id: "seeum-eunpyeong",
@@ -2790,6 +4180,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 은평구 통일로 944",
     sourceUrl: "https://www.instagram.com/green_sori/p/CxIXgA4y_ve/",
     imageUrl: "/cafes/seeum-eunpyeong.jpg",
+    hours: {
+      text: "11:00–21:00 (가오픈 중)",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" }],
+    },
+    commentSummary: "엘피와 책이 가득한 분위기에 반했다는 반응, 꼭 가보겠다는 댓글이 많아요",
   },
   {
     id: "byeoldalbam-jongno",
@@ -2801,6 +4196,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 성균관로 38",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cw4m-R5SrBw/",
     imageUrl: "/cafes/byeoldalbam.jpg",
+    commentSummary: "다락방처럼 아늑한 공간이라는 반응, 하루 종일 머물고 싶다는 댓글이 많아요",
   },
   {
     id: "suyeon-sanbang-seongbuk",
@@ -2812,6 +4208,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 성북로26길 8",
     sourceUrl: "https://www.instagram.com/green_sori/p/CwsFKj4ypw2/",
     imageUrl: "/cafes/suyeon-sanbang.jpg",
+    commentSummary: "고즈넉한 분위기가 좋다는 반응과 꼭 가보고 싶다며 저장하는 댓글이 많아요",
   },
   {
     id: "sinora-bukchon",
@@ -2823,6 +4220,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 계동길 82",
     sourceUrl: "https://www.instagram.com/green_sori/p/CwaH-eUSYMU/",
     imageUrl: "/cafes/sinora-bukchon.jpg",
+    commentSummary: "빈티지하고 따뜻한 분위기라는 반응, 커피향이 느껴지는 것 같다는 댓글이 많아요",
   },
   {
     id: "dongyeon-suyejeom-jungnang",
@@ -2845,6 +4243,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 한강대로40가길 42",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cvj3OPpyhOJ/",
     imageUrl: "/cafes/teddy-beurre-house.jpg",
+    hours: {
+      text: "월–금 11:00–22:00 · 토·일 10:00–22:00",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "11:00", close: "22:00" }, { days: [0, 6], open: "10:00", close: "22:00" }],
+    },
+    menu: "망고바질데니쉬 · 초당옥수수프렌치토스트",
+    commentSummary: "웨이팅이 끊이지 않는 곳이라는 공감과 미리 구경하고 간다는 반응이 이어져요",
   },
   {
     id: "gomae-coffee-yongin",
@@ -2856,6 +4260,13 @@ export const cafes: Cafe[] = [
     searchQuery: "경기 용인시 기흥구 원고매로2번길 85-2",
     sourceUrl: "https://www.instagram.com/green_sori/p/CvcAriOyrxR/",
     imageUrl: "/cafes/gomae-coffee.jpg",
+    hours: {
+      text: "매일 11:00–21:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:00" },
+      ],
+    },
+    commentSummary: "고즈넉한 한옥 분위기가 취향이라는 반응, 저장하겠다는 댓글이 많아요",
   },
   {
     id: "wildgrass-dosang-pyeongtaek",
@@ -2867,6 +4278,7 @@ export const cafes: Cafe[] = [
     searchQuery: "경기 평택시 원평로105번길 31",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cu_7XJTyHZA/",
     imageUrl: "/cafes/wildgrass-dosang.jpg",
+    commentSummary: "비 오는 날과 잘 어울리는 감성 카페라는 반응과 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "mccoy-seongsu",
@@ -2878,6 +4290,13 @@ export const cafes: Cafe[] = [
     searchQuery: "맥코이 성수",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cut8cbGS4cp/",
     imageUrl: "/cafes/mccoy-seongsu.jpg",
+    hours: {
+      text: "매일 08:00–20:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "간판 강아지 '양파'가 귀엽다는 반응이 대부분인 좋아요 600에 가까운 게시물이에요",
   },
   {
     id: "rowide-gangnam",
@@ -2889,6 +4308,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 강남구 압구정로 146",
     sourceUrl: "https://www.instagram.com/green_sori/p/CueYRLHr6fX/",
     imageUrl: "/cafes/rowide.jpg",
+    hours: {
+      text: "매일 08:00–20:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "20:00" },
+      ],
+    },
+    menu: "철판토스트",
+    commentSummary: "철판토스트와 치즈 비주얼에 감탄하는 댓글과 초록 창밖 뷰 칭찬이 많아요",
   },
   {
     id: "bagelist-gangseo",
@@ -2900,6 +4327,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 강서구 마곡동로 55",
     sourceUrl: "https://www.instagram.com/green_sori/p/CuJ4MZvSISq/",
     imageUrl: "/cafes/bagelist.jpg",
+    hours: {
+      text: "매일 10:10–20:30",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:10", close: "20:30" },
+      ],
+    },
+    menu: "베이글",
+    commentSummary: "베이글 비주얼이 맛있어 보인다는 반응과 인테리어를 칭찬하는 댓글이 많아요",
   },
   {
     id: "jinagonamyeon-gwangjin",
@@ -2911,6 +4346,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 광진구 천호대로127길 43",
     sourceUrl: "https://www.instagram.com/green_sori/p/Csn6usGyJlw/",
     imageUrl: "/cafes/jinagonamyeon.jpg",
+    commentSummary: "카페 이름이 따뜻하게 와닿는다는 반응과 평온한 분위기 칭찬 댓글이 많아요",
   },
   {
     id: "engineering-club-yongsan",
@@ -2922,6 +4358,16 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 한강대로62다길 11",
     sourceUrl: "https://www.instagram.com/green_sori/p/CsYZwrPSncN/",
     imageUrl: "/cafes/engineering-club.jpg",
+    hours: {
+      text: "월–금 08:00–19:00 · 토 11:00–21:00 · 일 11:00–19:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "19:00" },
+        { days: [6], open: "11:00", close: "21:00" },
+        { days: [0], open: "11:00", close: "19:00" },
+      ],
+    },
+    menu: "베린(디저트)",
+    commentSummary: "차분한 분위기와 디저트가 맛있어 보인다는 반응, 메모해 두겠다는 댓글이 있어요",
   },
   {
     id: "babaashi-gwangjin",
@@ -2933,6 +4379,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 광진구 자양로50길 48",
     sourceUrl: "https://www.instagram.com/green_sori/p/CsLvBonSK9M/",
     imageUrl: "/cafes/babaashi.jpg",
+    hours: {
+      text: "월–목·토·일 10:00–19:00 · 금 휴무",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 6], open: "10:00", close: "19:00" },
+      ],
+    },
+    commentSummary: "상주 강아지 바바아시가 사랑스럽다는 반응과 차분한 분위기 칭찬이 많아요",
   },
   {
     id: "bluenote-coffee-incheon",
@@ -2944,6 +4397,8 @@ export const cafes: Cafe[] = [
     searchQuery: "인천 중구 우현로67번길 1-3",
     sourceUrl: "https://www.instagram.com/green_sori/p/Crx08ZaSBvu/",
     imageUrl: "/cafes/bluenote-coffee.jpg",
+    menu: "이달의 레귤러빈(커피)",
+    commentSummary: "음악과 분위기가 좋다는 공감 댓글이 많고 오래 남아주길 바라는 반응이 있어요",
   },
   {
     id: "stay-dongdaemun",
@@ -2955,6 +4410,15 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 동대문구 고산자로 393-6",
     sourceUrl: "https://www.instagram.com/green_sori/p/CriaZuRLzAt/",
     imageUrl: "/cafes/stay-dongdaemun.jpg",
+    hours: {
+      text: "월–금 08:00–18:00 · 토·일 11:00–18:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" },
+        { days: [0, 6], open: "11:00", close: "18:00" },
+      ],
+    },
+    menu: "시그니처라떼 · 버터바",
+    commentSummary: "시그니처라떼가 궁금하다는 반응과 버터바·필터커피 조합을 기대하는 댓글이 많아요",
   },
   {
     id: "eppa-seoul-seongsu",
@@ -2966,6 +4430,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성동구 성수동1가 685-201",
     sourceUrl: "https://www.instagram.com/green_sori/p/CrVqS5Eye-R/",
     imageUrl: "/cafes/eppa-seoul.jpg",
+    hours: {
+      text: "월–금 08:00–16:00 · 토·일 10:00–18:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "16:00" },
+        { days: [0, 6], open: "10:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "유럽에 온 것 같다는 반응, 커피잔과 소품이 예쁘다는 댓글이 많아요",
   },
   {
     id: "dudeoji-son-yeongdeungpo",
@@ -2977,6 +4449,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 영등포구 당산로52길 31-1",
     sourceUrl: "https://www.instagram.com/green_sori/p/CqxrXYDyaIB/",
     imageUrl: "/cafes/dudeoji-son.jpg",
+    menu: "짜이",
+    commentSummary: "가게 이름이 귀엽고 정겹다는 반응, 짜이 한잔하고 싶다는 댓글이 많아요",
   },
   {
     id: "seeum-yongsan",
@@ -2988,6 +4462,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 한강대로 206-1",
     sourceUrl: "https://www.instagram.com/green_sori/p/CqNi6BdSINA/",
     imageUrl: "/cafes/seeum-yongsan.jpg",
+    hours: {
+      text: "11:00–22:00 (수–일)",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "11:00", close: "22:00" }],
+    },
+    commentSummary: "차분하고 고즈넉한 분위기가 예쁘다는 반응, 보자마자 저장했다는 댓글이 많아요",
   },
   {
     id: "huelgo-mapo",
@@ -2999,6 +4478,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 마포대로11길 118",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cp7o3aySIuC/",
     imageUrl: "/cafes/huelgo.jpg",
+    commentSummary: "꽃무늬 잔과 아늑한 인테리어가 예쁘다는 반응, 꼭 가보고 싶다는 댓글이 많아요",
   },
   {
     id: "leff-songpa",
@@ -3010,6 +4490,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 송파구 백제고분로44길 25",
     sourceUrl: "https://www.instagram.com/green_sori/p/Coj-BG9LYcN/",
     imageUrl: "/cafes/leff-songpa.jpg",
+    hours: {
+      text: "매일 11:00–20:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" },
+      ],
+    },
+    commentSummary: "사진 감성이 멋지다는 반응이 많고, 편안한 공간 같다는 댓글이 이어져요",
   },
   {
     id: "bonjireure-seodaemun",
@@ -3021,6 +4508,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 연희로 189-16",
     sourceUrl: "https://www.instagram.com/green_sori/p/CoSBADpLVIU/",
     imageUrl: "/cafes/bonjireure.jpg",
+    hours: {
+      text: "매일 12:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" }],
+    },
+    commentSummary: "햇살과 가구가 어우러져 고급스럽다는 반응, 창가 자리가 탐난다는 댓글도 있어요",
   },
   {
     id: "aoba-eunpyeong",
@@ -3032,6 +4524,12 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 은평구 갈현로31길 10",
     sourceUrl: "https://www.instagram.com/green_sori/p/CoHnM2KSMrA/",
     imageUrl: "/cafes/aoba.jpg",
+    hours: {
+      text: "매일 12:00–23:00 · 화 휴무",
+      schedule: [{ days: [0, 1, 3, 4, 5, 6], open: "12:00", close: "23:00" }],
+    },
+    menu: "커피 · 술 · 간단한 먹거리",
+    commentSummary: "일본 골목 같은 분위기라는 반응이 많고, 시간여행 기분이라 꼭 가보고 싶다는 댓글이에요",
   },
   {
     id: "goose-coffee-mapo",
@@ -3043,6 +4541,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 망원동 57-112",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cn_y7T_yRbA/",
     imageUrl: "/cafes/goose-coffee.jpg",
+    hours: {
+      text: "매일 12:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" }],
+    },
+    commentSummary: "고급스럽고 아늑한 분위기라는 반응, 지도에 저장부터 했다는 댓글이 많아요",
   },
   {
     id: "gonggongjae-jongno",
@@ -3054,6 +4557,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 윤보선길 35",
     sourceUrl: "https://www.instagram.com/green_sori/p/CnzACYHSgs7/",
     imageUrl: "/cafes/gonggongjae.jpg",
+    hours: {
+      text: "매일 10:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "20:00" }],
+    },
+    commentSummary: "딸기 티라미수가 궁금하다는 댓글과 요즘 많이 보여 찜해뒀다는 반응이 많아요",
   },
   {
     id: "cafe-kitsune-mokdong",
@@ -3065,6 +4573,7 @@ export const cafes: Cafe[] = [
     searchQuery: "카페키츠네 현대백화점 목동점",
     sourceUrl: "https://www.instagram.com/green_sori/p/CnJ4fgWyT0Q/",
     imageUrl: "/cafes/cafe-kitsune.jpg",
+    commentSummary: "분위기가 예쁘다는 반응과 키츠네 모양 쿠키가 귀엽다는 댓글, 꼭 가보겠다는 반응이 많아요",
   },
   {
     id: "sway-coffee-seodaemun",
@@ -3076,6 +4585,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 연희로11길 61",
     sourceUrl: "https://www.instagram.com/green_sori/p/ClvtDsNyu5B/",
     imageUrl: "/cafes/sway-coffee.jpg",
+    hours: {
+      text: "매일 11:00–21:30",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:30" }],
+    },
+    commentSummary: "인테리어와 사진 색감이 예쁘다는 반응, 저장해두고 꼭 가보겠다는 댓글이 많아요",
   },
   {
     id: "kiiro-jongno",
@@ -3087,6 +4601,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 창경궁로26길 41-3",
     sourceUrl: "https://www.instagram.com/green_sori/p/Ck3GdKKSvtg/",
     imageUrl: "/cafes/kiiro.jpg",
+    menu: "몽블랑",
+    commentSummary: "몽블랑이 맛있어 보인다는 댓글이 대부분이고, 겨울에 가면 아늑하겠다는 반응이에요",
   },
   {
     id: "veranda-jongno",
@@ -3098,6 +4614,15 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 사직로10길 9-4",
     sourceUrl: "https://www.instagram.com/green_sori/p/Chw9NbGBBeN/",
     imageUrl: "/cafes/veranda.jpg",
+    hours: {
+      text: "월–토 10:30–22:00 · 일 11:00–19:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5, 6], open: "10:30", close: "22:00" },
+        { days: [0], open: "11:00", close: "19:00" },
+      ],
+    },
+    menu: "바질페스토토스트 · 토마토마리네이드",
+    commentSummary: "바질페스토토스트에 군침 돈다는 댓글이 많고, 서촌 감성이 좋다는 반응이에요",
   },
   {
     id: "sowolgil-miryeong-yongsan",
@@ -3109,6 +4634,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 용산구 두텁바위로35길 2",
     sourceUrl: "https://www.instagram.com/green_sori/p/CgowRcaBe7E/",
     imageUrl: "/cafes/sowolgil-miryeong.jpg",
+    commentSummary: "가정집 서재처럼 아늑하다는 반응, 책 읽으며 하루 보내고 싶다는 댓글이 많아요",
   },
   {
     id: "gutereute-gangnam",
@@ -3120,6 +4646,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 강남구 선릉로131길 16",
     sourceUrl: "https://www.instagram.com/green_sori/p/CfgpZrJlaz0/",
     imageUrl: "/cafes/gutereute.jpg",
+    hours: {
+      text: "매일 08:00–24:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "08:00", close: "24:00" },
+      ],
+    },
+    menu: "썸머 오마카세(커피 다섯 잔) · 베리뱅콘파나",
+    commentSummary: "베리뱅콘파나 비주얼이 예술이라는 반응, 바로 저장했다는 댓글이 많아요",
   },
   {
     id: "vivre-sa-vie-suwon",
@@ -3131,6 +4665,7 @@ export const cafes: Cafe[] = [
     searchQuery: "경기 수원시 장안구 경수대로743번길 78",
     sourceUrl: "https://www.instagram.com/green_sori/p/Ce8jv9_lKo3/",
     imageUrl: "/cafes/vivre-sa-vie.jpg",
+    commentSummary: "따뜻한 공간과 음료가 예쁘다는 반응, 공간이 사장님을 닮았다는 글에 공감하는 댓글이 많아요",
   },
   {
     id: "always-august-mangwon",
@@ -3142,6 +4677,15 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 망원로6길 19",
     sourceUrl: "https://www.instagram.com/green_sori/p/CeqjQ7Fl2Y0/",
     imageUrl: "/cafes/always-august-mangwon.jpg",
+    hours: {
+      text: "월–토 11:30–22:00 · 일 11:30–21:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5, 6], open: "11:30", close: "22:00" },
+        { days: [0], open: "11:30", close: "21:00" },
+      ],
+    },
+    menu: "머랭룰라드",
+    commentSummary: "머랭룰라드가 궁금하고 달콤해 보인다는 댓글, 찜해뒀다는 반응이 많아요",
   },
   {
     id: "bird-coffee-suwon",
@@ -3153,6 +4697,8 @@ export const cafes: Cafe[] = [
     searchQuery: "경기 수원시 장안구 경수대로743번길 76-1",
     sourceUrl: "https://www.instagram.com/green_sori/p/CeTRsw1F5oK/",
     imageUrl: "/cafes/bird-coffee.jpg",
+    menu: "피스타치오 딸기 케이크 · 브루잉 커피",
+    commentSummary: "댓글 기능이 제한된 게시물로, 좋아요 515를 받은 디저트 소개 글이에요",
   },
   {
     id: "gocaffeine-club-mapo",
@@ -3164,6 +4710,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 망원로2길 69",
     sourceUrl: "https://www.instagram.com/green_sori/p/CeGhL_TFESK/",
     imageUrl: "/cafes/gocaffeine-club.jpg",
+    menu: "넛트아일랜드",
+    commentSummary: "고소해 보인다는 반응과 보자마자 다녀왔다는 댓글, 좋아요 1.6천의 인기 게시물이에요",
   },
   {
     id: "push-coffee-gwangjin",
@@ -3175,6 +4723,9 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 광진구 자양로45길 24-3",
     sourceUrl: "https://www.instagram.com/green_sori/p/CdqDVhNl2me/",
     imageUrl: "/cafes/push-coffee.jpg",
+    hours: { text: "매주 화요일 휴무" },
+    menu: "라떼",
+    commentSummary: "댓글 기능이 제한된 게시물로, 좋아요 836을 받은 고소한 라떼 소개예요",
   },
   {
     id: "monsieur-bubu-mapo",
@@ -3186,6 +4737,8 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 망원로 13",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cc-WPxRF2Io/",
     imageUrl: "/cafes/monsieur-bubu.jpg",
+    menu: "카페프로즌 · 체리블러드",
+    commentSummary: "칵테일 같은 비주얼이라는 반응, 체리블러드가 궁금해 저장했다는 댓글이 많아요",
   },
   {
     id: "keepthat-suwon",
@@ -3197,6 +4750,14 @@ export const cafes: Cafe[] = [
     searchQuery: "킵댓 로스터리",
     sourceUrl: "https://www.instagram.com/green_sori/p/CcsT46mF3k2/",
     imageUrl: "/cafes/keepthat.jpg",
+    hours: {
+      text: "매일 11:00–21:30",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "21:30" },
+      ],
+    },
+    menu: "드라이카푸치노",
+    commentSummary: "드라이카푸치노 비주얼이 예쁘다는 반응, 좋아요 2.2천의 인기 게시물이에요",
   },
   {
     id: "kombi-coffee-incheon",
@@ -3208,6 +4769,13 @@ export const cafes: Cafe[] = [
     searchQuery: "인천 남동구 구월동 1354-12",
     sourceUrl: "https://www.instagram.com/green_sori/p/CcSimJKl9vh/",
     imageUrl: "/cafes/kombi-coffee.jpg",
+    hours: {
+      text: "월·화·목–일 12:00–21:00 · 수 휴무",
+      schedule: [
+        { days: [0, 1, 2, 4, 5, 6], open: "12:00", close: "21:00" },
+      ],
+    },
+    commentSummary: "댓글 기능이 제한된 게시물로, 좋아요 983을 받은 라이트한 커피 소개예요",
   },
   {
     id: "nudebrown-shop-seongsu",
@@ -3230,6 +4798,13 @@ export const cafes: Cafe[] = [
     searchQuery: "린치핀 송도",
     sourceUrl: "https://www.instagram.com/green_sori/p/Cb2StEgFQRx/",
     imageUrl: "/cafes/linchpin-songdo.jpg",
+    hours: {
+      text: "매일 10:00–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "댓글이 제한된 게시물이지만 좋아요 1.2천을 받은 송도 단골 카페 소개예요",
   },
   {
     id: "vinter-coffee-sinsa",
@@ -3241,6 +4816,15 @@ export const cafes: Cafe[] = [
     searchQuery: "빈터커피 신사점",
     sourceUrl: "https://www.instagram.com/green_sori/p/CbSRc-ila9a/",
     imageUrl: "/cafes/vinter-coffee.jpg",
+    hours: {
+      text: "월–금 09:00–21:00 · 토 09:00–18:00 · 일 휴무",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "09:00", close: "21:00" },
+        { days: [6], open: "09:00", close: "18:00" },
+      ],
+    },
+    menu: "몬테카를로 (크림커피)",
+    commentSummary: "꾸덕한 크림이 먹음직스럽다는 댓글이 대부분, 좋아요 840개의 인기 게시물이에요",
   },
   {
     id: "oldtown-bupyeong",
@@ -3252,6 +4836,13 @@ export const cafes: Cafe[] = [
     searchQuery: "인천 부평구 길주로565번길 7-5",
     sourceUrl: "https://www.instagram.com/green_sori/p/CbAJdukFQCr/",
     imageUrl: "/cafes/oldtown-bupyeong.jpg",
+    hours: {
+      text: "매일 11:00–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "댓글 기능이 제한된 게시물로, 햇살 좋은 날의 공간 소개에 좋아요 888개를 받았어요",
   },
   {
     id: "identity-coffee-lab-seodaemun",
@@ -3263,6 +4854,11 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 모래내로 390",
     sourceUrl: "https://www.instagram.com/green_sori/p/CaeZ4Yplixd/",
     imageUrl: "/cafes/identity-coffee-lab.jpg",
+    hours: {
+      text: "12:00–19:30 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5, 6], open: "12:00", close: "19:30" }],
+    },
+    commentSummary: "댓글이 제한된 게시물로, 자주 들렀던 그리운 공간 소개에 좋아요 489개를 받았어요",
   },
   {
     id: "ront-coffee-bupyeong",
@@ -3274,6 +4870,13 @@ export const cafes: Cafe[] = [
     searchQuery: "론트커피로스터스",
     sourceUrl: "https://www.instagram.com/green_sori/p/CZ9OsuhhZYk/",
     imageUrl: "/cafes/ront-coffee.jpg",
+    hours: {
+      text: "매일 11:30–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:30", close: "22:00" },
+      ],
+    },
+    commentSummary: "발렌타인데이 감성 게시물로 댓글이 제한돼 있고 좋아요 462개를 받았어요",
   },
   {
     id: "teaknik-yeonnam",
@@ -3285,6 +4888,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 성미산로 147",
     sourceUrl: "https://www.instagram.com/green_sori/p/CY89ITghtWY/",
     imageUrl: "/cafes/teaknik.jpg",
+    hours: {
+      text: "매일 12:30–21:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "12:30", close: "21:00" },
+      ],
+    },
+    commentSummary: "눈 오는 날의 연남동 풍경 게시물로 댓글이 제한돼 있고 좋아요 564개를 받았어요",
   },
   {
     id: "gangnaengi-sokuri-gangneung",
@@ -3296,6 +4906,14 @@ export const cafes: Cafe[] = [
     searchQuery: "강릉 강냉이소쿠리",
     sourceUrl: "https://www.instagram.com/green_sori/p/CYv_PTtBPYK/",
     imageUrl: "/cafes/gangnaengi-sokuri.jpg",
+    hours: {
+      text: "매일 10:30–19:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:30", close: "19:00" },
+      ],
+    },
+    menu: "옥수수커피",
+    commentSummary: "댓글이 제한된 게시물로, 연한 커피의 매력을 담은 강릉 카페 소개에 좋아요 645개를 받았어요",
   },
   {
     id: "routine-seongbuk",
@@ -3307,6 +4925,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 성북구 보문로34가길 6",
     sourceUrl: "https://www.instagram.com/green_sori/p/CYJWZ1hBbo3/",
     imageUrl: "/cafes/routine-seongbuk.jpg",
+    hours: {
+      text: "매일 11:00–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "새해 인사와 함께 사진이 전시회 같다는 칭찬 댓글이 많아요, 좋아요 548개예요",
   },
   {
     id: "vetiver-seongsu",
@@ -3318,6 +4943,15 @@ export const cafes: Cafe[] = [
     searchQuery: "베티버 성수",
     sourceUrl: "https://www.instagram.com/green_sori/p/CXoAZCDhWT2/",
     imageUrl: "/cafes/vetiver-seongsu.jpg",
+    hours: {
+      text: "월–목·일 10:00–21:00 · 금·토 10:00–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4], open: "10:00", close: "21:00" },
+        { days: [5, 6], open: "10:00", close: "22:00" },
+      ],
+    },
+    menu: "흑임자 라떼 · 크로플",
+    commentSummary: "흑임자 라떼가 제일 맛있다는 소개에 꼭 가보겠다는 댓글이 많아요, 좋아요 700개예요",
   },
   {
     id: "asor-coffee-junggu",
@@ -3329,6 +4963,15 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 중구 마른내로12길 7-1",
     sourceUrl: "https://www.instagram.com/green_sori/p/CW-wOathudg/",
     imageUrl: "/cafes/asor-coffee.jpg",
+    hours: {
+      text: "월–금 10:00–17:00 · 토 11:00–18:00 · 일 휴무",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "10:00", close: "17:00" },
+        { days: [6], open: "11:00", close: "18:00" },
+      ],
+    },
+    menu: "애플크럼블 · 딸기케이크",
+    commentSummary: "댓글이 제한된 게시물로, 크리스마스 같은 디저트 플레이팅에 좋아요 572개를 받았어요",
   },
   {
     id: "proper-coffee-bar-songpa",
@@ -3340,6 +4983,13 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 송파구 위례성대로22길 6",
     sourceUrl: "https://www.instagram.com/green_sori/p/CWQaLzqhKUI/",
     imageUrl: "/cafes/proper-coffee-bar.jpg",
+    hours: {
+      text: "월–토 10:00–22:00 · 일 휴무",
+      schedule: [
+        { days: [1, 2, 3, 4, 5, 6], open: "10:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "따뜻한 감성과 빈티지 잔·접시가 예쁘다는 댓글이 많아요, 좋아요 672개예요",
   },
   {
     id: "manufact-coffee-yeonhui",
@@ -3351,6 +5001,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 서대문구 연희로11길 29",
     sourceUrl: "https://www.instagram.com/green_sori/p/CV-hMcYh72e/",
     imageUrl: "/cafes/manufact-coffee.jpg",
+    hours: {
+      text: "매일 08:30–18:30",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "08:30", close: "18:30" },
+      ],
+    },
+    menu: "플랫화이트",
+    commentSummary: "댓글이 제한된 게시물로, 친절한 연희동 단골집 소개에 좋아요 501개를 받았어요",
   },
   {
     id: "ozio-coffee-gangseo",
@@ -3362,6 +5020,15 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 강서구 공항대로 213",
     sourceUrl: "https://www.instagram.com/green_sori/p/CVpwHx1BfE_/",
     imageUrl: "/cafes/ozio-coffee.jpg",
+    hours: {
+      text: "화–금 09:00–21:00 · 토·일 11:00–21:00 · 월 휴무",
+      schedule: [
+        { days: [2, 3, 4, 5], open: "09:00", close: "21:00" },
+        { days: [0, 6], open: "11:00", close: "21:00" },
+      ],
+    },
+    menu: "쿠키",
+    commentSummary: "쿠키와 크림 올라간 커피가 맛있어 보인다는 댓글이 많아요, 좋아요 656개예요",
   },
   {
     id: "imi-coffee-donggyo",
@@ -3373,6 +5040,7 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 마포구 동교로25길 7",
     sourceUrl: "https://www.instagram.com/green_sori/p/CVh-abWh1aR/",
     imageUrl: "/cafes/imi-coffee-donggyo.jpg",
+    commentSummary: "댓글이 제한된 게시물로, 디저트와 커피가 최고였다는 소개에 좋아요 475개를 받았어요",
   },
   {
     id: "milestone-sinsa",
@@ -3384,6 +5052,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 강남구 논현로159길 49",
     sourceUrl: "https://www.instagram.com/green_sori/p/CUr7Z7Jhw4x/",
     imageUrl: "/cafes/milestone-sinsa.jpg",
+    hours: {
+      text: "매일 10:00–21:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "21:00" },
+      ],
+    },
+    menu: "아인슈페너 · 티라미수",
+    commentSummary: "댓글이 제한된 게시물로, 햇살 좋은 야외자리 힐링 소개에 좋아요 532개를 받았어요",
   },
   {
     id: "london-bagel-museum-anguk",
@@ -3395,6 +5071,14 @@ export const cafes: Cafe[] = [
     searchQuery: "서울 종로구 북촌로4길 20",
     sourceUrl: "https://www.instagram.com/green_sori/p/CUXJ7TPBRnM/",
     imageUrl: "/cafes/london-bagel-museum.jpg",
+    hours: {
+      text: "매일 07:00–18:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "07:00", close: "18:00" },
+      ],
+    },
+    menu: "베이글",
+    commentSummary: "유럽 감성 그대로라는 반응, 웨이팅이 긴 핫플이라는 후기가 많아요",
   },
   {
     id: "sorisaram-mul-seongsan",
@@ -3407,6 +5091,12 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/reel/DcD0gG0TSwQ/",
     imageUrl: "/cafes/sorisaram-mul-seongsan.jpg",
     addedAt: "2026-08-18",
+    hours: {
+      text: "10:00–18:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "18:00" }],
+    },
+    menu: "레몬머틀 아이스티 · 바나나 브레드",
+    commentSummary: "빛이 예쁘게 드는 공간이라는 반응, 저장하고 가겠다는 댓글이 많아요",
   },
   {
     id: "tertre-changsin",
@@ -3419,6 +5109,12 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/reel/DcBNtJgTy6z/",
     imageUrl: "/cafes/tertre-changsin.jpg",
     addedAt: "2026-08-18",
+    hours: {
+      text: "11:30–22:30 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:30", close: "22:30" }],
+    },
+    menu: "치플레 토스트 · 토마토 수프",
+    commentSummary: "노을 지는 서울 시티뷰가 압도적이라는 반응이 가득해요",
   },
   {
     id: "nokchwirok-mangwon",
@@ -3433,6 +5129,12 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/green_sori/reel/DcTSfFfT8ud/",
     imageUrl: "/cafes/nokchwirok-mangwon.jpg",
     addedAt: "2026-08-22",
+    hours: {
+      text: "08:00–18:00 · 화·수 휴무",
+      schedule: [{ days: [0, 1, 4, 5, 6], open: "08:00", close: "18:00" }],
+    },
+    menu: "융드립 · 필터커피",
+    commentSummary: "세탁소를 개조한 플랜테리어가 예쁘다는 반응, 보자마자 달려갔다는 댓글도 있어요",
   },
   {
     id: "hawfinch-mapo",
@@ -3445,5 +5147,312 @@ export const cafes: Cafe[] = [
     sourceUrl: "https://www.instagram.com/p/DcdkQaFE0DQ/",
     imageUrl: "/cafes/hawfinch-mapo.jpg",
     addedAt: "2026-08-27",
+    hours: {
+      text: "월–금 09:00–18:00 · 토 10:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "09:00", close: "18:00" }, { days: [6], open: "10:00", close: "18:00" }],
+    },
+    commentSummary: "필름 감성이 좋다는 반응, '대흥 알짜배기 카페 모음'이라는 댓글이 많아요",
+  },
+  {
+    id: "oheim-daeheung",
+    name: "오하임",
+    area: "대흥동",
+    region: "서울",
+    description: "따뜻한 햇살이 머무는 우드톤 공간에서 커피를 즐기는 대흥동 카페",
+    tags: ["감성·인테리어", "동네·아지트"],
+    searchQuery: "서울 마포구 백범로 85",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DclUASTTLYQ/",
+    imageUrl: "/cafes/oheim-daeheung.jpg",
+    addedAt: "2026-08-29",
+    hours: {
+      text: "08:00–19:00 · 수 휴무",
+      schedule: [{ days: [0, 1, 2, 4, 5, 6], open: "08:00", close: "19:00" }],
+    },
+    commentSummary: "필름 감성이 좋다는 반응, '대흥 알짜배기 카페 모음'이라는 댓글이 많아요",
+  },
+  {
+    id: "hellcafe-daeheung",
+    name: "헬카페",
+    area: "대흥동",
+    region: "서울",
+    description: "아침부터 늦은 저녁까지 편안하게 커피를 즐길 수 있는 대흥동 카페",
+    tags: ["로스터리·드립", "동네·아지트"],
+    searchQuery: "서울 마포구 독막로 281",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DclUASTTLYQ/",
+    imageUrl: "/cafes/hellcafe-daeheung.jpg",
+    addedAt: "2026-08-29",
+    hours: {
+      text: "평일 08:00–21:00 · 주말 10:00–21:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "21:00" },
+        { days: [0, 6], open: "10:00", close: "21:00" },
+      ],
+    },
+    commentSummary: "필름 감성이 좋다는 반응, '대흥 알짜배기 카페 모음'이라는 댓글이 많아요",
+  },
+  {
+    id: "halfcoffee-banpo",
+    name: "하프커피 파미에스테이션점",
+    area: "반포동",
+    region: "서울",
+    description: "누적 판매 400만 잔 시그니처 버터크림라떼로 유명한 고속터미널 인근 카페",
+    tags: ["로스터리·드립"],
+    searchQuery: "서울 서초구 사평대로 205",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/Dc0vgpVTdj0/",
+    imageUrl: "/cafes/halfcoffee-banpo.jpg",
+    addedAt: "2026-09-04",
+    hours: {
+      text: "매일 10:00–22:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "22:00" }],
+    },
+    menu: "버터크림라떼",
+    commentSummary: "쫀쫀하고 진한 버터크림라떼가 맛있다는 반응과 다시 마시고 싶다는 댓글이 많아요",
+  },
+  {
+    id: "underdog-seongsan",
+    name: "언더독 커피",
+    area: "성산동",
+    region: "서울",
+    description: "성산동 골목의 LP와 로스팅 원두가 어우러진 작은 커피 공간",
+    tags: ["로스터리·드립", "LP·음악"],
+    searchQuery: "서울 마포구 성미산로15길 13",
+    sourceUrl: "https://www.instagram.com/green_sori/p/Dc8gkZGE8Pn/",
+    imageUrl: "/cafes/underdog-seongsan.jpg",
+    addedAt: "2026-09-07",
+    hours: {
+      text: "10:00–19:00 (주문 마감 18:30) · 격주 토요일 휴무",
+    },
+    commentSummary: "공간이 예쁘고 힙하다는 반응이 많고, 음악과 커피가 잘 어울린다는 댓글도 눈에 띄어요",
+  },
+  {
+    id: "saan-junggu",
+    name: "SAAN",
+    area: "충무로",
+    region: "서울",
+    description: "비 오는 날 더 좋았던 카페로 소개된 충무로의 공간",
+    tags: ["감성·인테리어"],
+    searchQuery: "서울 중구 충무로4길 3",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DcyLzaOTMqA/",
+    imageUrl: "/cafes/saan-junggu.jpg",
+    addedAt: "2026-09-07",
+    hours: {
+      text: "월–금 08:00–19:30 · 토·일 11:00–18:30",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "08:00", close: "19:30" },
+        { days: [0, 6], open: "11:00", close: "18:30" },
+      ],
+    },
+    commentSummary: "비 오는 날 카페 모음 게시물 — 분위기와 영상미가 좋다는 반응이 많아요",
+  },
+  {
+    id: "groobi-suwon",
+    name: "그루비",
+    area: "영통구",
+    region: "경기",
+    description: "비 오는 날 더 좋았던 카페로 소개된 수원 영통의 공간",
+    tags: ["감성·인테리어"],
+    searchQuery: "경기 수원시 영통구 센트럴파크로127번길 148",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DcyLzaOTMqA/",
+    imageUrl: "/cafes/groobi-suwon.jpg",
+    addedAt: "2026-09-07",
+    hours: {
+      text: "매일 12:00–22:00",
+      schedule: [
+        { days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "22:00" },
+      ],
+    },
+    commentSummary: "비 오는 날 카페 모음 게시물 — 분위기와 영상미가 좋다는 반응이 많아요",
+  },
+  {
+    id: "el-tren-coffee-roasters-fukuoka",
+    name: "EL TREN COFFEE ROASTERS",
+    area: "후쿠오카 히라오",
+    region: "해외",
+    description: "후쿠오카에서 좋았던 카페로 소개된 히라오의 커피 로스터리",
+    tags: ["로스터리·드립"],
+    searchQuery: "EL TREN COFFEE ROASTERS 2-17-21 Hirao Chuo Ward Fukuoka",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DcLgmawTmsZ/",
+    addedAt: "2026-09-07",
+    hours: {
+      text: "수-금 07:00–16:00 · 토-일 09:00–18:00",
+      schedule: [
+        { days: [3, 4, 5], open: "07:00", close: "16:00" },
+        { days: [0, 6], open: "09:00", close: "18:00" },
+      ],
+    },
+    commentSummary: "후쿠오카 카페 모음 게시물 — 여행 갈 때 그대로 따라가고 싶다는 반응이 많아요",
+  },
+  {
+    id: "coffee-county-fukuoka",
+    name: "COFFEE COUNTY FUKUOKA",
+    area: "후쿠오카 다카사고",
+    region: "해외",
+    description: "후쿠오카에서 좋았던 카페로 소개된 다카사고의 커피 공간",
+    tags: ["로스터리·드립"],
+    searchQuery: "COFFEE COUNTY FUKUOKA 1-21-21 Takasago Chuo Ward Fukuoka",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DcLgmawTmsZ/",
+    addedAt: "2026-09-07",
+    hours: {
+      text: "10:00–18:30",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "10:00", close: "18:30" }],
+    },
+    commentSummary: "후쿠오카 카페 모음 게시물 — 여행 갈 때 그대로 따라가고 싶다는 반응이 많아요",
+  },
+  {
+    id: "cafe-sasohan-daejeon",
+    name: "카페 사소한",
+    area: "동구",
+    region: "대전",
+    description: "대전 동네 골목의 소박하고 따뜻한 카페, 직접 로스팅한 커피와 화로 당고",
+    tags: ["로스터리·드립", "동네·아지트"],
+    searchQuery: "대전 동구 백룡로38번길 19",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DcGZ-6aTSNm/",
+    imageUrl: "/cafes/cafe-sasohan-daejeon.jpg",
+    addedAt: "2026-09-07",
+    hours: {
+      text: "월–금 11:30–21:00 · 토·일 12:30–18:30",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "11:30", close: "21:00" },
+        { days: [0, 6], open: "12:30", close: "18:30" },
+      ],
+    },
+    menu: "화로에 구워 먹는 당고",
+    commentSummary: "소박하고 평온한 분위기가 좋다는 국내외 반응이 많은 인기 게시물, 좋아요 3만이에요",
+  },
+  {
+    id: "3025-dongdaemun",
+    name: "3025",
+    area: "중구",
+    region: "서울",
+    description: "빈티지 오디오와 LP, 디자인 서적이 어우러진 동대문 카페",
+    tags: ["LP·음악", "감성·인테리어"],
+    searchQuery: "서울 중구 퇴계로 271",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DdBnheAT7tg/",
+    imageUrl: "/cafes/3025-dongdaemun.jpg",
+    addedAt: "2026-09-09",
+    hours: {
+      text: "평일 10:00–19:00 · 주말 11:00–19:00",
+      schedule: [
+        { days: [1, 2, 3, 4, 5], open: "10:00", close: "19:00" },
+        { days: [0, 6], open: "11:00", close: "19:00" },
+      ],
+    },
+    commentSummary: "턴테이블과 LP 음악, 아늑한 무드에 대한 호평이 많고 동대문의 숨은 명소로 추천해요",
+  },
+  {
+    id: "namsangieok-yongsan",
+    name: "남산기억",
+    area: "용산구",
+    region: "서울",
+    description: "이사무 노구치의 아카리 조명 아래 남산·용산 노을뷰를 즐기는 해방촌 이자카야",
+    tags: ["뷰·자연", "감성·인테리어"],
+    searchQuery: "서울 용산구 소월로20길 6",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DdJW73dzqOf/",
+    imageUrl: "/cafes/namsangieok-yongsan.jpg",
+    addedAt: "2026-09-14",
+    hours: {
+      text: "수·목 17:00–24:00 · 금·토 17:00–01:00 · 일 17:00–23:00 (월·화 휴무)",
+      schedule: [
+        { days: [3, 4], open: "17:00", close: "24:00" },
+        { days: [5, 6], open: "17:00", close: "01:00" },
+        { days: [0], open: "17:00", close: "23:00" },
+      ],
+    },
+    menu: "사시미·가라아게·파스타와 와인 페어링 다이닝",
+    commentSummary: "노을 지는 루프탑 뷰와 아카리 조명 분위기가 예쁘다는 반응이 많고 가보고 싶다는 댓글이 이어져요",
+  },
+
+  {
+    id: "goof-busan",
+    name: "구프",
+    area: "전포동",
+    region: "부산",
+    description: "LP와 턴테이블 음악이 흐르는 전포의 힙한 감성 카페 겸 바",
+    tags: ["LP·음악", "감성·인테리어"],
+    searchQuery: "부산 부산진구 동성로 25",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DdOfTKpzAQK/",
+    imageUrl: "/cafes/goof-busan.jpg",
+    addedAt: "2026-09-14",
+    commentSummary: "전포 특유의 힙한 무드와 LP 공간에 대한 호평이 많고 부산 가면 들르고 싶다는 반응이 이어져요",
+  },
+  {
+    id: "samusile-mapo",
+    name: "사무실에 (SAM00SIL_E)",
+    area: "성산동",
+    region: "서울",
+    description: "성산동 성미산로16길 골목의 카페",
+    tags: ["동네·아지트"],
+    searchQuery: "사무실에 성산동 성미산로16길",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DdWP6K-TJSB/",
+    imageUrl: "/cafes/samusile-mapo.jpg",
+    addedAt: "2026-09-16",
+    hours: {
+      text: "11:00–20:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "11:00", close: "20:00" }],
+    },
+    commentSummary: "성산동 카페모음이 예쁘고 알차다는 반응, 방문하고 싶다는 댓글이 많아요",
+  },
+  {
+    id: "sadamjae-mungyeong",
+    name: "사담재",
+    area: "문경",
+    region: "경북",
+    description: "주흘산 자락, 한국 전통 건축을 현대적으로 풀어낸 프라이빗 온천 숙소",
+    tags: ["감성·인테리어"],
+    searchQuery: "경북 문경시 문경읍 온천강변1길 29",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/Ddd8mW4TTTp/",
+    imageUrl: "/cafes/sadamjae-mungyeong.jpg",
+    addedAt: "2026-09-22",
+    commentSummary: "온천 자쿠지와 조식이 좋았다는 후기, 문경 여행 가고 싶다는 반응이 많아요",
+  },
+  {
+    id: "ungyeonggotaek-jongno",
+    name: "운경고택",
+    area: "종로구",
+    region: "서울",
+    description: "인왕산 자락의 전통 고택, 김동희 개인전 《다시 도착한 집》이 열리는 전시 공간",
+    tags: ["한옥·레트로", "감성·인테리어"],
+    searchQuery: "서울 종로구 인왕산로 7",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DcvmT3hTPhK/",
+    imageUrl: "/cafes/ungyeonggotaek-jongno.jpg",
+    addedAt: "2026-09-22",
+    hours: {
+      text: "전시 기간(9.2–10.31) 화–일 10:00–18:30 · 월요일·추석연휴 휴관 (네이버 사전예약, 관람료 15,000원)",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "10:00", close: "18:30" }],
+    },
+    commentSummary: "비 오는 날 고택의 운치가 좋다는 반응, 고즈넉한 분위기에 대한 호평이 많아요",
+  },
+  {
+    id: "patio-fizz-itaewon",
+    name: "파티오 피즈 (Patio Fizz)",
+    area: "이태원",
+    region: "서울",
+    description: "이태원 4층, 유럽 가정집 같은 빈티지 감성의 테라스 카페",
+    tags: ["감성·인테리어", "LP·음악"],
+    searchQuery: "서울 용산구 이태원로20가길 11",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DdlqjeyzM06/",
+    imageUrl: "/cafes/patio-fizz-itaewon.jpg",
+    addedAt: "2026-09-22",
+    hours: {
+      text: "12:00–20:00 · 매주 화·목 휴무",
+      schedule: [{ days: [0, 1, 3, 5, 6], open: "12:00", close: "20:00" }],
+    },
+    commentSummary: "4층 가정집 같은 아늑한 분위기와 테라스·음악이 좋다는 반응이 많아요",
+  },
+  {
+    id: "coffee-bangatgan-bukchon",
+    name: "커피방앗간",
+    area: "북촌",
+    region: "서울",
+    description: "비 내리는 날 더 운치 있는 북촌 골목, 이름처럼 정겹고 차분한 분위기의 카페",
+    tags: ["한옥·레트로", "감성·인테리어"],
+    searchQuery: "서울특별시 종로구 북촌로5가길 8-11",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/Ddv-A02zqqm/",
+    imageUrl: "/cafes/coffee-bangatgan-bukchon.jpg",
+    addedAt: "2026-09-27",
+    hours: {
+      text: "08:30-19:30",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:30", close: "19:30" }],
+    },
   },
 ];
