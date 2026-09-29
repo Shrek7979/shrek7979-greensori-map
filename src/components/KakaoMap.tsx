@@ -202,7 +202,8 @@ export default function KakaoMap({ cafes }: Props) {
   const [newOnly, setNewOnly] = useState(false);
   const [openNowOnly, setOpenNowOnly] = useState(false);
   // "지금 영업중" 판정을 1분마다 갱신 (자정·마감 시각을 넘길 때 자동 반영)
-  const [nowTick, setNowTick] = useState(() => Date.now());
+  // 현재 시각 — 홈은 빌드 시 정적 생성되므로 서버 HTML과 어긋나지 않게 마운트 후에 채운다 (null = 아직 모름)
+  const [nowTick, setNowTick] = useState<number | null>(null);
   const [cafeOfTheDayOpen, setCafeOfTheDayOpen] = useState(false);
   const [view, setView] = useState<"map" | "list">("map");
 
@@ -264,6 +265,7 @@ export default function KakaoMap({ cafes }: Props) {
     } catch {
       /* 저장소 사용 불가 시 무시 */
     }
+    setNowTick(Date.now());
     setUiRestored(true);
   }, []);
   useEffect(() => {
@@ -517,7 +519,7 @@ export default function KakaoMap({ cafes }: Props) {
       if (tag && !(cafe.tags ?? []).includes(tag)) return false;
       if (favoriteOnly && !favorites.has(cafe.id)) return false;
       if (newOnly && !isNewCafe(cafe.addedAt, Date.now())) return false;
-      if (openNowOnly && isOpenNow(cafe, new Date(nowTick)) !== true) return false;
+      if (openNowOnly && isOpenNow(cafe, new Date(nowTick ?? Date.now())) !== true) return false;
       return searchMatches(cafe, q);
     });
     if (sortBy === "default") {
@@ -607,6 +609,7 @@ export default function KakaoMap({ cafes }: Props) {
         : null;
 
       const places = new window.kakao.maps.services.Places();
+      const geocoder = new window.kakao.maps.services.Geocoder();
 
       // 좌표 캐시: 검색 API 호출량을 줄이고 재방문 시 즉시 표시
       const CACHE_KEY = "greensori-coords-v1";
@@ -634,7 +637,14 @@ export default function KakaoMap({ cafes }: Props) {
             if (status === window.kakao.maps.services.Status.OK && results.length > 0) {
               resolve({ y: results[0].y, x: results[0].x });
             } else if (status === window.kakao.maps.services.Status.ZERO_RESULT) {
-              resolve(null);
+              // 카카오에 장소로 등록되지 않은 카페(폐업·미등록)는 도로명 주소 자체로 좌표를 찾는다
+              geocoder.addressSearch(query, (addr: { x: string; y: string }[], addrStatus: string) => {
+                resolve(
+                  addrStatus === window.kakao.maps.services.Status.OK && addr.length > 0
+                    ? { y: addr[0].y, x: addr[0].x }
+                    : null
+                );
+              });
             } else if (attempt < 4) {
               // 요청 폭주 시 카카오가 ERROR를 반환하므로 백오프 후 재시도
               setTimeout(() => {
@@ -1163,9 +1173,9 @@ export default function KakaoMap({ cafes }: Props) {
   const newCount = useMemo(
     () =>
       cafes.filter(
-        (c) => regionMatch(c.region, region) && isNewCafe(c.addedAt, Date.now())
+        (c) => nowTick !== null && regionMatch(c.region, region) && isNewCafe(c.addedAt, nowTick)
       ).length,
-    [cafes, region]
+    [cafes, region, nowTick]
   );
   // 영업시간 정보가 입력된 카페가 하나라도 있어야 "지금 영업중" 버튼 노출
   const schedulableCount = useMemo(
@@ -1175,7 +1185,10 @@ export default function KakaoMap({ cafes }: Props) {
   const openNowCount = useMemo(
     () =>
       cafes.filter(
-        (c) => regionMatch(c.region, region) && isOpenNow(c, new Date(nowTick)) === true
+        (c) =>
+          nowTick !== null &&
+          regionMatch(c.region, region) &&
+          isOpenNow(c, new Date(nowTick)) === true
       ).length,
     [cafes, region, nowTick]
   );
@@ -1748,7 +1761,7 @@ export default function KakaoMap({ cafes }: Props) {
                       {cafe.hours && (
                         <p className="mt-1 text-[11px] text-[#a5906f] dark:text-[#8a7458]">
                           🕐 {cafe.hours.text}
-                          {isOpenNow(cafe, new Date(nowTick)) === true && (
+                          {nowTick !== null && isOpenNow(cafe, new Date(nowTick)) === true && (
                             <span className="ml-1 font-semibold text-[#3c8e5c]">
                               영업중
                             </span>
