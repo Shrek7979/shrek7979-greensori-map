@@ -31,7 +31,12 @@ export default function Home() {
               className="text-2xl font-medium tracking-tight text-[#3d2c1e] dark:text-[#f0e6d5]"
               style={{ fontFamily: "var(--font-fredoka)" }}
             >
-              GreenSori Map
+              <a
+                href="https://greensori-map.vercel.app/"
+                className="transition-opacity hover:opacity-80"
+              >
+                GreenSori Map
+              </a>
             </h1>
             <p className="mt-0.5 text-sm text-[#8a7458] dark:text-[#b09b7e]">
               그린소리가 담은 카페 · 공간 · 여행의 기록

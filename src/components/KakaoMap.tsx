@@ -21,6 +21,9 @@ function regionMatch(cafeRegion: string, selected: string) {
     : cafeRegion === selected;
 }
 
+// 문서(페이지) 로드당 한 번만 "새로 연 화면인지" 판정하기 위한 플래그 — 클라이언트 이동 간 유지됨
+let freshLoadHandled = false;
+
 // addedAt(YYYY-MM-DD) 기준으로 NEW_WINDOW_DAYS 이내인지 판정
 function isNewCafe(addedAt: string | undefined, now: number) {
   if (!addedAt) return false;
@@ -228,6 +231,15 @@ export default function KakaoMap({ cafes }: Props) {
   const restoreScrollRef = useRef<number | null>(null);
   useEffect(() => {
     try {
+      // 새로 열기·새로고침·제목 클릭(문서 새로 로드)이면 저장 상태를 지워 항상 첫 화면(NEW 지도)으로.
+      // 뒤로가기(back_forward)나 상세 페이지에서 돌아온 클라이언트 이동은 그대로 복원한다.
+      if (!freshLoadHandled) {
+        freshLoadHandled = true;
+        const nav = performance.getEntriesByType("navigation")[0] as
+          | PerformanceNavigationTiming
+          | undefined;
+        if (nav?.type !== "back_forward") sessionStorage.removeItem(UI_STATE_KEY);
+      }
       const raw = sessionStorage.getItem(UI_STATE_KEY);
       if (raw) {
         const st = JSON.parse(raw);
@@ -242,6 +254,12 @@ export default function KakaoMap({ cafes }: Props) {
         if (typeof st.filtersOpen === "boolean") setFiltersOpen(st.filtersOpen);
         if (typeof st.listLimit === "number") setListLimit(st.listLimit);
         if (typeof st.scrollY === "number") restoreScrollRef.current = st.scrollY;
+      } else {
+        // 첫 화면은 NEW 필터를 켠 지도. NEW 카페가 없으면(버튼도 숨겨짐) 빈 지도가 되므로 켜지 않는다.
+        // (홈은 빌드 시 정적 생성되므로 useState 초기값이 아니라 마운트 후 현재 시각으로 판정 — 하이드레이션 불일치 방지)
+        const now = Date.now();
+        if (cafes.some((c) => regionMatch(c.region, DEFAULT_REGION) && isNewCafe(c.addedAt, now)))
+          setNewOnly(true);
       }
     } catch {
       /* 저장소 사용 불가 시 무시 */
