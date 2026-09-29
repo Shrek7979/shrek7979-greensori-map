@@ -5455,4 +5455,20 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "08:30", close: "19:30" }],
     },
   },
+  {
+    id: "doyo-coffeebar-sindang",
+    name: "도요커피바",
+    area: "신당동",
+    region: "서울",
+    description: "짙은 우드 외벽과 큰 창, 우드 스피커가 어우러진 신당 거리의 커피바",
+    tags: ["로스터리·드립", "LP·음악"],
+    searchQuery: "서울특별시 중구 퇴계로88길 26",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/Dd3tZIPzf1V/",
+    imageUrl: "/cafes/doyo-coffeebar-sindang.jpg",
+    addedAt: "2026-09-30",
+    hours: {
+      text: "화–금 10:30–21:00 · 토·일 11:00–21:00 · 월 휴무",
+      schedule: [{ days: [2, 3, 4, 5], open: "10:30", close: "21:00" }, { days: [0, 6], open: "11:00", close: "21:00" }],
+    },
+  },
 ];
