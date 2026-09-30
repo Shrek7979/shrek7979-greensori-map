@@ -1149,15 +1149,13 @@ export default function KakaoMap({ cafes }: Props) {
     setCafeOfTheDayOpen(true);
   }, [cafeOfTheDay, visibleCafes, resetFilters, focusCafe, sortBy]);
 
-  // 첫 로드 시 자동으로 '내 주변' 활성화 — 위치 권한이 있으면 거리순 + 반경 1km로 확대해서 시작
+  // 첫 로드 시 위치 권한이 있으면 내 위치만 조용히 받아 둔다 (카드의 거리 표시·거리순 정렬 옵션용).
+  // 첫 화면은 NEW 지도이므로 '내 주변'(거리순 + 1km 확대)은 자동으로 켜지 않는다 — 버튼으로만 활성화.
   useEffect(() => {
     if (!navigator.geolocation || !markersReady) return;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        goToLocation(
-          { lat: pos.coords.latitude, lng: pos.coords.longitude },
-          pos.coords.accuracy
-        );
+        setUserLoc({ lat: pos.coords.latitude, lng: pos.coords.longitude });
       },
       () => {
         /* 자동 시도는 실패해도 조용히 무시 (수동 '내 주변' 버튼은 안내 표시) */
