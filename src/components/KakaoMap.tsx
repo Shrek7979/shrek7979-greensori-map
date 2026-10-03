@@ -24,10 +24,18 @@ function regionMatch(cafeRegion: string, selected: string) {
 // 문서(페이지) 로드당 한 번만 "새로 연 화면인지" 판정하기 위한 플래그 — 클라이언트 이동 간 유지됨
 let freshLoadHandled = false;
 
-// addedAt(YYYY-MM-DD) 기준으로 NEW_WINDOW_DAYS 이내인지 판정
-function isNewCafe(addedAt: string | undefined, now: number) {
-  if (!addedAt) return false;
-  const added = new Date(`${addedAt}T00:00:00`).getTime();
+// NEW 기준일 — 등록일(addedAt)과 갱신일(updatedAt) 중 더 최근 날짜 (YYYY-MM-DD는 문자열 비교로 충분)
+function newSince(cafe: Cafe): string | undefined {
+  const { addedAt, updatedAt } = cafe;
+  if (addedAt && updatedAt) return addedAt > updatedAt ? addedAt : updatedAt;
+  return addedAt ?? updatedAt;
+}
+
+// 기준일로부터 NEW_WINDOW_DAYS 이내인지 판정 (새로 등록됐거나 새 게시물로 업데이트된 카페)
+function isNewCafe(cafe: Cafe, now: number) {
+  const since = newSince(cafe);
+  if (!since) return false;
+  const added = new Date(`${since}T00:00:00`).getTime();
   if (Number.isNaN(added)) return false;
   const diffDays = (now - added) / (1000 * 60 * 60 * 24);
   return diffDays >= 0 && diffDays < NEW_WINDOW_DAYS;
@@ -43,8 +51,8 @@ function igShortcode(sourceUrl: string | undefined): string {
 }
 // 최신 게시물이 앞에 오도록 하는 비교 함수 (내림차순). 쇼트코드가 없으면 0
 function comparePostRecency(a: Cafe, b: Cafe): number {
-  const sa = igShortcode(a.sourceUrl);
-  const sb = igShortcode(b.sourceUrl);
+  const sa = igShortcode(a.updatedSourceUrl ?? a.sourceUrl);
+  const sb = igShortcode(b.updatedSourceUrl ?? b.sourceUrl);
   if (!sa || !sb) return 0;
   if (sa.length !== sb.length) return sb.length - sa.length;
   for (let i = 0; i < sa.length; i++) {
@@ -259,7 +267,7 @@ export default function KakaoMap({ cafes }: Props) {
         // 첫 화면은 NEW 필터를 켠 지도. NEW 카페가 없으면(버튼도 숨겨짐) 빈 지도가 되므로 켜지 않는다.
         // (홈은 빌드 시 정적 생성되므로 useState 초기값이 아니라 마운트 후 현재 시각으로 판정 — 하이드레이션 불일치 방지)
         const now = Date.now();
-        if (cafes.some((c) => regionMatch(c.region, DEFAULT_REGION) && isNewCafe(c.addedAt, now)))
+        if (cafes.some((c) => regionMatch(c.region, DEFAULT_REGION) && isNewCafe(c, now)))
           setNewOnly(true);
       }
     } catch {
@@ -441,7 +449,7 @@ export default function KakaoMap({ cafes }: Props) {
     if (!regionMatch(cafe.region, region)) return false;
     if (tag && !(cafe.tags ?? []).includes(tag)) return false;
     if (favoriteOnly && !favorites.has(cafe.id)) return false;
-    if (newOnly && !isNewCafe(cafe.addedAt, Date.now())) return false;
+    if (newOnly && !isNewCafe(cafe, Date.now())) return false;
     if (openNowOnly && isOpenNow(cafe) !== true) return false;
     if (!searchMatches(cafe, search.trim())) return false;
     return true;
@@ -518,22 +526,22 @@ export default function KakaoMap({ cafes }: Props) {
       if (!regionMatch(cafe.region, region)) return false;
       if (tag && !(cafe.tags ?? []).includes(tag)) return false;
       if (favoriteOnly && !favorites.has(cafe.id)) return false;
-      if (newOnly && !isNewCafe(cafe.addedAt, Date.now())) return false;
+      if (newOnly && !isNewCafe(cafe, Date.now())) return false;
       if (openNowOnly && isOpenNow(cafe, new Date(nowTick ?? Date.now())) !== true) return false;
       return searchMatches(cafe, q);
     });
     if (sortBy === "default") {
       // NEW 카페를 맨 앞으로. NEW끼리는 인스타 최신 게시물 순
-      // (쇼트코드 → addedAt 최신순 → 데이터 뒤쪽 우선), 나머지는 데이터 파일 순서 유지
+      // (쇼트코드 → 등록·갱신일 최신순 → 데이터 뒤쪽 우선), 나머지는 데이터 파일 순서 유지
       const now = Date.now();
       return [...filtered].sort((a, b) => {
-        const an = isNewCafe(a.addedAt, now);
-        const bn = isNewCafe(b.addedAt, now);
+        const an = isNewCafe(a, now);
+        const bn = isNewCafe(b, now);
         if (an !== bn) return Number(bn) - Number(an);
         if (an) {
           return (
             comparePostRecency(a, b) ||
-            (b.addedAt ?? "").localeCompare(a.addedAt ?? "") ||
+            (newSince(b) ?? "").localeCompare(newSince(a) ?? "") ||
             (indexById.get(b.id) ?? 0) - (indexById.get(a.id) ?? 0)
           );
         }
@@ -815,7 +823,7 @@ export default function KakaoMap({ cafes }: Props) {
         )}" aria-label="즐겨찾기" style="position:absolute;top:8px;right:8px;z-index:3;width:28px;height:28px;padding:0;border:none;border-radius:9999px;background:rgba(0,0,0,0.38);display:flex;align-items:center;justify-content:center;cursor:pointer;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
           </button>`;
-        const newBadge = isNewCafe(cafe.addedAt, Date.now())
+        const newBadge = isNewCafe(cafe, Date.now())
           ? `<span style="position:absolute;top:8px;left:8px;z-index:3;padding:2px 8px;border-radius:9999px;background:rgba(47,158,99,0.92);color:#fff;font-size:10px;font-weight:700;">NEW</span>`
           : "";
         const cardContent = `
@@ -1171,7 +1179,7 @@ export default function KakaoMap({ cafes }: Props) {
   const newCount = useMemo(
     () =>
       cafes.filter(
-        (c) => nowTick !== null && regionMatch(c.region, region) && isNewCafe(c.addedAt, nowTick)
+        (c) => nowTick !== null && regionMatch(c.region, region) && isNewCafe(c, nowTick)
       ).length,
     [cafes, region, nowTick]
   );
@@ -1715,7 +1723,7 @@ export default function KakaoMap({ cafes }: Props) {
                         </svg>
                       </button>
                       <div className="absolute left-2 top-2 flex flex-col items-start gap-1">
-                        {isNewCafe(cafe.addedAt, Date.now()) && (
+                        {isNewCafe(cafe, Date.now()) && (
                           <span className="inline-flex items-center gap-1 rounded-full bg-[#2f9e63]/90 px-2 py-0.5 text-[10px] font-semibold text-white">
                             NEW
                           </span>

@@ -1388,8 +1388,10 @@ export const cafes: Cafe[] = [
     tags: ["로스터리·드립", "책·소품"],
     searchQuery: "묵해 강서 등촌로35길",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DSHywXEkhCv/",
-    // 2026-10-03 재소개 게시물(묵해 · 이스트루페, 영업시간 갱신): https://www.instagram.com/green_sori/reel/Dd_bwSczPQA/
     imageUrl: "/cafes/muke.jpg",
+    // 2026-10-03 재소개 게시물(묵해 · 이스트루페)로 영업시간·소개 갱신
+    updatedAt: "2026-10-03",
+    updatedSourceUrl: "https://www.instagram.com/green_sori/reel/Dd_bwSczPQA/",
     hours: {
       text: "화–일 11:00–19:00 · 월 휴무",
       schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "19:00" }],

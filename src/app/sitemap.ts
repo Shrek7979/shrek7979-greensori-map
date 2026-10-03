@@ -11,7 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}/cafe/${cafe.id}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
-      ...(cafe.addedAt ? { lastModified: new Date(`${cafe.addedAt}T00:00:00+09:00`) } : {}),
+      ...((cafe.updatedAt ?? cafe.addedAt)
+        ? { lastModified: new Date(`${cafe.updatedAt ?? cafe.addedAt}T00:00:00+09:00`) }
+        : {}),
     })),
   ];
 }

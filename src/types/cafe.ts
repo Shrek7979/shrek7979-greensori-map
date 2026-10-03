@@ -12,6 +12,11 @@ export type Cafe = {
   coords?: { lat: number; lng: number };
   // 등록일 (YYYY-MM-DD). 있으면 이 날짜 기준 7일간 "NEW" 뱃지/필터에 노출
   addedAt?: string;
+  // 정보 갱신일 (YYYY-MM-DD) — 기존 카페가 새 게시물로 다시 소개돼 업데이트되면 기록.
+  // addedAt과 마찬가지로 이 날짜 기준 7일간 "NEW"로 노출된다.
+  updatedAt?: string;
+  // 업데이트의 근거가 된 새 게시물 (NEW 정렬 시 이 게시물 기준으로 최신순)
+  updatedSourceUrl?: string;
   // 영업시간 (선택). text는 카드·상세 페이지에 그대로 표시,
   // schedule은 "지금 영업중" 판정용 — days: 0(일)~6(토), open/close: "HH:MM" (KST)
   hours?: {
