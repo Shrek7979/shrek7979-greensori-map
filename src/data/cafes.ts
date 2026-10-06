@@ -5474,4 +5474,22 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [2, 3, 4, 5], open: "10:30", close: "21:00" }, { days: [0, 6], open: "11:00", close: "21:00" }],
     },
   },
+  {
+    id: "yeongwoni-012-bukchon",
+    name: "영원이 012",
+    area: "북촌",
+    region: "서울",
+    description: "안국 골목 안쪽, 하얀 벽과 타일 메뉴판이 단정한 1~2인 전용 조용한 카페",
+    tags: ["감성·인테리어", "동네·아지트"],
+    searchQuery: "서울 종로구 북촌로 20-9",
+    sourceUrl: "https://www.instagram.com/green_sori/p/DeEmpS0kwU2/",
+    imageUrl: "/cafes/yeongwoni-012-bukchon.jpg",
+    addedAt: "2026-10-06",
+    hours: {
+      text: "화–일 11:00–18:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "11:00", close: "18:00" }],
+    },
+    menu: "비엔나커피",
+    commentSummary: "이름이 귀엽고 아늑하다는 반응, 혼자 조용히 머물기 좋다는 댓글이 많아요",
+  },
 ];
