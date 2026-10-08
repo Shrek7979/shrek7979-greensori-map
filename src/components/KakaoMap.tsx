@@ -1447,7 +1447,7 @@ export default function KakaoMap({ cafes }: Props) {
                   }}
                 />
                 <span className="text-[11px] text-[#b3a084] dark:text-[#7c6a52]">
-                  즐겨찾기 {favorites.size} · 가봤어요 {visited.size} — 이 기기에만 저장돼요
+                  Favorites {favorites.size} · Visited {visited.size} — saved on this device only
                 </span>
               </div>
               {importMsg && (
@@ -1733,7 +1733,7 @@ export default function KakaoMap({ cafes }: Props) {
                             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
-                            가봤어요
+                            Visited
                           </span>
                         )}
                       </div>
@@ -1781,7 +1781,7 @@ export default function KakaoMap({ cafes }: Props) {
                             onClick={() => focusCafe(cafe)}
                             className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
                           >
-                            지도에서
+                            Map
                           </button>
                         )}
                         <button
@@ -1792,7 +1792,7 @@ export default function KakaoMap({ cafes }: Props) {
                               : "bg-[#f2e9d8] text-[#6f4e37] hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
                           }`}
                         >
-                          {isVisited ? "방문함" : "가봤어요"}
+                          {isVisited ? "방문함" : "Visited"}
                         </button>
                         <Link
                           href={`/cafe/${cafe.id}`}

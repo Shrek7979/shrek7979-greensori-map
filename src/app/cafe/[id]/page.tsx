@@ -190,7 +190,7 @@ export default async function CafePage({ params }: Props) {
                   href={`/?cafe=${cafe.id}`}
                   className="inline-flex items-center gap-1.5 rounded-full bg-[#6f4e37] px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5c4029]"
                 >
-                  지도에서 보기
+                  View on Map
                 </Link>
               )}
             </div>
