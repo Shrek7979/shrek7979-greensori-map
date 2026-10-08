@@ -1792,7 +1792,7 @@ export default function KakaoMap({ cafes }: Props) {
                               : "bg-[#f2e9d8] text-[#6f4e37] hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
                           }`}
                         >
-                          {isVisited ? "방문함" : "Visited"}
+                          {isVisited ? "Visited ✓" : "Visited"}
                         </button>
                         <Link
                           href={`/cafe/${cafe.id}`}
