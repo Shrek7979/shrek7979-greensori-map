@@ -5492,4 +5492,21 @@ export const cafes: Cafe[] = [
     menu: "비엔나커피",
     commentSummary: "이름이 귀엽고 아늑하다는 반응, 혼자 조용히 머물기 좋다는 댓글이 많아요",
   },
+  {
+    id: "flow-state-coffee-sindang",
+    name: "플로우스테이트커피",
+    area: "신당동",
+    region: "서울",
+    description: "크림빛 외벽과 큰 창, 포스터와 개성 있는 소품이 힙한 신당동 동네 사랑방 같은 카페",
+    tags: ["동네·아지트", "감성·인테리어"],
+    searchQuery: "서울특별시 중구 다산로34길 41-2",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DeMSmiWz2sh/",
+    imageUrl: "/cafes/flow-state-coffee-sindang.jpg",
+    addedAt: "2026-10-08",
+    menu: "커피, 휘낭시에",
+    hours: {
+      text: "월–목 08:00–20:00 · 금·토 08:00–21:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4], open: "08:00", close: "20:00" }, { days: [5, 6], open: "08:00", close: "21:00" }],
+    },
+  },
 ];
