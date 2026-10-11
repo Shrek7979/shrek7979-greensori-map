@@ -5509,4 +5509,22 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [1, 2, 3, 4], open: "08:00", close: "20:00" }, { days: [5, 6], open: "08:00", close: "21:00" }],
     },
   },
+  {
+    id: "giveon-caffeinebar-chungmuro",
+    name: "기브온 카페인바",
+    area: "충무로",
+    region: "서울",
+    description: "청록색 외관과 붉은 계단이 인상적인, 바리스타 챔피언 부부가 운영하는 충무로 카페",
+    tags: ["로스터리·드립", "감성·인테리어"],
+    searchQuery: "서울 중구 퇴계로42길 35",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DeRdKV8zY9_/",
+    imageUrl: "/cafes/giveon-caffeinebar-chungmuro.jpg",
+    addedAt: "2026-10-10",
+    hours: {
+      text: "평일 08:00–19:00 · 토요일 11:00–18:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "19:00" }, { days: [6], open: "11:00", close: "18:00" }],
+    },
+    menu: "드립커피, 베이커리",
+    commentSummary: "청록색 외관과 이국적인 분위기에 호평, 챔피언 바리스타의 실력도 기대된다는 반응이 많아요",
+  },
 ];
