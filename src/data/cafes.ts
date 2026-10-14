@@ -5549,4 +5549,20 @@ export const cafes: Cafe[] = [
     menu: "스콘",
     commentSummary: "유럽 감성 테라스와 꽃 장식에 호평, 동묘와 안 어울릴 듯 잘 어울린다는 반응이 많아요",
   },
+  {
+    id: "gongbaek-yohaku-seongsu",
+    name: "공백요하쿠",
+    area: "성수동",
+    region: "서울",
+    description: "자양동 로스터리 공백이 성수 뚝도시장 골목에 연 작은 커피바, 나무 선반과 음악이 시장 풍경과 어우러지는 곳",
+    tags: ["로스터리·드립", "동네·아지트"],
+    searchQuery: "서울 성동구 성덕정15길 6-15",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DebwniCze3q/",
+    imageUrl: "/cafes/gongbaek-yohaku-seongsu.jpg",
+    addedAt: "2026-10-14",
+    hours: {
+      text: "월·수·금·토 08:00–15:00 · 화 08:00–17:00 · 목·일 휴무",
+      schedule: [{ days: [1, 3, 5, 6], open: "08:00", close: "15:00" }, { days: [2], open: "08:00", close: "17:00" }],
+    },
+  },
 ];
