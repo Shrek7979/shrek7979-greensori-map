@@ -1460,8 +1460,10 @@ export default function KakaoMap({ cafes }: Props) {
 
       {/* 활성 필터 요약 칩은 컨트롤 바 버튼 자체의 활성 스타일로 충분히 드러나므로 숨김 처리 */}
 
-      {/* 컨트롤 바: 뷰 전환 · 즐겨찾기 · 랜덤 · 결과 개수 */}
-      <div className="mb-3 flex flex-wrap items-center gap-2">
+      {/* 컨트롤 바: 뷰 전환 · 즐겨찾기 · 랜덤 · 결과 개수
+          스크롤해도 화면 위에 붙어 있게(sticky) — 지도가 화면을 덮어도 버튼은 항상 누를 수 있도록.
+          배경을 페이지색으로 채워 아래로 지나가는 지도·목록이 비치지 않게 한다. */}
+      <div className="sticky top-0 z-30 -mx-2 mb-3 flex flex-wrap items-center gap-2 bg-[#f7f2ea]/95 px-2 py-2 backdrop-blur-sm dark:bg-[#17130f]/95">
         <div className="inline-flex rounded-full border border-[#e6dcca] bg-white/70 p-0.5 dark:border-[#3a2e23] dark:bg-[#231b14]/60">
           {(["map", "list"] as const).map((v) => (
             <button
@@ -1639,7 +1641,9 @@ export default function KakaoMap({ cafes }: Props) {
 
       <div
         ref={mapRef}
-        className={`h-[600px] w-full rounded-2xl shadow-sm ${view === "list" ? "hidden" : ""}`}
+        // 휴대폰에선 화면 높이의 55%(최소 320px) — 지도 위아래로 잡고 스크롤할 공간을 남겨 지도에 갇히지 않게.
+        // svh는 주소창이 접혀도 변하지 않는 높이라 지도 크기가 흔들리지 않는다. 640px 이상 화면은 기존 600px.
+        className={`h-[55svh] min-h-[320px] w-full rounded-2xl shadow-sm sm:h-[600px] ${view === "list" ? "hidden" : ""}`}
       />
 
       {view === "list" && (
