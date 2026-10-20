@@ -1009,6 +1009,14 @@ export default function KakaoMap({ cafes }: Props) {
       map.relayout();
       map.setLevel(4);
       map.setCenter(entry.position);
+      // 카드가 마커 위로 열리므로, 마커를 지도 아래쪽에 두어 카드 윗부분(사진)이 잘리지 않게 한다
+      // (휴대폰에선 지도 높이가 화면의 55%라 가운데 두면 카드가 위로 넘친다)
+      const proj = map.getProjection();
+      const p = proj.pointFromCoords(entry.position);
+      const offset = Math.min(150, (mapRef.current?.clientHeight ?? 600) * 0.33);
+      map.setCenter(
+        proj.coordsFromPoint(new window.kakao.maps.Point(p.x, p.y - offset))
+      );
       entry.infoWindow.open(map, entry.marker);
       openIWRef.current = entry.infoWindow;
       hydrateFavRef.current(cafe.id);
