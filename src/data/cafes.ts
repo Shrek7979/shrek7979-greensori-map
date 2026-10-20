@@ -5619,4 +5619,21 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "10:00", close: "21:00" }],
     },
   },
+  {
+    id: "pp-coffee-mangwon",
+    name: "피피커피",
+    area: "망원동",
+    region: "서울",
+    description: "커피 도구와 구리 주전자, 나무 가구가 오래된 영화 속 커피바를 떠올리게 하는 25년 된 망원동 융드립 커피집",
+    tags: ["로스터리·드립", "한옥·레트로"],
+    searchQuery: "서울 마포구 동교로 23",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DerMqkITjAU/",
+    imageUrl: "/cafes/pp-coffee-mangwon.jpg",
+    addedAt: "2026-10-20",
+    menu: "융드립 커피",
+    hours: {
+      text: "화–일 09:00–19:00 · 월 휴무",
+      schedule: [{ days: [0, 2, 3, 4, 5, 6], open: "09:00", close: "19:00" }],
+    },
+  },
 ];
