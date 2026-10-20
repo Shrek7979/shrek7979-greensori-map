@@ -1010,7 +1010,7 @@ export default function KakaoMap({ cafes }: Props) {
       map.setLevel(4);
       map.setCenter(entry.position);
       // 카드가 마커 위로 열리므로, 마커를 지도 아래쪽에 두어 카드 윗부분(사진)이 잘리지 않게 한다
-      // (휴대폰에선 지도 높이가 화면의 55%라 가운데 두면 카드가 위로 넘친다)
+      // (휴대폰에선 지도 높이가 화면의 60%라 가운데 두면 카드가 위로 넘친다)
       const proj = map.getProjection();
       const p = proj.pointFromCoords(entry.position);
       const offset = Math.min(150, (mapRef.current?.clientHeight ?? 600) * 0.33);
@@ -1649,9 +1649,9 @@ export default function KakaoMap({ cafes }: Props) {
 
       <div
         ref={mapRef}
-        // 휴대폰에선 화면 높이의 55%(최소 320px) — 지도 위아래로 잡고 스크롤할 공간을 남겨 지도에 갇히지 않게.
+        // 휴대폰에선 화면 높이의 60%(최소 320px) — 지도 위아래로 잡고 스크롤할 공간을 남겨 지도에 갇히지 않게.
         // svh는 주소창이 접혀도 변하지 않는 높이라 지도 크기가 흔들리지 않는다. 640px 이상 화면은 기존 600px.
-        className={`h-[55svh] min-h-[320px] w-full rounded-2xl shadow-sm sm:h-[600px] ${view === "list" ? "hidden" : ""}`}
+        className={`h-[60svh] min-h-[320px] w-full rounded-2xl shadow-sm sm:h-[600px] ${view === "list" ? "hidden" : ""}`}
       />
 
       {view === "list" && (
