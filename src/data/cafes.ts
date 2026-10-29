@@ -2147,7 +2147,7 @@ export const cafes: Cafe[] = [
     region: "서울",
     description: "다정한 필터커피와 쿠키의 성동구 카페",
     tags: ["디저트·빵", "로스터리·드립"],
-    searchQuery: "오루베 왕십리로31길",
+    searchQuery: "서울 성동구 왕십리로31길 8",
     sourceUrl: "https://www.instagram.com/green_sori/reel/DJ9EgyPpw6H/",
     imageUrl: "/cafes/orube.jpg",
     hours: {
@@ -5280,6 +5280,7 @@ export const cafes: Cafe[] = [
     description: "후쿠오카에서 좋았던 카페로 소개된 히라오의 커피 로스터리",
     tags: ["로스터리·드립"],
     searchQuery: "EL TREN COFFEE ROASTERS 2-17-21 Hirao Chuo Ward Fukuoka",
+    coords: { lat: 33.5746954, lng: 130.4027108 },
     sourceUrl: "https://www.instagram.com/green_sori/reel/DcLgmawTmsZ/",
     addedAt: "2026-09-07",
     hours: {
@@ -5299,6 +5300,7 @@ export const cafes: Cafe[] = [
     description: "후쿠오카에서 좋았던 카페로 소개된 다카사고의 커피 공간",
     tags: ["로스터리·드립"],
     searchQuery: "COFFEE COUNTY FUKUOKA 1-21-21 Takasago Chuo Ward Fukuoka",
+    coords: { lat: 33.5807531, lng: 130.4050221 },
     sourceUrl: "https://www.instagram.com/green_sori/reel/DcLgmawTmsZ/",
     addedAt: "2026-09-07",
     hours: {
