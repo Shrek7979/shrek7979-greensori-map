@@ -5740,4 +5740,20 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [1, 2, 5], open: "14:00", close: "19:00" }, { days: [0, 6], open: "12:00", close: "19:00" }],
     },
   },
+  {
+    id: "hi-trust-seokgye",
+    name: "하이트러스트",
+    area: "석계",
+    region: "서울",
+    description: "노란 은행나무와 빈티지 소품, 배경음악처럼 들려오는 전철 소리가 정겨운 석계역 근처 동네 사랑방 같은 작은 카페",
+    tags: ["동네·아지트", "감성·인테리어"],
+    searchQuery: "서울 성북구 한천로66길 185",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DfMqw6KTaF6/",
+    imageUrl: "/cafes/hi-trust-seokgye.jpg",
+    addedAt: "2026-11-02",
+    hours: {
+      text: "월–금 10:00–20:00 · 토 10:00–21:00 · 일 휴무",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "10:00", close: "20:00" }, { days: [6], open: "10:00", close: "21:00" }],
+    },
+  },
 ];
