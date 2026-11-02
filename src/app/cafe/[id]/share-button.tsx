@@ -36,7 +36,7 @@ export default function ShareButton({ title, text, path }: Props) {
   return (
     <button
       onClick={share}
-      className="inline-flex h-11 items-center gap-1.5 rounded-full border border-line bg-surface px-5 text-sm font-semibold text-ink transition hover:border-line-strong hover:bg-surface-2"
+      className="inline-flex items-center gap-1.5 rounded-full border border-[#dcc9ad] bg-white/80 px-4 py-1.5 text-sm font-semibold text-[#6f4e37] shadow-sm transition hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/70 dark:text-[#d3bd9c] dark:hover:bg-[#2a2018]"
     >
       <svg
         width="14"

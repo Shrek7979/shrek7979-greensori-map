@@ -69,27 +69,25 @@ export default async function CafePage({ params }: Props) {
     : `https://map.kakao.com/link/search/${encodeURIComponent(cafe.searchQuery)}`;
 
   return (
-    <div className="flex min-h-screen flex-col bg-canvas font-sans">
-      <header className="border-b border-line/70">
-        <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4 sm:px-6">
+    <div className="flex min-h-screen flex-col bg-[#f7f2ea] font-sans dark:bg-[#17130f]">
+      <header className="border-b border-[#e3d8c6] bg-[#f2e9d8] px-6 py-4 dark:border-[#2e251c] dark:bg-[#1d1712]">
+        <div className="mx-auto flex max-w-3xl items-center gap-3">
           <Link
             href={isOverseas ? "/" : `/?cafe=${cafe.id}`}
-            className="inline-flex items-center gap-1.5 text-ink transition hover:opacity-70"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#6f4e37] transition hover:text-[#5c4029] dark:text-[#d3bd9c]"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <polyline points="15 18 9 12 15 6" />
             </svg>
-            <span className="font-display text-[22px] leading-none tracking-tight">
-              GreenSori <span className="italic text-brand">Map</span>
-            </span>
+            GreenSori Map
           </Link>
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-6 sm:px-6 sm:py-10">
-        <article className="overflow-hidden rounded-3xl border border-line/80 bg-surface shadow-card">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-8">
+        <article className="overflow-hidden rounded-2xl border border-[#e9dfce] bg-white/80 shadow-sm dark:border-[#2e251c] dark:bg-[#201a14]">
           {cafe.imageUrl && (
-            <div className="relative aspect-[16/10] bg-surface-2">
+            <div className="relative aspect-[16/10] bg-[#f0e6d5] dark:bg-[#2a2018]">
               <Image
                 src={cafe.imageUrl}
                 alt={cafe.name}
@@ -106,7 +104,7 @@ export default async function CafePage({ params }: Props) {
               {(cafe.tags ?? []).map((t) => (
                 <span
                   key={t}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-ink-2"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-[#fbf7f0] px-2.5 py-0.5 text-[11px] font-medium text-[#6b5842] dark:border-[#3a2e23] dark:bg-[#231b14] dark:text-[#c8b79c]"
                 >
                   <span
                     className="h-2 w-2 rounded-full"
@@ -117,21 +115,21 @@ export default async function CafePage({ params }: Props) {
               ))}
             </div>
 
-            <h1 className="text-[28px] font-bold leading-tight tracking-[-0.03em] text-ink sm:text-[34px]">
+            <h1 className="text-2xl font-semibold tracking-tight text-[#2c2119] dark:text-[#f0e6d5]">
               {cafe.name}
             </h1>
-            <p className="mt-1.5 text-sm text-muted">
+            <p className="mt-1 text-sm text-[#a5906f] dark:text-[#8a7458]">
               {cafe.area} · {cafe.region}
             </p>
 
-            <p className="mt-5 text-[16px] leading-[1.75] text-ink-2">
+            <p className="mt-4 leading-relaxed text-[#5c4632] dark:text-[#c8b79c]">
               {cafe.description}
             </p>
 
             {(cafe.hours || cafe.menu) && (
               <div className="mt-3 flex flex-wrap gap-2">
                 {cafe.hours && (
-                  <p className="inline-flex items-center gap-1.5 rounded-xl bg-surface-2 px-3.5 py-2 text-sm text-ink-2">
+                  <p className="inline-flex items-center gap-1.5 rounded-lg bg-[#f2e9d8] px-3 py-1.5 text-sm text-[#6f4e37] dark:bg-[#2a2018] dark:text-[#d3bd9c]">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
                       <circle cx="12" cy="12" r="9" />
                       <polyline points="12 7 12 12 15.5 14" />
@@ -140,7 +138,7 @@ export default async function CafePage({ params }: Props) {
                   </p>
                 )}
                 {cafe.menu && (
-                  <p className="inline-flex items-center gap-1.5 rounded-xl bg-surface-2 px-3.5 py-2 text-sm text-ink-2">
+                  <p className="inline-flex items-center gap-1.5 rounded-lg bg-[#f2e9d8] px-3 py-1.5 text-sm text-[#6f4e37] dark:bg-[#2a2018] dark:text-[#d3bd9c]">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M17 8h1a3 3 0 0 1 0 6h-1" />
                       <path d="M3 8h14v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" />
@@ -152,11 +150,11 @@ export default async function CafePage({ params }: Props) {
             )}
 
             {cafe.commentSummary && (
-              <blockquote className="mt-5 rounded-2xl border-l-2 border-brand bg-brand-soft/60 px-5 py-4">
-                <p className="text-sm leading-relaxed text-ink-2">
+              <blockquote className="mt-4 rounded-xl border border-[#e9dfce] bg-[#fbf7f0] px-4 py-3 dark:border-[#2e251c] dark:bg-[#1d1712]">
+                <p className="text-sm leading-relaxed text-[#5c4632] dark:text-[#c8b79c]">
                   💬 {cafe.commentSummary}
                 </p>
-                <cite className="mt-1 block text-[11px] not-italic text-muted">
+                <cite className="mt-1 block text-[11px] not-italic text-[#a5906f] dark:text-[#8a7458]">
                   @green_sori 게시물 댓글 반응
                 </cite>
               </blockquote>
@@ -172,7 +170,7 @@ export default async function CafePage({ params }: Props) {
                 <a
                   href={cafe.sourceUrl}
                   rel="noopener"
-                  className="inline-flex h-11 items-center gap-1.5 rounded-full border border-line bg-surface px-5 text-sm font-semibold text-ink transition hover:border-line-strong hover:bg-surface-2"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#dcc9ad] bg-white/80 px-4 py-1.5 text-sm font-semibold text-[#6f4e37] shadow-sm transition hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/70 dark:text-[#d3bd9c] dark:hover:bg-[#2a2018]"
                 >
                   인스타 원본 ↗
                 </a>
@@ -182,7 +180,7 @@ export default async function CafePage({ params }: Props) {
                   href={mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 items-center gap-1.5 rounded-full border border-line bg-surface px-5 text-sm font-semibold text-ink transition hover:border-line-strong hover:bg-surface-2"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#dcc9ad] bg-white/80 px-4 py-1.5 text-sm font-semibold text-[#6f4e37] shadow-sm transition hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/70 dark:text-[#d3bd9c] dark:hover:bg-[#2a2018]"
                 >
                   {isOverseas ? "구글맵 →" : "길찾기 →"}
                 </a>
@@ -190,7 +188,7 @@ export default async function CafePage({ params }: Props) {
               {!isOverseas && (
                 <Link
                   href={`/?cafe=${cafe.id}`}
-                  className="inline-flex h-11 items-center gap-1.5 rounded-full bg-brand px-5 text-sm font-semibold text-white transition hover:bg-brand-hover"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#6f4e37] px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5c4029]"
                 >
                   View on Map
                 </Link>
@@ -199,7 +197,7 @@ export default async function CafePage({ params }: Props) {
           </div>
         </article>
 
-        <p className="mt-4 text-center text-xs text-muted">
+        <p className="mt-4 text-center text-xs text-[#a5906f] dark:text-[#8a7458]">
           사진과 장소 정보의 출처는{" "}
           <a
             href="https://www.instagram.com/green_sori/"

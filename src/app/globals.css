@@ -1,67 +1,26 @@
 @import "tailwindcss";
 
-/* 디자인 토큰 — 라이트/다크 값은 여기서만 정의하고, 컴포넌트는 토큰 이름(bg-canvas, text-ink …)만 쓴다 */
 :root {
-  --canvas: #f7f5f0;
-  --surface: #ffffff;
-  --surface-2: #f1eee7;
-  --surface-3: #e7e3d9;
-  --line: #e5e0d6;
-  --line-strong: #d3ccbf;
-  --ink: #1c1a17;
-  --ink-2: #4a453e;
-  --muted: #857e74;
-  --brand: #1f4d3a;
-  --brand-hover: #163a2b;
-  --brand-soft: #e2ebe4;
-  --shadow-color: 40 32 20;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --canvas: #121311;
-    --surface: #1a1c19;
-    --surface-2: #222520;
-    --surface-3: #2c302a;
-    --line: #2d312b;
-    --line-strong: #3d423a;
-    --ink: #f1efea;
-    --ink-2: #c9c5bc;
-    --muted: #8f8a81;
-    --brand: #357e5b;
-    --brand-hover: #3f906a;
-    --brand-soft: #1e2d25;
-    --shadow-color: 0 0 0;
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
-@theme inline {
-  --color-canvas: var(--canvas);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-surface-3: var(--surface-3);
-  --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-muted: var(--muted);
-  --color-brand: var(--brand);
-  --color-brand-hover: var(--brand-hover);
-  --color-brand-soft: var(--brand-soft);
-  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  --font-display: var(--font-serif-display), "Pretendard Variable", serif;
-  --shadow-card: 0 1px 2px rgb(var(--shadow-color) / 0.04), 0 4px 16px -4px rgb(var(--shadow-color) / 0.08);
-  --shadow-lift: 0 2px 4px rgb(var(--shadow-color) / 0.05), 0 12px 32px -8px rgb(var(--shadow-color) / 0.16);
-}
-
 body {
-  background: var(--canvas);
-  color: var(--ink);
-  font-family: var(--font-sans);
-  letter-spacing: -0.01em;
-  -webkit-font-smoothing: antialiased;
-}
-
-::selection {
-  background: var(--brand-soft);
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }

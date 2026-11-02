@@ -1,14 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Baloo_2 } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import PWARegister from "./pwa-register";
 
-const serifDisplay = Instrument_Serif({
-  variable: "--font-serif-display",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const cuteFont = Baloo_2({
+  variable: "--font-fredoka",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -43,10 +52,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f5f0" },
-    { media: "(prefers-color-scheme: dark)", color: "#121311" },
-  ],
+  themeColor: "#6f4e37",
 };
 
 export default function RootLayout({
@@ -57,14 +63,8 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${serifDisplay.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cuteFont.variable} h-full antialiased`}
     >
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-        />
-      </head>
       <body className="min-h-full flex flex-col">
         <script
           dangerouslySetInnerHTML={{

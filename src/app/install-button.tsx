@@ -74,7 +74,7 @@ export default function InstallButton() {
     <div className="relative shrink-0">
       <button
         onClick={onClick}
-        className="inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 text-sm font-semibold text-canvas transition hover:opacity-90"
+        className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-[#d8c8b0] bg-[#f7f2ea] px-3.5 py-2 text-sm font-semibold text-[#5c4632] shadow-sm transition hover:bg-[#eaddc8] dark:border-[#3a2e23] dark:bg-[#231b14] dark:text-[#d3bd9c] dark:hover:bg-[#2c2219]"
       >
         <svg
           width="15"
@@ -95,7 +95,7 @@ export default function InstallButton() {
       </button>
 
       {help && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-64 rounded-2xl border border-line bg-surface p-4 text-xs leading-relaxed text-ink-2 shadow-lift">
+        <div className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-[#e3d8c6] bg-white p-3 text-xs leading-relaxed text-[#5c4632] shadow-lg dark:border-[#3a2e23] dark:bg-[#231b14] dark:text-[#d3bd9c]">
           <div className="mb-1 font-semibold">홈 화면에 추가하기</div>
           {help === "ios" ? (
             <>
@@ -115,7 +115,7 @@ export default function InstallButton() {
           )}
           <button
             onClick={() => setHelp(null)}
-            className="mt-2 block text-brand underline underline-offset-2"
+            className="mt-2 block text-[#8b5e3c] underline underline-offset-2"
           >
             닫기
           </button>
