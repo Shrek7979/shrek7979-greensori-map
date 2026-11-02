@@ -83,7 +83,7 @@ const CLUSTER_STYLES = [
   {
     width: "34px",
     height: "34px",
-    background: "rgba(111,78,55,0.88)",
+    background: "rgba(31,77,58,0.88)",
     borderRadius: "17px",
     color: "#fff",
     textAlign: "center",
@@ -91,7 +91,7 @@ const CLUSTER_STYLES = [
     fontSize: "12px",
     fontWeight: "700",
     border: "2px solid rgba(255,255,255,0.65)",
-    boxShadow: "0 2px 6px rgba(80,55,35,0.35)",
+    boxShadow: "0 2px 6px rgba(20,40,30,0.35)",
   },
   {
     width: "42px",
@@ -104,7 +104,7 @@ const CLUSTER_STYLES = [
     fontSize: "13px",
     fontWeight: "700",
     border: "2px solid rgba(255,255,255,0.7)",
-    boxShadow: "0 2px 8px rgba(80,55,35,0.4)",
+    boxShadow: "0 2px 8px rgba(20,40,30,0.4)",
   },
   {
     width: "52px",
@@ -117,7 +117,7 @@ const CLUSTER_STYLES = [
     fontSize: "14px",
     fontWeight: "700",
     border: "3px solid rgba(255,255,255,0.75)",
-    boxShadow: "0 3px 10px rgba(80,55,35,0.45)",
+    boxShadow: "0 3px 10px rgba(20,40,30,0.45)",
   },
 ];
 
@@ -800,21 +800,21 @@ export default function KakaoMap({ cafes }: Props) {
           links.push(
             `<a href="${escapeHtml(
               cafe.sourceUrl
-            )}" rel="noopener" style="color:#8b5e3c;text-decoration:none;font-weight:600;">인스타 ↗</a>`
+            )}" rel="noopener" style="color:#1f4d3a;text-decoration:none;font-weight:600;">인스타 ↗</a>`
           );
         }
         links.push(
           `<a href="${escapeHtml(
             dirUrl
-          )}" target="_blank" rel="noopener noreferrer" style="color:#8b5e3c;text-decoration:none;font-weight:600;">길찾기 →</a>`
+          )}" target="_blank" rel="noopener noreferrer" style="color:#1f4d3a;text-decoration:none;font-weight:600;">길찾기 →</a>`
         );
         links.push(
           `<a href="/cafe/${escapeHtml(
             cafe.id
-          )}" style="color:#8b5e3c;text-decoration:none;font-weight:600;">상세 →</a>`
+          )}" style="color:#1f4d3a;text-decoration:none;font-weight:600;">상세 →</a>`
         );
         const hoursLine = cafe.hours
-          ? `<div style="color:#8a7458;font-size:11px;margin-top:3px;">🕐 ${escapeHtml(
+          ? `<div style="color:#857e74;font-size:11px;margin-top:3px;">🕐 ${escapeHtml(
               cafe.hours.text
             )}</div>`
           : "";
@@ -824,7 +824,7 @@ export default function KakaoMap({ cafes }: Props) {
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
           </button>`;
         const newBadge = isNewCafe(cafe, Date.now())
-          ? `<span style="position:absolute;top:8px;left:8px;z-index:3;padding:2px 8px;border-radius:9999px;background:rgba(47,158,99,0.92);color:#fff;font-size:10px;font-weight:700;">NEW</span>`
+          ? `<span style="position:absolute;top:8px;left:8px;z-index:3;padding:2px 8px;border-radius:9999px;background:rgba(31,77,58,0.92);color:#fff;font-size:10px;font-weight:700;">NEW</span>`
           : "";
         const cardContent = `
           <div class="gs-info-card" data-cafe="${escapeHtml(
@@ -834,13 +834,13 @@ export default function KakaoMap({ cafes }: Props) {
             ${newBadge}
             ${cardImage}
             <div style="padding:8px 12px;">
-              <div style="font-weight:600;margin-bottom:2px;color:#2c2119;">${escapeHtml(
+              <div style="font-weight:600;margin-bottom:2px;color:#1c1a17;">${escapeHtml(
                 cafe.name
               )}</div>
-              <div style="color:#7a6650;font-size:12px;margin-bottom:4px;">${escapeHtml(
+              <div style="color:#857e74;font-size:12px;margin-bottom:4px;">${escapeHtml(
                 cafe.area
               )} · ${escapeHtml(cafe.region)}</div>
-              <div style="color:#666;">${escapeHtml(cafe.description)}</div>
+              <div style="color:#4a453e;">${escapeHtml(cafe.description)}</div>
               ${hoursLine}
               <div style="margin-top:8px;display:flex;gap:12px;">${links.join("")}</div>
             </div>
@@ -1249,7 +1249,7 @@ export default function KakaoMap({ cafes }: Props) {
     <div>
       <div className="relative mb-4">
         <svg
-          className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#b3a084] dark:text-[#7c6a52]"
+          className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -1266,14 +1266,14 @@ export default function KakaoMap({ cafes }: Props) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="카페 이름·동네·키워드 검색 (예: 망원동, 베이글)"
-          className="w-full rounded-xl border border-[#e3d8c6] bg-white/80 py-3 pl-11 pr-10 text-sm text-[#3d2c1e] shadow-sm outline-none transition placeholder:text-[#b3a084] focus:border-[#c8a77e] focus:ring-2 focus:ring-[#c8a77e]/25 dark:border-[#3a2e23] dark:bg-[#231b14]/80 dark:text-[#f0e6d5] dark:placeholder:text-[#7c6a52]"
+          className="h-12 w-full rounded-2xl border border-line bg-surface pl-11 pr-10 text-[15px] text-ink shadow-card outline-none transition placeholder:text-muted focus:border-brand focus:ring-4 focus:ring-brand/10"
         />
         {search && (
           <button
             type="button"
             onClick={() => setSearch("")}
             aria-label="검색어 지우기"
-            className="absolute right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-[#b3a084] transition hover:bg-[#efe6d5] hover:text-[#6f4e37] dark:hover:bg-[#2c2219] dark:hover:text-[#d3bd9c]"
+            className="absolute right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-muted transition hover:bg-surface-3 hover:text-brand"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -1283,10 +1283,10 @@ export default function KakaoMap({ cafes }: Props) {
         )}
       </div>
 
-      <div className="mb-3 overflow-hidden rounded-2xl border border-[#e9dfce] bg-[#fbf7f0]/70 shadow-[0_1px_3px_rgba(80,60,40,0.05)] dark:border-[#2e251c] dark:bg-[#1d1712]/60">
+      <div className="mb-3 overflow-hidden rounded-2xl border border-line bg-surface shadow-card">
         <button
           onClick={() => setFiltersOpen((o) => !o)}
-          className="flex w-full items-center gap-2 px-4 py-3 text-left"
+          className="flex w-full items-center gap-2 px-4 py-3.5 text-left transition hover:bg-surface-2/60"
           aria-expanded={filtersOpen}
         >
           <svg
@@ -1298,18 +1298,18 @@ export default function KakaoMap({ cafes }: Props) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-[#8a7458] dark:text-[#9a866a]"
+            className="text-muted"
             aria-hidden="true"
           >
             <line x1="4" y1="6" x2="20" y2="6" />
             <line x1="7" y1="12" x2="17" y2="12" />
             <line x1="10" y1="18" x2="14" y2="18" />
           </svg>
-          <span className="text-sm font-semibold text-[#5c4632] dark:text-[#d3bd9c]">
+          <span className="text-sm font-semibold text-ink-2">
             지역 · 테마 필터
           </span>
           {activeChips.length > 0 && (
-            <span className="rounded-full bg-[#6f4e37] px-1.5 py-0.5 text-[10px] font-bold tabular-nums text-white">
+            <span className="rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold tabular-nums text-white">
               {activeChips.length}
             </span>
           )}
@@ -1322,7 +1322,7 @@ export default function KakaoMap({ cafes }: Props) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={`ml-auto text-[#a5906f] transition-transform dark:text-[#8a7458] ${
+            className={`ml-auto text-muted transition-transform ${
               filtersOpen ? "rotate-180" : ""
             }`}
             aria-hidden="true"
@@ -1332,13 +1332,13 @@ export default function KakaoMap({ cafes }: Props) {
         </button>
 
         {filtersOpen && (
-          <div className="space-y-4 border-t border-[#ece2d0] px-4 pb-4 pt-3 dark:border-[#2e251c]">
+          <div className="space-y-4 border-t border-line px-4 pb-4 pt-3">
             <div>
           <div className="mb-2.5 flex items-center gap-2.5">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a5906f] dark:text-[#8a7458]">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
               지역
             </span>
-            <span className="h-px flex-1 bg-gradient-to-r from-[#e3d8c6] to-transparent dark:from-[#332a20]" />
+            <span className="h-px flex-1 bg-line" />
           </div>
           <div className="flex flex-wrap gap-1">
             {regions.map((r) => {
@@ -1353,14 +1353,14 @@ export default function KakaoMap({ cafes }: Props) {
                   }}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
                     active
-                      ? "bg-[#6f4e37] text-white shadow-sm shadow-[#6f4e37]/25"
-                      : "bg-white/70 text-[#6b5842] ring-1 ring-inset ring-[#e6dcca] hover:bg-white hover:ring-[#d8c8b0] dark:bg-[#231b14]/60 dark:text-[#c8b79c] dark:ring-[#3a2e23] dark:hover:bg-[#2a2018]"
+                      ? "bg-brand text-white shadow-sm shadow-brand/25"
+                      : "bg-surface text-ink-2 ring-1 ring-inset ring-line hover:bg-surface-2 hover:ring-line-strong"
                   }`}
                 >
                   {r.name}
                   <span
                     className={`text-[11px] tabular-nums ${
-                      active ? "text-white/60" : "text-[#b3a084] dark:text-[#7c6a52]"
+                      active ? "text-white/60" : "text-muted"
                     }`}
                   >
                     {r.count}
@@ -1373,10 +1373,10 @@ export default function KakaoMap({ cafes }: Props) {
 
         <div>
           <div className="mb-2.5 flex items-center gap-2.5">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a5906f] dark:text-[#8a7458]">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
               테마
             </span>
-            <span className="h-px flex-1 bg-gradient-to-r from-[#e3d8c6] to-transparent dark:from-[#332a20]" />
+            <span className="h-px flex-1 bg-line" />
           </div>
           <div className="flex flex-wrap gap-1.5">
             {tags.map((t) => {
@@ -1390,7 +1390,7 @@ export default function KakaoMap({ cafes }: Props) {
                   className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-all ${
                     active
                       ? "text-white shadow-sm"
-                      : "border-[#e6dcca] bg-white/60 text-[#6b5842] hover:bg-white hover:shadow-sm dark:border-[#3a2e23] dark:bg-[#231b14]/50 dark:text-[#c8b79c] dark:hover:bg-[#2a2018]"
+                      : "border-line bg-surface text-ink-2 hover:border-line-strong hover:bg-surface-2"
                   }`}
                 >
                   <span
@@ -1400,7 +1400,7 @@ export default function KakaoMap({ cafes }: Props) {
                   {t.name}
                   <span
                     className={`text-[11px] tabular-nums ${
-                      active ? "text-white/70" : "text-[#b3a084] dark:text-[#7c6a52]"
+                      active ? "text-white/70" : "text-muted"
                     }`}
                   >
                     {t.count}
@@ -1414,16 +1414,16 @@ export default function KakaoMap({ cafes }: Props) {
             {/* 내 기록 백업/복원 — 즐겨찾기·가봤어요는 이 브라우저에만 저장됨 */}
             <div>
               <div className="mb-2.5 flex items-center gap-2.5">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a5906f] dark:text-[#8a7458]">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
                   내 기록
                 </span>
-                <span className="h-px flex-1 bg-gradient-to-r from-[#e3d8c6] to-transparent dark:from-[#332a20]" />
+                <span className="h-px flex-1 bg-line" />
               </div>
               <div className="flex flex-wrap items-center gap-1.5">
                 <button
                   onClick={exportRecords}
                   disabled={favorites.size === 0 && visited.size === 0}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-white/70 px-3 py-1 text-xs font-medium text-[#6b5842] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/70 px-3 py-1 text-xs font-medium text-ink-2 transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -1434,7 +1434,7 @@ export default function KakaoMap({ cafes }: Props) {
                 </button>
                 <button
                   onClick={() => importInputRef.current?.click()}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-white/70 px-3 py-1 text-xs font-medium text-[#6b5842] transition hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/70 px-3 py-1 text-xs font-medium text-ink-2 transition hover:bg-surface"
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -1454,12 +1454,12 @@ export default function KakaoMap({ cafes }: Props) {
                     e.target.value = ""; // 같은 파일 재선택도 동작하도록 초기화
                   }}
                 />
-                <span className="text-[11px] text-[#b3a084] dark:text-[#7c6a52]">
+                <span className="text-[11px] text-muted">
                   Favorites {favorites.size} · Visited {visited.size} — saved on this device only
                 </span>
               </div>
               {importMsg && (
-                <p className="mt-2 text-xs font-medium text-[#3c8e5c]">{importMsg}</p>
+                <p className="mt-2 text-xs font-medium text-brand">{importMsg}</p>
               )}
             </div>
           </div>
@@ -1471,16 +1471,16 @@ export default function KakaoMap({ cafes }: Props) {
       {/* 컨트롤 바: 뷰 전환 · 즐겨찾기 · 랜덤 · 결과 개수
           스크롤해도 화면 위에 붙어 있게(sticky) — 지도가 화면을 덮어도 버튼은 항상 누를 수 있도록.
           배경을 페이지색으로 채워 아래로 지나가는 지도·목록이 비치지 않게 한다. */}
-      <div className="sticky top-0 z-30 -mx-2 mb-3 flex flex-wrap items-center gap-2 bg-[#f7f2ea]/95 px-2 py-2 backdrop-blur-sm dark:bg-[#17130f]/95">
-        <div className="inline-flex rounded-full border border-[#e6dcca] bg-white/70 p-0.5 dark:border-[#3a2e23] dark:bg-[#231b14]/60">
+      <div className="sticky top-0 z-30 -mx-2 mb-3 flex flex-wrap items-center gap-2 bg-canvas/90 px-2 py-2.5 backdrop-blur-md">
+        <div className="inline-flex rounded-full bg-surface-3/70 p-0.5">
           {(["map", "list"] as const).map((v) => (
             <button
               key={v}
               onClick={() => setView(v)}
-              className={`rounded-full px-3.5 py-1 text-xs font-semibold transition-all ${
+              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
                 view === v
-                  ? "bg-[#6f4e37] text-white shadow-sm"
-                  : "text-[#8a7458] hover:text-[#6f4e37] dark:text-[#9a866a]"
+                  ? "bg-surface text-ink shadow-sm"
+                  : "text-muted hover:text-ink"
               }`}
             >
               {v === "map" ? "지도" : "목록"}
@@ -1504,8 +1504,8 @@ export default function KakaoMap({ cafes }: Props) {
           }}
           className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
             favoriteOnly
-              ? "border-[#c9455f] bg-[#c9455f] text-white shadow-sm"
-              : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+              ? "border-brand bg-brand text-white shadow-sm"
+              : "border-line bg-surface text-ink-2 hover:border-line-strong hover:bg-surface-2"
           }`}
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill={favoriteOnly ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -1513,7 +1513,7 @@ export default function KakaoMap({ cafes }: Props) {
           </svg>
           즐겨찾기
           {favCount > 0 && (
-            <span className={`text-[11px] tabular-nums ${favoriteOnly ? "text-white/70" : "text-[#b3a084]"}`}>
+            <span className={`text-[11px] tabular-nums ${favoriteOnly ? "text-white/70" : "text-muted"}`}>
               {favCount}
             </span>
           )}
@@ -1537,15 +1537,15 @@ export default function KakaoMap({ cafes }: Props) {
             aria-pressed={newOnly}
             className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
               newOnly
-                ? "border-[#2f9e63] bg-[#2f9e63] text-white shadow-sm"
-                : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+                ? "border-brand bg-brand text-white shadow-sm"
+                : "border-line bg-surface text-ink-2 hover:border-line-strong hover:bg-surface-2"
             }`}
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
             </svg>
             NEW
-            <span className={`text-[11px] tabular-nums ${newOnly ? "text-white/70" : "text-[#b3a084]"}`}>
+            <span className={`text-[11px] tabular-nums ${newOnly ? "text-white/70" : "text-muted"}`}>
               {newCount}
             </span>
           </button>
@@ -1561,8 +1561,8 @@ export default function KakaoMap({ cafes }: Props) {
             title="영업시간 정보가 등록된 카페 중 지금(한국 시간) 영업중인 곳만 표시"
             className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
               openNowOnly
-                ? "border-[#3c8e5c] bg-[#3c8e5c] text-white shadow-sm"
-                : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+                ? "border-brand bg-brand text-white shadow-sm"
+                : "border-line bg-surface text-ink-2 hover:border-line-strong hover:bg-surface-2"
             }`}
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -1570,7 +1570,7 @@ export default function KakaoMap({ cafes }: Props) {
               <polyline points="12 7 12 12 15.5 14" />
             </svg>
             지금 영업중
-            <span className={`text-[11px] tabular-nums ${openNowOnly ? "text-white/70" : "text-[#b3a084]"}`}>
+            <span className={`text-[11px] tabular-nums ${openNowOnly ? "text-white/70" : "text-muted"}`}>
               {openNowCount}
             </span>
           </button>
@@ -1582,8 +1582,8 @@ export default function KakaoMap({ cafes }: Props) {
           aria-pressed={cafeOfTheDayOpen}
           className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-40 ${
             cafeOfTheDayOpen
-              ? "border-[#c98a2f] bg-[#c98a2f] text-white shadow-sm"
-              : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+              ? "border-brand bg-brand text-white shadow-sm"
+              : "border-line bg-surface text-ink-2 hover:border-line-strong hover:bg-surface-2"
           }`}
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -1602,8 +1602,8 @@ export default function KakaoMap({ cafes }: Props) {
           aria-pressed={sortBy === "distance"}
           className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all disabled:opacity-60 ${
             sortBy === "distance"
-              ? "border-[#2f6fed] bg-[#2f6fed] text-white shadow-sm"
-              : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+              ? "border-brand bg-brand text-white shadow-sm"
+              : "border-line bg-surface text-ink-2 hover:border-line-strong hover:bg-surface-2"
           }`}
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -1614,12 +1614,12 @@ export default function KakaoMap({ cafes }: Props) {
         </button>
 
         {view === "list" && (
-          <label className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-white/70 py-1 pl-3 pr-2 text-xs font-semibold text-[#6b5842] dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]">
-            <span className="text-[#a5906f] dark:text-[#8a7458]">정렬</span>
+          <label className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/70 py-1 pl-3 pr-2 text-xs font-semibold text-ink-2">
+            <span className="text-muted">정렬</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="cursor-pointer bg-transparent font-semibold text-[#6f4e37] outline-none dark:text-[#d3bd9c]"
+              className="cursor-pointer bg-transparent font-semibold text-brand outline-none"
             >
               {sortOptions.map((o) => (
                 <option key={o.value} value={o.value}>
@@ -1630,19 +1630,19 @@ export default function KakaoMap({ cafes }: Props) {
           </label>
         )}
 
-        <span className="ml-auto text-sm font-medium text-[#8a7458] dark:text-[#9a866a]">
+        <span className="ml-auto text-sm font-medium text-muted">
           {summaryLabel}
         </span>
       </div>
 
       {geoError && (
-        <div className="mb-3 rounded-lg border border-[#e7c9c0] bg-[#fbeee9] px-3 py-2 text-xs text-[#a4553f] dark:border-[#4a2f28] dark:bg-[#2a1a15] dark:text-[#d8a08d]">
+        <div className="mb-3 rounded-lg border border-[#e7c9c0] bg-[#fbeee9] px-3 py-2 text-xs text-[#a4553f]">
           {geoError}
         </div>
       )}
 
       {!geoError && geoAccuracyWarning && sortBy === "distance" && (
-        <div className="mb-3 rounded-lg border border-[#e9dcb8] bg-[#fdf6e3] px-3 py-2 text-xs text-[#8a6d1f] dark:border-[#4a3f28] dark:bg-[#2a2415] dark:text-[#d8c08d]">
+        <div className="mb-3 rounded-lg border border-[#e9dcb8] bg-[#fdf6e3] px-3 py-2 text-xs text-[#8a6d1f]">
           위치 오차가 커서 실제 위치와 다르게 표시될 수 있어요. 브라우저의 위치 권한(정확한 위치)을 허용했는지 확인해 주세요.
         </div>
       )}
@@ -1651,27 +1651,27 @@ export default function KakaoMap({ cafes }: Props) {
         ref={mapRef}
         // 휴대폰에선 화면 높이의 60%(최소 320px) — 지도 위아래로 잡고 스크롤할 공간을 남겨 지도에 갇히지 않게.
         // svh는 주소창이 접혀도 변하지 않는 높이라 지도 크기가 흔들리지 않는다. 640px 이상 화면은 기존 600px.
-        className={`h-[60svh] min-h-[320px] w-full rounded-2xl shadow-sm sm:h-[600px] ${view === "list" ? "hidden" : ""}`}
+        className={`h-[60svh] min-h-[320px] w-full overflow-hidden rounded-2xl shadow-card ring-1 ring-line sm:h-[620px] ${view === "list" ? "hidden" : ""}`}
       />
 
       {view === "list" && (
         <div>
           {!markersReady ? (
-            <div className="flex h-40 items-center justify-center text-sm text-[#a5906f]">
+            <div className="flex h-40 items-center justify-center text-sm text-muted">
               카페를 불러오는 중…
             </div>
           ) : visibleCafes.length === 0 ? (
-            <div className="flex h-40 flex-col items-center justify-center gap-1 text-sm text-[#a5906f]">
+            <div className="flex h-40 flex-col items-center justify-center gap-1 text-sm text-muted">
               <span>조건에 맞는 카페가 없어요.</span>
               <button
                 onClick={() => resetFilters(DEFAULT_REGION)}
-                className="text-[#8b5e3c] underline underline-offset-2"
+                className="text-brand underline underline-offset-2"
               >
                 필터 초기화
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6 lg:grid-cols-4">
               {shownCafes.map((cafe) => {
                 const isFav = favorites.has(cafe.id);
                 const isVisited = visited.has(cafe.id);
@@ -1689,9 +1689,9 @@ export default function KakaoMap({ cafes }: Props) {
                 return (
                   <div
                     key={cafe.id}
-                    className="group flex flex-col overflow-hidden rounded-xl border border-[#e9dfce] bg-white/80 shadow-sm transition-shadow hover:shadow-md dark:border-[#2e251c] dark:bg-[#201a14]"
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-line/80 bg-surface shadow-card transition duration-300 hover:-translate-y-0.5 hover:shadow-lift"
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden bg-[#f0e6d5] dark:bg-[#2a2018]">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-surface-2">
                       {cafe.imageUrl &&
                         (cafe.sourceUrl ? (
                           <a
@@ -1705,7 +1705,7 @@ export default function KakaoMap({ cafes }: Props) {
                               alt={cafe.name}
                               fill
                               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                              className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
+                              className={`object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] ${
                                 isVisited ? "opacity-60" : ""
                               }`}
                             />
@@ -1716,7 +1716,7 @@ export default function KakaoMap({ cafes }: Props) {
                             alt={cafe.name}
                             fill
                             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                            className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
+                            className={`object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] ${
                               isVisited ? "opacity-60" : ""
                             }`}
                           />
@@ -1728,20 +1728,20 @@ export default function KakaoMap({ cafes }: Props) {
                           toggleFavorite(cafe.id);
                         }}
                         aria-label={isFav ? "즐겨찾기 해제" : "즐겨찾기"}
-                        className="absolute right-2 top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/55"
+                        className="absolute right-2.5 top-2.5 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-md transition hover:bg-black/50"
                       >
                         <svg width="15" height="15" viewBox="0 0 24 24" fill={isFav ? "#ff5a76" : "none"} stroke={isFav ? "#ff5a76" : "currentColor"} strokeWidth="2" aria-hidden="true">
                           <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
                         </svg>
                       </button>
-                      <div className="absolute left-2 top-2 flex flex-col items-start gap-1">
+                      <div className="absolute left-2.5 top-2.5 flex flex-col items-start gap-1">
                         {isNewCafe(cafe, Date.now()) && (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-[#2f9e63]/90 px-2 py-0.5 text-[10px] font-semibold text-white">
+                          <span className="inline-flex items-center gap-1 rounded-full bg-surface/95 px-2 py-0.5 text-[10px] font-bold tracking-wider text-brand shadow-sm backdrop-blur">
                             NEW
                           </span>
                         )}
                         {isVisited && (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-[#6f4e37]/90 px-2 py-0.5 text-[10px] font-semibold text-white">
+                          <span className="inline-flex items-center gap-1 rounded-full bg-ink/75 px-2 py-0.5 text-[10px] font-semibold text-white backdrop-blur">
                             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
@@ -1751,7 +1751,7 @@ export default function KakaoMap({ cafes }: Props) {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col p-3">
+                    <div className="flex flex-1 flex-col p-3.5 sm:p-4">
                       <div className="mb-0.5 flex items-start gap-1.5">
                         {(cafe.tags ?? []).slice(0, 1).map((t) => (
                           <span
@@ -1761,54 +1761,54 @@ export default function KakaoMap({ cafes }: Props) {
                             title={t}
                           />
                         ))}
-                        <h3 className="text-sm font-semibold leading-snug text-[#2c2119] dark:text-[#f0e6d5]">
+                        <h3 className="text-[15px] font-semibold leading-snug tracking-tight text-ink">
                           {cafe.name}
                         </h3>
                       </div>
-                      <div className="mb-1 text-[11px] text-[#a5906f] dark:text-[#8a7458]">
+                      <div className="mb-1.5 text-xs text-muted">
                         {cafe.area} · {cafe.region}
                         {distanceById.has(cafe.id) && (
-                          <span className="ml-1 font-semibold text-[#2f6fed]">
+                          <span className="ml-1 font-semibold text-brand">
                             · {formatDist(distanceById.get(cafe.id)!)}
                           </span>
                         )}
                       </div>
-                      <p className="line-clamp-2 text-xs leading-relaxed text-[#6b5842] dark:text-[#b09b7e]">
+                      <p className="line-clamp-2 text-[13px] leading-relaxed text-ink-2">
                         {cafe.description}
                       </p>
                       {cafe.hours && (
-                        <p className="mt-1 text-[11px] text-[#a5906f] dark:text-[#8a7458]">
+                        <p className="mt-1 text-[11px] text-muted">
                           🕐 {cafe.hours.text}
                           {nowTick !== null && isOpenNow(cafe, new Date(nowTick)) === true && (
-                            <span className="ml-1 font-semibold text-[#3c8e5c]">
+                            <span className="ml-1 font-semibold text-brand">
                               영업중
                             </span>
                           )}
                         </p>
                       )}
 
-                      <div className="mt-auto flex flex-wrap gap-1 pt-2.5">
+                      <div className="mt-auto flex flex-wrap gap-1 pt-4">
                         {!isOverseas && (
                           <button
                             onClick={() => focusCafe(cafe)}
-                            className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
+                            className="rounded-full px-2.5 py-1 text-[11px] font-semibold text-ink-2 ring-1 ring-inset ring-line transition hover:bg-surface-2 hover:text-ink"
                           >
                             Map
                           </button>
                         )}
                         <button
                           onClick={() => toggleVisited(cafe.id)}
-                          className={`rounded-md px-2 py-1 text-[11px] font-semibold transition ${
+                          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold transition ${
                             isVisited
-                              ? "bg-[#6f4e37] text-white"
-                              : "bg-[#f2e9d8] text-[#6f4e37] hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
+                              ? "bg-brand text-white ring-1 ring-inset ring-brand"
+                              : "text-ink-2 ring-1 ring-inset ring-line hover:bg-surface-2 hover:text-ink"
                           }`}
                         >
                           {isVisited ? "Visited ✓" : "Visited"}
                         </button>
                         <Link
                           href={`/cafe/${cafe.id}`}
-                          className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
+                          className="rounded-full px-2.5 py-1 text-[11px] font-semibold text-ink-2 ring-1 ring-inset ring-line transition hover:bg-surface-2 hover:text-ink"
                         >
                           상세
                         </Link>
@@ -1816,7 +1816,7 @@ export default function KakaoMap({ cafes }: Props) {
                           <a
                             href={cafe.sourceUrl}
                             rel="noopener"
-                            className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
+                            className="rounded-full px-2.5 py-1 text-[11px] font-semibold text-ink-2 ring-1 ring-inset ring-line transition hover:bg-surface-2 hover:text-ink"
                           >
                             인스타 ↗
                           </a>
@@ -1827,7 +1827,7 @@ export default function KakaoMap({ cafes }: Props) {
                                 href={googleUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
+                                className="rounded-full px-2.5 py-1 text-[11px] font-semibold text-ink-2 ring-1 ring-inset ring-line transition hover:bg-surface-2 hover:text-ink"
                               >
                                 구글맵 →
                               </a>
@@ -1837,7 +1837,7 @@ export default function KakaoMap({ cafes }: Props) {
                                 href={dirUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-md bg-[#f2e9d8] px-2 py-1 text-[11px] font-semibold text-[#6f4e37] transition hover:bg-[#eaddc8] dark:bg-[#2a2018] dark:text-[#d3bd9c] dark:hover:bg-[#332a20]"
+                                className="rounded-full px-2.5 py-1 text-[11px] font-semibold text-ink-2 ring-1 ring-inset ring-line transition hover:bg-surface-2 hover:text-ink"
                               >
                                 길찾기 →
                               </a>
@@ -1854,10 +1854,10 @@ export default function KakaoMap({ cafes }: Props) {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={() => setListLimit((n) => n + 24)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#dcc9ad] bg-white/80 px-5 py-2 text-sm font-semibold text-[#6f4e37] shadow-sm transition hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/70 dark:text-[#d3bd9c] dark:hover:bg-[#2a2018]"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-line bg-surface px-6 text-sm font-semibold text-ink shadow-card transition hover:border-line-strong hover:shadow-lift"
               >
                 더 보기
-                <span className="text-xs font-medium text-[#a5906f] dark:text-[#8a7458]">
+                <span className="text-xs font-medium text-muted">
                   {shownCafes.length} / {visibleCafes.length}
                 </span>
               </button>
@@ -1871,7 +1871,7 @@ export default function KakaoMap({ cafes }: Props) {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="맨 위로"
-          className="fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-[#dcc9ad] bg-[#6f4e37] text-white shadow-lg transition hover:bg-[#5c4029]"
+          className="fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-ink text-canvas shadow-lift transition hover:opacity-90"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="18 15 12 9 6 15" />

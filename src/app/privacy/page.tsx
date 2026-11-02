@@ -8,26 +8,26 @@ export const metadata: Metadata = {
 
 const sectionClassName = "space-y-3";
 const headingClassName =
-  "text-lg font-semibold text-[#4a3424] dark:text-[#eadbc6]";
+  "text-lg font-semibold text-[#4a3424]";
 const paragraphClassName =
-  "text-sm leading-7 text-[#6b5842] dark:text-[#bca98d]";
+  "text-sm leading-7 text-ink-2";
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#f7f2ea] px-6 py-10 dark:bg-[#17130f]">
-      <article className="mx-auto max-w-3xl rounded-2xl border border-[#e3d8c6] bg-white/70 p-6 shadow-sm sm:p-10 dark:border-[#2e251c] dark:bg-[#1d1712]">
+    <main className="min-h-screen bg-canvas px-6 py-10">
+      <article className="mx-auto max-w-3xl rounded-2xl border border-line bg-surface/70 p-6 shadow-sm sm:p-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-sm font-medium text-[#6f4e37] hover:underline dark:text-[#d3bd9c]"
+          className="inline-flex items-center gap-1 text-sm font-medium text-brand hover:underline"
         >
           ← 지도 돌아가기
         </Link>
 
-        <header className="mb-10 mt-6 border-b border-[#e3d8c6] pb-6 dark:border-[#2e251c]">
-          <h1 className="text-3xl font-semibold tracking-tight text-[#3d2c1e] dark:text-[#f0e6d5]">
+        <header className="mb-10 mt-6 border-b border-line pb-6">
+          <h1 className="text-3xl font-semibold tracking-tight text-ink">
             개인정보처리방침
           </h1>
-          <p className="mt-3 text-sm text-[#8a7458] dark:text-[#9a866a]">
+          <p className="mt-3 text-sm text-muted">
             시행일: 2026년 8월 29일
           </p>
         </header>
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
 
           <section className={sectionClassName}>
             <h2 className={headingClassName}>2. 처리하는 정보와 이용 목적</h2>
-            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-[#6b5842] dark:text-[#bca98d]">
+            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-ink-2">
               <li>
                 <strong>현재 위치:</strong> &lsquo;내 주변&rsquo; 기능을 선택했을
                 때 거리 계산과 지도 표시를 위해 사용합니다. GreenSori Map
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
                   href="https://www.kakao.com/policy/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#6f4e37] underline underline-offset-4 dark:text-[#d3bd9c]"
+                  className="text-brand underline underline-offset-4"
                 >
                   Kakao 개인정보처리방침
                 </a>
@@ -91,7 +91,7 @@ export default function PrivacyPage() {
                   href="https://vercel.com/legal/privacy-policy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#6f4e37] underline underline-offset-4 dark:text-[#d3bd9c]"
+                  className="text-brand underline underline-offset-4"
                 >
                   Vercel 개인정보처리방침
                 </a>
@@ -101,7 +101,7 @@ export default function PrivacyPage() {
                   href="https://upstash.com/trust/privacy.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#6f4e37] underline underline-offset-4 dark:text-[#d3bd9c]"
+                  className="text-brand underline underline-offset-4"
                 >
                   Upstash 개인정보처리방침
                 </a>
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
 
           <section className={sectionClassName}>
             <h2 className={headingClassName}>4. 보관 기간과 삭제</h2>
-            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-[#6b5842] dark:text-[#bca98d]">
+            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-ink-2">
               <li>
                 즐겨찾기·방문 기록은 이용자가 앱 또는 브라우저 저장공간을
                 삭제할 때까지 기기에 보관됩니다.
@@ -153,7 +153,7 @@ export default function PrivacyPage() {
                 href="https://www.instagram.com/green_sori/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-[#6f4e37] underline underline-offset-4 dark:text-[#d3bd9c]"
+                className="font-medium text-brand underline underline-offset-4"
               >
                 @green_sori
               </a>
