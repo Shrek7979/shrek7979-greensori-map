@@ -735,7 +735,7 @@ export default function KakaoMap({ cafes }: Props) {
           if (!visitBtn) return;
           const paintVisit = (done: boolean) => {
             visitBtn.textContent = done ? "Visited ✓" : "Visited";
-            visitBtn.style.background = done ? "#c98a2f" : "#f2e9d8";
+            visitBtn.style.background = done ? "#d62839" : "#f2e9d8";
             visitBtn.style.color = done ? "#ffffff" : "#6f4e37";
           };
           paintVisit(visitedRef.current.has(cafeId));
@@ -808,12 +808,12 @@ export default function KakaoMap({ cafes }: Props) {
         return img;
       };
 
-      // 방문한 카페에 붙는 하트 스티커 — 즐겨찾기(분홍 하트)와 구분되도록 금색
+      // 방문한 카페에 붙는 하트 스티커
       const stickerSvg =
         `<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'>` +
         `<ellipse cx='22' cy='41' rx='11' ry='2.2' fill='rgba(60,40,25,0.22)'/>` +
         `<g transform='rotate(-8 22 21) translate(3.4 2.6) scale(1.55)'>` +
-        `<path d='M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z' fill='#c98a2f' stroke='#ffffff' stroke-width='1.6' stroke-linejoin='round'/>` +
+        `<path d='M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z' fill='#d62839' stroke='#ffffff' stroke-width='1.6' stroke-linejoin='round'/>` +
         `</g></svg>`;
       stickerImageRef.current = new
  window.kakao.maps.MarkerImage(
@@ -1690,7 +1690,7 @@ export default function KakaoMap({ cafes }: Props) {
           aria-expanded={stickersOpen}
           className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
             stickersOpen
-              ? "border-[#c98a2f] bg-[#c98a2f] text-white shadow-sm"
+              ? "border-[#d62839] bg-[#d62839] text-white shadow-sm"
               : "border-[#e6dcca] bg-white/70 text-[#5c4632] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
           }`}
         >
@@ -1773,7 +1773,7 @@ export default function KakaoMap({ cafes }: Props) {
                 </span>
                 <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[#f0e6d5] dark:bg-[#2a2018]">
                   <span
-                    className="block h-full rounded-full bg-[#c98a2f]"
+                    className="block h-full rounded-full bg-[#d62839]"
                     style={{ width: `${(r.done / r.count) * 100}%` }}
                   />
                 </span>
