@@ -130,6 +130,7 @@ type MarkerEntry = {
   cafe: Cafe;
   infoWindow: any;
   position: any;
+  pinImage: any; // 방문 표시를 해제하면 되돌릴 원래 커피컵 핀
 };
 
 function escapeHtml(text: string) {
@@ -209,6 +210,7 @@ export default function KakaoMap({ cafes }: Props) {
   const [favoriteOnly, setFavoriteOnly] = useState(false);
   const [newOnly, setNewOnly] = useState(false);
   const [openNowOnly, setOpenNowOnly] = useState(false);
+  const [stickersOpen, setStickersOpen] = useState(false);
   // "지금 영업중" 판정을 1분마다 갱신 (자정·마감 시각을 넘길 때 자동 반영)
   // 현재 시각 — 홈은 빌드 시 정적 생성되므로 서버 HTML과 어긋나지 않게 마운트 후에 채운다 (null = 아직 모름)
   const [nowTick, setNowTick] = useState<number | null>(null);
@@ -308,6 +310,9 @@ export default function KakaoMap({ cafes }: Props) {
   favoritesRef.current = favorites;
   const toggleFavoriteRef = useRef<(id: string) => void>(() => {});
   const hydrateFavRef = useRef<(id: string) => void>(() => {});
+  const visitedRef = useRef<Set<string>>(new Set());
+  const toggleVisitedRef = useRef<(id: string) => void>(() => {});
+  const stickerImageRef = useRef<any>(null);
   // 지도 이벤트 리스너(마운트 시 1회 등록)에서 최신 "오늘의 카페" id를 읽기 위한 ref
   const cafeOfTheDayIdRef = useRef<string | null>(null);
 
@@ -361,6 +366,8 @@ export default function KakaoMap({ cafes }: Props) {
       return next;
     });
   }, []);
+  toggleVisitedRef.current = toggleVisited;
+  visitedRef.current = visited;
 
   // 즐겨찾기·방문 기록 백업/복원 — 기록이 브라우저에만 저장되므로
   // 기기 변경·앱 재설치 대비용 JSON 내보내기/불러오기
@@ -496,6 +503,19 @@ export default function KakaoMap({ cafes }: Props) {
         : []),
     ];
   }, [cafes]);
+
+  // 지역별 스티커 진행률 — 데이터에서 사라진 카페의 옛 기록은 세지 않는다
+  const regionProgress = useMemo(() => {
+    const done = new Map<string, number>();
+    cafes.forEach((cafe) => {
+      if (!visited.has(cafe.id)) return;
+      done.set(cafe.region, (done.get(cafe.region) ?? 0) + 1);
+    });
+    return regions
+      .filter((r) => r.name !== ALL_REGION)
+      .map((r) => ({ ...r, done: done.get(r.name) ?? 0 }));
+  }, [cafes, regions, visited]);
+  const stickerTotal = regionProgress.reduce((sum, r) => sum + r.done, 0);
 
   // 내 위치 → 각 카페까지 거리(km)
   const distanceById = useMemo(() => {
@@ -708,6 +728,24 @@ export default function KakaoMap({ cafes }: Props) {
             toggleFavoriteRef.current(cafeId);
             paint(!wasFav);
           };
+
+          const visitBtn = document.querySelector(
+            `.gs-visit-btn[data-cafe="${cafeId}"]`
+          ) as HTMLElement | null;
+          if (!visitBtn) return;
+          const paintVisit = (done: boolean) => {
+            visitBtn.textContent = done ? "Visited ✓" : "Visited";
+            visitBtn.style.background = done ? "#c98a2f" : "#f2e9d8";
+            visitBtn.style.color = done ? "#ffffff" : "#6f4e37";
+          };
+          paintVisit(visitedRef.current.has(cafeId));
+          visitBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const wasVisited = visitedRef.current.has(cafeId);
+            toggleVisitedRef.current(cafeId);
+            paintVisit(!wasVisited);
+          };
         }, 0);
       };
       hydrateFavRef.current = hydrateFavButton;
@@ -770,15 +808,36 @@ export default function KakaoMap({ cafes }: Props) {
         return img;
       };
 
+      // 방문한 카페에 붙는 칭찬 스티커 — 톱니 테두리 원에 체크 표시
+      const stickerEdge = Array.from({ length: 28 }, (_, i) => {
+        const radius = i % 2 === 0 ? 19 : 17;
+        const angle = (i * Math.PI) / 14;
+        return `${(22 + radius * Math.cos(angle)).toFixed(1)},${(21 + radius * Math.sin(angle)).toFixed(1)}`;
+      }).join(" ");
+      const stickerSvg =
+        `<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'>` +
+        `<ellipse cx='22' cy='41' rx='12' ry='2.2' fill='rgba(60,40,25,0.22)'/>` +
+        `<g transform='rotate(-8 22 21)'>` +
+        `<polygon points='${stickerEdge}' fill='#c98a2f' stroke='#ffffff' stroke-width='2.4' stroke-linejoin='round'/>` +
+        `<circle cx='22' cy='21' r='12.5' fill='none' stroke='#ffffff' stroke-width='1.2' stroke-dasharray='2 2.4' opacity='0.8'/>` +
+        `<path d='M15.5 21.5l4.6 4.6 8.6-9.4' fill='none' stroke='#ffffff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/>` +
+        `</g></svg>`;
+      stickerImageRef.current = new window.kakao.maps.MarkerImage(
+        "data:image/svg+xml;charset=utf-8," + encodeURIComponent(stickerSvg),
+        new window.kakao.maps.Size(44, 44),
+        { offset: new window.kakao.maps.Point(22, 21) }
+      );
+
       const addMarker = (cafe: Cafe, coord: { y: string; x: string }) => {
         const position = new window.kakao.maps.LatLng(coord.y, coord.x);
 
         const pinColor =
           TAG_ACCENT[(cafe.tags ?? [])[0]] ?? DEFAULT_ACCENT;
+        const cafePin = pinImage(pinColor);
         const marker = new window.kakao.maps.Marker({
           position,
           title: cafe.name,
-          image: pinImage(pinColor),
+          image: cafePin,
         });
 
         const imgTag = cafe.imageUrl
@@ -823,6 +882,9 @@ export default function KakaoMap({ cafes }: Props) {
         )}" aria-label="즐겨찾기" style="position:absolute;top:8px;right:8px;z-index:3;width:28px;height:28px;padding:0;border:none;border-radius:9999px;background:rgba(0,0,0,0.38);display:flex;align-items:center;justify-content:center;cursor:pointer;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
           </button>`;
+        const visitBtn = `<button class="gs-visit-btn" data-cafe="${escapeHtml(
+          cafe.id
+        )}" style="margin-top:8px;padding:3px 10px;border:none;border-radius:9999px;background:#f2e9d8;color:#6f4e37;font-size:11px;font-weight:600;cursor:pointer;">Visited</button>`;
         const newBadge = isNewCafe(cafe, Date.now())
           ? `<span style="position:absolute;top:8px;left:8px;z-index:3;padding:2px 8px;border-radius:9999px;background:rgba(47,158,99,0.92);color:#fff;font-size:10px;font-weight:700;">NEW</span>`
           : "";
@@ -843,6 +905,7 @@ export default function KakaoMap({ cafes }: Props) {
               <div style="color:#666;">${escapeHtml(cafe.description)}</div>
               ${hoursLine}
               <div style="margin-top:8px;display:flex;gap:12px;">${links.join("")}</div>
+              ${visitBtn}
             </div>
           </div>
         `;
@@ -885,7 +948,13 @@ export default function KakaoMap({ cafes }: Props) {
           }
         }
 
-        const entry: MarkerEntry = { marker, cafe, infoWindow, position };
+        const entry: MarkerEntry = {
+          marker,
+          cafe,
+          infoWindow,
+          position,
+          pinImage: cafePin,
+        };
         markersRef.current.push(entry);
         markerByIdRef.current.set(cafe.id, entry);
         posByIdRef.current.set(cafe.id, coord);
@@ -959,17 +1028,26 @@ export default function KakaoMap({ cafes }: Props) {
     const visibleEntries = markersRef.current.filter((e) =>
       matchesRef.current(e.cafe)
     );
+    const visibleIds = new Set(visibleEntries.map((e) => e.cafe.id));
     const clusterer = clustererRef.current;
-    if (clusterer) {
-      clusterer.clear();
-      clusterer.addMarkers(visibleEntries.map((e) => e.marker));
-    } else {
-      markersRef.current.forEach((e) =>
-        e.marker.setMap(visibleEntries.includes(e) ? map : null)
+    clusterer?.clear();
+    markersRef.current.forEach((e) => {
+      const isVisited = visited.has(e.cafe.id);
+      e.marker.setImage(
+        isVisited && stickerImageRef.current ? stickerImageRef.current : e.pinImage
       );
-    }
+      e.marker.setZIndex(isVisited ? 5 : 1);
+      // 스티커는 어느 축척에서도 보이도록 클러스터에 넣지 않고 지도에 바로 붙인다
+      const showDirectly = !clusterer || isVisited;
+      e.marker.setMap(showDirectly && visibleIds.has(e.cafe.id) ? map : null);
+    });
+    clusterer?.addMarkers(
+      visibleEntries
+        .filter((e) => !visited.has(e.cafe.id))
+        .map((e) => e.marker)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region, tag, search, favoriteOnly, newOnly, openNowOnly, nowTick, favorites, markersReady]);
+  }, [region, tag, search, favoriteOnly, newOnly, openNowOnly, nowTick, favorites, visited, markersReady]);
 
   // 필터/뷰 변화 → 지도 범위 맞추기 (즐겨찾기 토글에는 반응하지 않음)
   useEffect(() => {
@@ -1613,6 +1691,25 @@ export default function KakaoMap({ cafes }: Props) {
           {locating ? "위치 확인 중…" : "내 주변"}
         </button>
 
+        <button
+          onClick={() => setStickersOpen((o) => !o)}
+          aria-expanded={stickersOpen}
+          className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
+            stickersOpen
+              ? "border-[#c98a2f] bg-[#c98a2f] text-white shadow-sm"
+              : "border-[#e6dcca] bg-white/70 text-[#6b5842] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
+          }`}
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <polyline points="8 12.5 11 15.5 16 9.5" />
+          </svg>
+          내 스티커
+          <span className={`text-[11px] tabular-nums ${stickersOpen ? "text-white/70" : "text-[#b3a084]"}`}>
+            {stickerTotal}
+          </span>
+        </button>
+
         {view === "list" && (
           <label className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-white/70 py-1 pl-3 pr-2 text-xs font-semibold text-[#6b5842] dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]">
             <span className="text-[#a5906f] dark:text-[#8a7458]">정렬</span>
@@ -1644,6 +1741,52 @@ export default function KakaoMap({ cafes }: Props) {
       {!geoError && geoAccuracyWarning && sortBy === "distance" && (
         <div className="mb-3 rounded-lg border border-[#e9dcb8] bg-[#fdf6e3] px-3 py-2 text-xs text-[#8a6d1f] dark:border-[#4a3f28] dark:bg-[#2a2415] dark:text-[#d8c08d]">
           위치 오차가 커서 실제 위치와 다르게 표시될 수 있어요. 브라우저의 위치 권한(정확한 위치)을 허용했는지 확인해 주세요.
+        </div>
+      )}
+
+      {stickersOpen && (
+        <div className="mb-3 rounded-2xl border border-[#e9dfce] bg-[#fbf7f0]/70 p-4 shadow-[0_1px_3px_rgba(80,60,40,0.05)] dark:border-[#2e251c] dark:bg-[#1d1712]/60">
+          <div className="mb-3 flex items-baseline gap-2">
+            <h2 className="text-sm font-semibold text-[#5c4632] dark:text-[#d3bd9c]">
+              지역별 스티커
+            </h2>
+            <span className="text-xs tabular-nums text-[#a5906f] dark:text-[#8a7458]">
+              {stickerTotal} / {cafes.length}곳
+            </span>
+          </div>
+          {stickerTotal === 0 && (
+            <p className="mb-3 text-xs leading-relaxed text-[#8a7458] dark:text-[#9a866a]">
+              지도나 목록의 카페 카드에서 Visited를 누르면 그 자리에 스티커가 붙어요.
+            </p>
+          )}
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
+            {regionProgress.map((r) => (
+              <button
+                key={r.name}
+                onClick={() => {
+                  resetFilters(r.name);
+                  setView(r.name === OVERSEAS_REGION ? "list" : "map");
+                  setStickersOpen(false); // 패널을 닫아 고른 지역의 지도가 바로 보이게
+                }}
+                className="min-w-0 rounded-xl border border-[#e6dcca] bg-white/70 px-2.5 py-2 text-left transition hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:hover:bg-[#2a2018]"
+              >
+                <span className="flex items-baseline justify-between gap-2 text-xs">
+                  <span className="font-semibold text-[#5c4632] dark:text-[#d3bd9c]">
+                    {r.name}
+                  </span>
+                  <span className="tabular-nums text-[#a5906f] dark:text-[#8a7458]">
+                    {r.done === r.count ? "완료" : `${r.done}/${r.count}`}
+                  </span>
+                </span>
+                <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[#f0e6d5] dark:bg-[#2a2018]">
+                  <span
+                    className="block h-full rounded-full bg-[#c98a2f]"
+                    style={{ width: `${(r.done / r.count) * 100}%` }}
+                  />
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
