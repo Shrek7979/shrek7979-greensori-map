@@ -5756,4 +5756,21 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [1, 2, 3, 4, 5], open: "10:00", close: "20:00" }, { days: [6], open: "10:00", close: "21:00" }],
     },
   },
+  {
+    id: "stance-coffee-mangwon",
+    name: "스탠스커피 망원",
+    area: "망원동",
+    region: "서울",
+    description: "상수의 아인슈페너 맛집 스탠스커피가 망원동에 연 두 번째 공간으로, 콘크리트 천장과 멋스러운 조명이 어우러진 인더스트리얼 감성의 카페",
+    tags: ["감성·인테리어", "로스터리·드립"],
+    searchQuery: "서울 마포구 월드컵로21길 14",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DfR0LOLz2KZ/",
+    imageUrl: "/cafes/stance-coffee-mangwon.jpg",
+    addedAt: "2026-11-04",
+    menu: "아인슈페너",
+    hours: {
+      text: "매일 12:00–21:00",
+      schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "21:00" }],
+    },
+  },
 ];
