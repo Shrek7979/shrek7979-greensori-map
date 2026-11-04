@@ -808,21 +808,15 @@ export default function KakaoMap({ cafes }: Props) {
         return img;
       };
 
-      // 방문한 카페에 붙는 칭찬 스티커 — 톱니 테두리 원에 체크 표시
-      const stickerEdge = Array.from({ length: 28 }, (_, i) => {
-        const radius = i % 2 === 0 ? 19 : 17;
-        const angle = (i * Math.PI) / 14;
-        return `${(22 + radius * Math.cos(angle)).toFixed(1)},${(21 + radius * Math.sin(angle)).toFixed(1)}`;
-      }).join(" ");
+      // 방문한 카페에 붙는 하트 스티커 — 즐겨찾기(분홍 하트)와 구분되도록 금색
       const stickerSvg =
         `<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'>` +
-        `<ellipse cx='22' cy='41' rx='12' ry='2.2' fill='rgba(60,40,25,0.22)'/>` +
-        `<g transform='rotate(-8 22 21)'>` +
-        `<polygon points='${stickerEdge}' fill='#c98a2f' stroke='#ffffff' stroke-width='2.4' stroke-linejoin='round'/>` +
-        `<circle cx='22' cy='21' r='12.5' fill='none' stroke='#ffffff' stroke-width='1.2' stroke-dasharray='2 2.4' opacity='0.8'/>` +
-        `<path d='M15.5 21.5l4.6 4.6 8.6-9.4' fill='none' stroke='#ffffff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/>` +
+        `<ellipse cx='22' cy='41' rx='11' ry='2.2' fill='rgba(60,40,25,0.22)'/>` +
+        `<g transform='rotate(-8 22 21) translate(3.4 2.6) scale(1.55)'>` +
+        `<path d='M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z' fill='#c98a2f' stroke='#ffffff' stroke-width='1.6' stroke-linejoin='round'/>` +
         `</g></svg>`;
-      stickerImageRef.current = new window.kakao.maps.MarkerImage(
+      stickerImageRef.current = new
+ window.kakao.maps.MarkerImage(
         "data:image/svg+xml;charset=utf-8," + encodeURIComponent(stickerSvg),
         new window.kakao.maps.Size(44, 44),
         { offset: new window.kakao.maps.Point(22, 21) }
@@ -1700,9 +1694,8 @@ export default function KakaoMap({ cafes }: Props) {
               : "border-[#e6dcca] bg-white/70 text-[#5c4632] hover:bg-white dark:border-[#3a2e23] dark:bg-[#231b14]/60 dark:text-[#c8b79c]"
           }`}
         >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <polyline points="8 12.5 11 15.5 16 9.5" />
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
           </svg>
           내 스티커
           <span className={`text-xs tabular-nums ${stickersOpen ? "text-white/85" : "text-[#7a6548]"}`}>
@@ -1756,7 +1749,7 @@ export default function KakaoMap({ cafes }: Props) {
           </div>
           {stickerTotal === 0 && (
             <p className="mb-3 text-xs leading-relaxed text-[#6e5a41] dark:text-[#b3a086]">
-              지도나 목록의 카페 카드에서 Visited를 누르면 그 자리에 스티커가 붙어요.
+              지도나 목록의 카페 카드에서 Visited를 누르면 그 자리에 하트가 붙어요.
             </p>
           )}
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
