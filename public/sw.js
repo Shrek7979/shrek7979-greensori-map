@@ -1,10 +1,11 @@
-// GreenSori Map 서비스워커 v3
+// GreenSori Map 서비스워커 v4
 // - 이미지·정적 자산: 캐시 우선(빠른 재방문·오프라인) + 개수 상한으로 무한 증식 방지
 // - 페이지·데이터: 네트워크 우선, 실패 시 캐시 폴백 (항상 최신 내용 우선)
 // - /api/ 요청·외부 출처(카카오맵 등)는 건드리지 않음
 // - v3: 잘리거나 이미지가 아닌 응답은 캐시하지 않음 (깨진 사진이 영구 캐시되던 문제 수정).
 //   VERSION을 올리면 activate 시 이전 버전 캐시가 모두 삭제된다.
-const VERSION = "greensori-v3";
+// - v4: 같은 파일명으로 교체한 카페 사진 3장이 옛 캐시로 계속 보이던 문제 해소
+const VERSION = "greensori-v4";
 const IMG_CACHE = `${VERSION}-img`;
 const STATIC_CACHE = `${VERSION}-static`;
 const PAGE_CACHE = `${VERSION}-page`;
