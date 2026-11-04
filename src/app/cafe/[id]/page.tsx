@@ -104,7 +104,7 @@ export default async function CafePage({ params }: Props) {
               {(cafe.tags ?? []).map((t) => (
                 <span
                   key={t}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-[#fbf7f0] px-2.5 py-0.5 text-[11px] font-medium text-[#6b5842] dark:border-[#3a2e23] dark:bg-[#231b14] dark:text-[#c8b79c]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e6dcca] bg-[#fbf7f0] px-2.5 py-0.5 text-xs font-medium text-[#5c4632] dark:border-[#3a2e23] dark:bg-[#231b14] dark:text-[#c8b79c]"
                 >
                   <span
                     className="h-2 w-2 rounded-full"
@@ -118,7 +118,7 @@ export default async function CafePage({ params }: Props) {
             <h1 className="text-2xl font-semibold tracking-tight text-[#2c2119] dark:text-[#f0e6d5]">
               {cafe.name}
             </h1>
-            <p className="mt-1 text-sm text-[#a5906f] dark:text-[#8a7458]">
+            <p className="mt-1 text-sm text-[#7a6548] dark:text-[#a8957a]">
               {cafe.area} · {cafe.region}
             </p>
 
@@ -154,7 +154,7 @@ export default async function CafePage({ params }: Props) {
                 <p className="text-sm leading-relaxed text-[#5c4632] dark:text-[#c8b79c]">
                   💬 {cafe.commentSummary}
                 </p>
-                <cite className="mt-1 block text-[11px] not-italic text-[#a5906f] dark:text-[#8a7458]">
+                <cite className="mt-1 block text-xs not-italic text-[#7a6548] dark:text-[#a8957a]">
                   @green_sori 게시물 댓글 반응
                 </cite>
               </blockquote>
@@ -197,7 +197,7 @@ export default async function CafePage({ params }: Props) {
           </div>
         </article>
 
-        <p className="mt-4 text-center text-xs text-[#a5906f] dark:text-[#8a7458]">
+        <p className="mt-4 text-center text-xs text-[#7a6548] dark:text-[#a8957a]">
           사진과 장소 정보의 출처는{" "}
           <a
             href="https://www.instagram.com/green_sori/"

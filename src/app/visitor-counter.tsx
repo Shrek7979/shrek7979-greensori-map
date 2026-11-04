@@ -32,7 +32,7 @@ export default function VisitorCounter() {
   if (!stats || !stats.configured) return null;
 
   return (
-    <p className="mt-1.5 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wider text-[#a5906f] dark:text-[#8a7458]">
+    <p className="mt-1.5 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-[#7a6548] dark:text-[#a8957a]">
       <span>
         Today{" "}
         <span className="text-[#6f4e37] dark:text-[#d3bd9c]">

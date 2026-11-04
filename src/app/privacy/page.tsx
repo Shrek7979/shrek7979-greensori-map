@@ -10,7 +10,7 @@ const sectionClassName = "space-y-3";
 const headingClassName =
   "text-lg font-semibold text-[#4a3424] dark:text-[#eadbc6]";
 const paragraphClassName =
-  "text-sm leading-7 text-[#6b5842] dark:text-[#bca98d]";
+  "text-sm leading-7 text-[#5c4632] dark:text-[#bca98d]";
 
 export default function PrivacyPage() {
   return (
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
           <h1 className="text-3xl font-semibold tracking-tight text-[#3d2c1e] dark:text-[#f0e6d5]">
             개인정보처리방침
           </h1>
-          <p className="mt-3 text-sm text-[#8a7458] dark:text-[#9a866a]">
+          <p className="mt-3 text-sm text-[#6e5a41] dark:text-[#b3a086]">
             시행일: 2026년 8월 29일
           </p>
         </header>
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
 
           <section className={sectionClassName}>
             <h2 className={headingClassName}>2. 처리하는 정보와 이용 목적</h2>
-            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-[#6b5842] dark:text-[#bca98d]">
+            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-[#5c4632] dark:text-[#bca98d]">
               <li>
                 <strong>현재 위치:</strong> &lsquo;내 주변&rsquo; 기능을 선택했을
                 때 거리 계산과 지도 표시를 위해 사용합니다. GreenSori Map
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
 
           <section className={sectionClassName}>
             <h2 className={headingClassName}>4. 보관 기간과 삭제</h2>
-            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-[#6b5842] dark:text-[#bca98d]">
+            <ul className="list-disc space-y-3 pl-5 text-sm leading-7 text-[#5c4632] dark:text-[#bca98d]">
               <li>
                 즐겨찾기·방문 기록은 이용자가 앱 또는 브라우저 저장공간을
                 삭제할 때까지 기기에 보관됩니다.

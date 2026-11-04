@@ -38,7 +38,7 @@ export default function Home() {
                 GreenSori Map
               </a>
             </h1>
-            <p className="mt-0.5 text-sm text-[#8a7458] dark:text-[#b09b7e]">
+            <p className="mt-0.5 text-sm text-[#6e5a41] dark:text-[#b09b7e]">
               그린소리가 담은 카페 · 공간 · 여행의 기록
             </p>
             <VisitorCounter />
@@ -81,12 +81,12 @@ export default function Home() {
             </svg>
             @green_sori
           </a>
-          <p className="text-xs text-[#a5906f] dark:text-[#8a7458]">
+          <p className="text-xs text-[#7a6548] dark:text-[#a8957a]">
             사진과 장소 정보의 출처는 @green_sori 인스타그램입니다.
           </p>
           <Link
             href="/privacy"
-            className="text-xs text-[#8a7458] underline underline-offset-4 transition-colors hover:text-[#6f4e37] dark:text-[#9a866a] dark:hover:text-[#d3bd9c]"
+            className="text-xs text-[#6e5a41] underline underline-offset-4 transition-colors hover:text-[#6f4e37] dark:text-[#b3a086] dark:hover:text-[#d3bd9c]"
           >
             개인정보처리방침
           </Link>
