@@ -14,6 +14,11 @@ const STYLE =
   "Soft morning light, quiet and calm, generous empty space. " +
   "No text, no letters, no logos, no people, no brand marks.";
 
+const ICON_STYLE =
+  "Square app icon artwork filling the entire canvas edge to edge, with a flat solid warm latte #eaddc8 background and no rounded corners, no border, no frame, no drop shadow. " +
+  "Warm hand-painted gouache look, palette limited to cream #f7f2ea, caramel #c98a2f, coffee brown #6f4e37 and espresso #3d2c1e, with one small muted olive leaf. " +
+  "No text, no letters, no logos, no people, no brand marks.";
+
 const IMAGES = [
   {
     name: "header-light",
@@ -29,6 +34,42 @@ const IMAGES = [
     name: "footer-pattern",
     size: "1024x1024",
     prompt: `${STYLE} Seamless, very subtle tileable pattern on a cream background: sparse line drawings of coffee beans, cups and leaves in a slightly darker cream, low contrast so text stays readable on top.`,
+  },
+  {
+    name: "app-icon",
+    size: "1024x1024",
+    dir: "assets/icons",
+    prompt: `${ICON_STYLE} Behind the pin, the latte background is a simple top-down town map that reaches every edge of the canvas: a few wide cream streets crossing at angles, and one curving muted olive river. The map stays soft and low contrast with no labels. A single bold espresso-brown map location pin centered, taking up the middle 60 percent of the canvas. Inside the round head of the pin sits a cream ceramic coffee cup seen from slightly above with a simple latte art heart, and one small olive leaf beside it. The pin casts a small soft shadow on the map at its tip. Clean simple shapes that stay readable at small sizes.`,
+  },
+  {
+    name: "icon-2-paper-map",
+    size: "1024x1024",
+    dir: "assets/icons/options",
+    prompt: `${ICON_STYLE} Exception: the background is the map itself. A folded paper map with visible fold creases fills the whole canvas, showing a few simple cream streets and one curving olive river with no labels. A cream ceramic coffee cup seen from directly above sits in the middle taking up 45 percent of the canvas, with a round caramel coffee ring stain beside it and a small espresso-brown route dot. Clean simple shapes.`,
+  },
+  {
+    name: "icon-3-latte-pin",
+    size: "1024x1024",
+    dir: "assets/icons/options",
+    prompt: `${ICON_STYLE} A coffee cup seen from directly above, centered and filling 75 percent of the canvas, cream ceramic rim with a small handle at the right on a soft espresso-brown saucer. The latte art on the caramel coffee surface forms one clear, bold map location pin shape in milky cream, teardrop with a round hole, not a heart. One bold simple idea, readable at very small sizes.`,
+  },
+  {
+    name: "icon-4-arch-window",
+    size: "1024x1024",
+    dir: "assets/icons/options",
+    prompt: `${ICON_STYLE} Exception: the background is a warm espresso-brown cafe wall. A tall rounded arch window centered, taking up 70 percent of the canvas height, with a thin wooden frame. Through the arch you see a calm top-down neighbourhood map in cream and latte with a winding road and a small caramel location pin. On the wooden sill sits one small cream coffee cup. Quiet, atmospheric, simple shapes.`,
+  },
+  {
+    name: "icon-5-stamp",
+    size: "1024x1024",
+    dir: "assets/icons/options",
+    prompt: `${ICON_STYLE} A round travel passport stamp centered, taking up 75 percent of the canvas, drawn in espresso-brown ink on the latte background with slightly worn hand-stamped ink texture. A thick circular double ring border with small dots instead of any lettering. In the center a simple map pin containing a small coffee cup silhouette. Bold and simple, no text anywhere.`,
+  },
+  {
+    name: "favicon",
+    size: "1024x1024",
+    dir: "assets/icons",
+    prompt: `${ICON_STYLE} Extremely simple flat symbol for a 32 pixel browser favicon: one thick solid espresso-brown map pin filling 80 percent of the canvas, with a single plain cream coffee cup silhouette with a handle in the round head of the pin. No leaf, no latte art, no fine detail, no texture.`,
   },
 ];
 
@@ -80,7 +121,9 @@ if (!dryRun && !key) {
 mkdirSync(outDir, { recursive: true });
 let failed = 0;
 for (const image of targets) {
-  const out = join(outDir, `${image.name}.webp`);
+  const dir = image.dir ? join(root, image.dir) : outDir;
+  mkdirSync(dir, { recursive: true });
+  const out = join(dir, `${image.name}.webp`);
   if (existsSync(out) && !force) {
     console.log(`건너뜀 (이미 있음): ${image.name}`);
     continue;
@@ -92,7 +135,7 @@ for (const image of targets) {
   try {
     const data = await generate(image, key, model);
     writeFileSync(out, data);
-    console.log(`저장: public/design/${image.name}.webp (${Math.round(data.length / 1024)}KB)`);
+    console.log(`저장: ${image.dir ?? "public/design"}/${image.name}.webp (${Math.round(data.length / 1024)}KB)`);
   } catch (err) {
     failed += 1;
     console.error(`실패: ${image.name} - ${err.message}`);

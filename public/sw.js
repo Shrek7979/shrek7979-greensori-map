@@ -5,7 +5,7 @@
 // - v3: 잘리거나 이미지가 아닌 응답은 캐시하지 않음 (깨진 사진이 영구 캐시되던 문제 수정).
 //   VERSION을 올리면 activate 시 이전 버전 캐시가 모두 삭제된다.
 // - v4: 같은 파일명으로 교체한 카페 사진 3장이 옛 캐시로 계속 보이던 문제 해소
-const VERSION = "greensori-v4";
+const VERSION = "greensori-v5";
 const IMG_CACHE = `${VERSION}-img`;
 const STATIC_CACHE = `${VERSION}-static`;
 const PAGE_CACHE = `${VERSION}-page`;
