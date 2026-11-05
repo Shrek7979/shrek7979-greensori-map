@@ -8,7 +8,7 @@ import VisitorCounter from "./visitor-counter";
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-[#f7f2ea] font-sans dark:bg-[#17130f]">
-      <header className="border-b border-[#e3d8c6] bg-[#f2e9d8] px-6 py-7 dark:border-[#2e251c] dark:bg-[#1d1712]">
+      <header className="gs-header border-b border-[#e3d8c6] px-6 py-9 dark:border-[#2e251c]">
         <div className="mx-auto flex max-w-6xl items-center gap-4">
           <a
             href="https://www.instagram.com/green_sori/"
@@ -53,8 +53,8 @@ export default function Home() {
         <KakaoMap cafes={cafes} />
       </main>
 
-      <footer className="border-t border-[#e3d8c6] bg-[#f2e9d8] px-6 py-8 dark:border-[#2e251c] dark:bg-[#1d1712]">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 text-center">
+      <footer className="gs-footer border-t border-[#e3d8c6] px-6 py-8 dark:border-[#2e251c]">
+        <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-3 text-center">
           <p className="font-serif text-base italic text-[#6f4e37] dark:text-[#c8a77e]">
             &ldquo;Coffee, Spaces &amp; Travel&rdquo;
           </p>

@@ -24,3 +24,62 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* 카페 일러스트 헤더: 글자 쪽은 벽색으로 덮어 가독성을 지킨다 */
+.gs-header {
+  --gs-wall: #f2e9d8;
+  background:
+    linear-gradient(to right, var(--gs-wall) 62%, transparent 100%),
+    url("/design/header-light.webp") right 62% / auto 230% no-repeat,
+    var(--gs-wall);
+}
+
+@media (min-width: 768px) {
+  .gs-header {
+    background:
+      linear-gradient(to right, var(--gs-wall) 48%, transparent 78%),
+      url("/design/header-light.webp") right 62% / auto 300% no-repeat,
+      var(--gs-wall);
+  }
+}
+
+/* 푸터: 커피 무늬를 아주 옅게 깔아 글자를 방해하지 않게 한다 */
+.gs-footer {
+  position: relative;
+  overflow: hidden;
+  background: #f2e9d8;
+}
+
+.gs-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/design/footer-pattern.webp") center / 380px;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .gs-header {
+    --gs-wall: #1d1712;
+    background-image:
+      linear-gradient(to right, var(--gs-wall) 62%, transparent 100%),
+      url("/design/header-dark.webp");
+  }
+
+  .gs-footer {
+    background: #1d1712;
+  }
+
+  .gs-footer::before {
+    opacity: 0.05;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (min-width: 768px) {
+  .gs-header {
+    background-image:
+      linear-gradient(to right, var(--gs-wall) 48%, transparent 78%),
+      url("/design/header-dark.webp");
+  }
+}
