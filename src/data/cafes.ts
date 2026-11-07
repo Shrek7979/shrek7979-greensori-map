@@ -5773,4 +5773,21 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [0, 1, 2, 3, 4, 5, 6], open: "12:00", close: "21:00" }],
     },
   },
+  {
+    id: "felt-coffee-seochon",
+    name: "펠트커피 서촌점",
+    area: "서촌",
+    region: "서울",
+    description: "커피 바 뒤로 인왕산 풍경이 펼쳐지고, 스페셜티 원두의 브루잉 커피와 별도의 청음 공간에서 잔잔한 음악을 즐길 수 있는 펠트커피의 서촌 공간",
+    tags: ["뷰·자연", "로스터리·드립"],
+    searchQuery: "서울 종로구 필운대로 79",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DfZjQbFS7X_/",
+    imageUrl: "/cafes/felt-coffee-seochon.jpg",
+    addedAt: "2026-11-07",
+    menu: "브루잉 커피",
+    hours: {
+      text: "수–일 11:00–18:00 · 월·화 휴무",
+      schedule: [{ days: [0, 3, 4, 5, 6], open: "11:00", close: "18:00" }],
+    },
+  },
 ];
