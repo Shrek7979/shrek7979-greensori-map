@@ -5792,4 +5792,21 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [0, 3, 4, 5, 6], open: "11:00", close: "18:00" }],
     },
   },
+  {
+    id: "soyo-hapjeong",
+    name: "소요",
+    area: "합정",
+    region: "서울",
+    description: "합정 골목에 새로 문을 연 작은 카페로, 따뜻한 우드톤 공간에서 앤시넌 원두 커피와 매일 아침 직접 만드는 카다멈번을 즐길 수 있는 곳",
+    tags: ["디저트·빵", "동네·아지트"],
+    searchQuery: "서울 마포구 월드컵로5길 61",
+    sourceUrl: "https://www.instagram.com/green_sori/reel/DfpAUc2y8_D/",
+    imageUrl: "/cafes/soyo-hapjeong.jpg",
+    addedAt: "2026-11-13",
+    menu: "카다멈번, 커스타드 푸딩, 바스크 치즈케이크",
+    hours: {
+      text: "월–금 08:00–18:00 (라스트오더 17:30) · 토·일 11:00–19:00 (라스트오더 18:30)",
+      schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" }, { days: [0, 6], open: "11:00", close: "19:00" }],
+    },
+  },
 ];
