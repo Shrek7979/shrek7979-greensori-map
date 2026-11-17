@@ -5809,4 +5809,17 @@ export const cafes: Cafe[] = [
       schedule: [{ days: [1, 2, 3, 4, 5], open: "08:00", close: "18:00" }, { days: [0, 6], open: "11:00", close: "19:00" }],
     },
   },
+  {
+    id: "sancheck-chungju",
+    name: "카페 산책",
+    area: "봉방동",
+    region: "충북",
+    description: "소박한 가구와 소품, 은은한 조명과 잔잔한 음악이 어우러진 동네 사랑방 같은 충주의 작은 카페",
+    tags: ["동네·아지트", "감성·인테리어"],
+    searchQuery: "충북 충주시 봉방2길 21",
+    sourceUrl: "https://www.instagram.com/green_sori/p/DfzTPRIEkBt/",
+    imageUrl: "/cafes/sancheck-chungju.jpg",
+    addedAt: "2026-11-17",
+    menu: "아이덴티티 원두 커피",
+  },
 ];
