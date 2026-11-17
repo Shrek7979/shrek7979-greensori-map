@@ -1,23 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Baloo_2 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import PWARegister from "./pwa-register";
 
-const geistSans = Geist({
+// 빌드 때 Google에서 받아오다 실패하는 일이 있어 폰트 파일을 직접 둔다 (latin 서브셋)
+const geistSans = localFont({
+  src: "./fonts/geist-latin.woff2",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  weight: "100 900",
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "./fonts/geist-mono-latin.woff2",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "100 900",
 });
 
-const cuteFont = Baloo_2({
+const cuteFont = localFont({
+  src: "./fonts/baloo2-latin.woff2",
   variable: "--font-fredoka",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: "500 700",
 });
 
 export const metadata: Metadata = {
